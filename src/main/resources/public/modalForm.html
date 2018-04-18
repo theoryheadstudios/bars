@@ -187,29 +187,28 @@ p{
   <center><p>Tell us about you!</p></center>
   <center><p>Please fill out the fields below so we can match you up with neightbors who can help</p></center>
 <form action='/action_page.php'>
-  <input id="firstname" type='text' name='firstname' placeholder='First' style='width:150px'>
-  <input id="lastname" type='text' name='lastname' placeholder='Last' style='width:150px'>
+  <input id="firstname" type='text' name='firstname' placeholder='First' value='' style='width:150px'>
+  <input id="lastname" type='text' name='lastname' placeholder='Last' value='' style='width:150px'>
   <br>
-  <input type='text' name='email' placeholder='Email' style='width:304px'>
+  <input type='text' name='email' placeholder='Email' value='' style='width:304px'>
   <br>
-  <input type='text' name='addressLine1' placeholder='Address' style='width:304px'>
+  <input type='text' name='addressLine1' placeholder='Address' value='' style='width:304px'>
   <br>
-  <input type='text' name='addressLine2' placeholder='Address Line 2' style='width:304px'>
+  <input type='text' name='addressLine2' placeholder='Address Line 2' value='' style='width:304px'>
   <br>
-  <input id="zipcode" type='text' name='zipCode' placeholder='Zip Code' style='width:150px'>
-  <input id="neighborhood" type='text' name='Neighborhood' placeholder='Neighborhood' style='width:150px'>
+  <input id="zipcode" type='text' name='zipCode' placeholder='Zip Code' value='' style='width:300px'>
   <br>
-  <input type='text' name='username' placeholder='Desired Username' style='width:304px'>
+  <input type='text' name='username' placeholder='Desired Username' value='' style='width:304px'>
   <br>
-  <input type='text' name='password' placeholder='Password' style='width:304px'>
+  <input type='text' name='password' placeholder='Password' value='' style='width:304px'>
   <br>
-  <input type='text' name='passwordMatch' placeholder='Verify Password' style='width:304px'>
+  <input type='text' name='passwordMatch' placeholder='Verify Password' value='' style='width:304px'>
   <br><br><br>
 
 
 </form>
 <br><br><br>
-  <center><button class="modalNextButton" id="modalNextButton" onclick="onClickNext()"><span>Next </span></button></center>
+  <center><button class="modalNextButton" id="modalNextButton" onclick="onClickNext();serialize()"><span>Next </span></button></center>
     <center><button class="modalBackButton" id="modalBackButton" onclick="restartModal()"><span>Start Over </span></button></center>
   <!--  <div ng-include="'checkbox.html'"></div>  --> <!-- Add this when deployed to a server, dev or prod -->
 </div></center>

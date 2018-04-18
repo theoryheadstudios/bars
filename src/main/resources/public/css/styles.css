@@ -20,6 +20,37 @@ body {
 form{
   border:none;
 }
+body{
+    min-height: 100%;
+}
+/****FOOTER STUFF*****/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: transparent;
+    margin-top:20px;
+}
+
+li {
+    float: right;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: white;
+    text-decoration: none;
+}
+
+/***********/
 p{
     font-family: 'Montserrat', sans-serif;
     border-collapse: collapse;
@@ -625,6 +656,16 @@ img{
 /********************************************************/
 /********************************************************/
 /********************************************************/
+footer {
+    padding: 0px;
+    color: white;
+    background-color: #A9A9A9;
+    clear: left;
+    text-align: center;
+    width: 100%;
+    margin-top:10px;
+    font-family: 'Montserrat', sans-serif;
+}
 
 
 
