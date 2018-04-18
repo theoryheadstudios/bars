@@ -32,4 +32,6 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.apache.derby/derby
 	testCompile group: 'org.apache.derby', name: 'derby', version: '10.14.1.0'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	// https://mvnrepository.com/artifact/org.json/json
+	compile group: 'org.json', name: 'json', version: '20090211'
 }

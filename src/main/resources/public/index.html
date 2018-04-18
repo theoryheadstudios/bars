@@ -1,96 +1,291 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <link rel="icon" href="favicon.ico" />
+<html ng-app="weeClo">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel = "stylesheet" href="css/styles.css">
+</head>
+<body ng-controller="MainController">
 
-    <title>Das Boot - Shipwrecks</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Bootstrap theme -->
-    <link href="lib/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" />
-    <!-- Angular CSP-->
-    <link href="lib/angular/css/angular-csp.css" rel="stylesheet" />
+<!-- The Login Modal -->
+<div id="loginModal" class="modal">
 
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet" />
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span id="modalCloseButton" class="close">&times;</span> <br><br>
+    <!--  <div ng-include="'registerModalContent.html'"></div> --><!-- This is for deployed version. Seperate modal content-->
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="lib/html5shiv/html5shiv.min.js"></script>
-      <script src="lib/respond/respond.min.js"></script>
-    <![endif]-->
+    <div>
+      <div class="w3-container w3-center w3-animate-right" id="loginModalContent">
 
-    <!-- require -->
-    <script src="lib/require/require.js"></script>
+        <!--INSERT MODAL CONTENT HERE -->
 
-    <!-- angularjs -->
-    <link href="lib/angular/css/angular-csp.css" rel="stylesheet" />
-    <script src="lib/angular/js/angular.js"></script>
-    <script src="lib/angular/js/angular-animate.js"></script>
-    <script src="lib/angular/js/angular-resource.js"></script>
-    <script src="lib/angular/js/angular-ui-router.js"></script>
-    <script src="lib/angular/js/angular-ui-bootstrap-tpls.js"></script>
+        <!--***************************-->
 
-    <!-- your app's js -->
-    <script src="js/app.js"></script>
-    <script src="js/nav-controller.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/services.js"></script>
-  </head>
-
-  <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="nav">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#/" ng-bind="title"></a>
-        </div>
-        <script type="text/ng-template" id="nav-item.html">
-          <span ng-if="page.name && !page.url">{{page.name}}</span>
-          <a ng-if="page.name && page.url && !(page.subPages && page.subPages.length)" href="{{page.url}}">{{page.name}}</a>
-          <a ng-if="page.name && page.url && page.subPages && page.subPages.length" href="{{page.url}}" data-toggle="dropdown" role="button" aria-expanded="false"
-          class="dropdown-toggle">{{page.name}} <span class="caret"></span>
-          </a>
-          <ul ng-if="page.subPages && page.subPages.length" class="dropdown-menu" role="menu">
-            <li ng-class="{'divider': !page.name && !page.url, 'dropdown-header': page.name && !page.url, active: isUrl(page.url)}" ng-repeat="page in page.subPages" ng-include="'nav-item.html'">
-            </li>
-          </ul>
-        </script>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li ng-repeat="page in pages" ng-class="{active: isUrl(page.url)}" ng-include="'nav-item.html'">
-            </li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-
-    <div class="ui-view-container">
-      <div ui-view>
-        <!-- default content can go here but there will be a flicker on some pages loading -->
       </div>
     </div>
+    <!-- <center><button class="button" id="letsGoButton" onclick=""><span>Lets go</span></button></center> -->
+    <!--  <div ng-include="'checkbox.html'"></div>  --> <!-- Add this when deployed to a server, dev or prod -->
+
+  </div>
+</div>
+<!--End of Modal component -->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="lib/jquery/jquery.min.js"></script>
-    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="lib/assets/js/ie10-viewport-bug-workaround.js"></script>
 
-  </body>
+<!-- Trigger/Open The Modal -->
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span id="mainModalCloseButton" class="close">&times;</span> <br><br>
+    <!--  <div ng-include="'registerModalContent.html'"></div> --><!-- This is for deployed version. Seperate modal content-->
+
+    <div>
+      <div class="w3-container w3-center w3-animate-right" id="modalContent">
+
+        <!--INSERT MODAL CONTENT HERE -->
+
+        <!--***************************-->
+
+      </div>
+    </div>
+    <!--  <div ng-include="'checkbox.html'"></div>  --> <!-- Add this when deployed to a server, dev or prod -->
+
+  </div>
+</div>
+<!--End of Modal component -->
+
+<div class="topnav" id="myTopnav">
+  <div class="logo">WeeClo</div>
+  <a href="#home" id="myBtn" onclick="onClickNext()">Sign Up</a>
+  <a id="landingPageLoginButton">Log In</a>
+
+  <!-- <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction2()">&#9776;</a>  -->
+</div>
+
+
+<div class="header">
+  <div id="videoDiv">
+    <div id="videoBlock">
+
+      <div id="videoMessage">
+        <br>
+        <h1 class="spacer bbb">Renting is the new buying!</h1>
+        <h2 class="spacer bbb">Just need an item for the night? The weekend?</h2>
+        <h3 class="spacer bbb">A special project? A special date?</h3>
+        <h2 class="spacer bbb">Try it out!</h2>
+        <p class="videoClick" >
+        <form  id= "gifSearch" class="navbar-form" action="/action_page.php">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="What are you looking for?" name="search">
+            <div class="input-group-btn">
+              <input type="button" class="button" value="Let's Go">
+            </div>
+          </div>
+        </form>
+        </p>
+      </div>
+    </div>
+  </div>
+  <!--<img src="ppl.gif"/> -->
+  <img id="headerPicture" class="hhh" src="images/hood.jpg"/>
+</div>
+
+<!--<nav class="navbar navbar-inverse" id="navbar">
+<div class="navbar-header">
+  <form class="navbar-form navbar-left" action="/action_page.php">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="What are you looking for?" name="search">
+      <div class="input-group-btn">
+        <button class="btn btn-default" type="submit">
+          <i class="glyphicon glyphicon-search"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+</nav> -->
+<div class="container">
+  <div class="row">
+    <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
+      <div class="MultiCarousel-inner">
+        <div class="item">
+          <div class="pad15" style="background-image:url('images/lawncare.jpeg');background-repeat: no-repeat; background-size:cover;">
+            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Lawn & Gardening</p>
+            <br><br><br><br><br><br><br><br>
+
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15" style="background-image:url('images/wellness.jpg');background-repeat: no-repeat; background-size:100%;">
+            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Fitness</p>
+            <br><br><br><br><br><br><br><br>
+
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15" style="background-image:url('images/costumes.jpeg');background-repeat: no-repeat; background-size:100%;">
+            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Cosplay</p>
+            <br><br><br><br><br><br><br><br>
+
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15" style="background-image:url('images/hiking.jpeg');background-repeat: no-repeat; background-size:cover;">
+            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Outdoor & Hiking</p>
+            <br><br><br><br><br><br><br><br>
+
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15" style="background-image:url('images/guitar.jpeg');background-repeat: no-repeat; background-size:cover;">
+            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Musical Instruments</p>
+            <br><br><br><br><br><br><br><br>
+
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15" style="background-image:url('images/clothing.jpeg');background-repeat: no-repeat; background-size:100%;">
+            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Clothing</p>
+            <br><br><br><br><br><br><br><br>
+
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15" style="background-image:url('images/electronics.jpeg');background-repeat: no-repeat; background-size:cover;">
+            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Electronics</p>
+            <br><br><br><br><br><br><br><br>
+
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15" style="background-image:url('images/cameraEquipment.jpeg');background-repeat: no-repeat; background-size:cover;">
+            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Camera Equipment</p>
+            <br><br><br><br><br><br><br><br>
+
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15" style="background-image:url('images/jewelry.jpeg');background-repeat: no-repeat; background-size:cover;">
+            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Jewelery</p>
+            <br><br><br><br><br><br><br><br>
+
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15" style="background-image:url('images/industrialEquipment.jpeg');background-repeat: no-repeat; background-size:cover;">
+            <p class="lead" style="color:white; background: rgba(0, 0, 0, 0.5);">Industrial</p>
+            <br><br><br><br><br><br><br><br>
+
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15">
+            <p class="lead">Multi Item Carousel</p>
+            <p>₹ 1</p>
+            <p>₹ 6000</p>
+            <p>50% off</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15">
+            <p class="lead">Multi Item Carousel</p>
+            <p>₹ 1</p>
+            <p>₹ 6000</p>
+            <p>50% off</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15">
+            <p class="lead">Multi Item Carousel</p>
+            <p>₹ 1</p>
+            <p>₹ 6000</p>
+            <p>50% off</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15">
+            <p class="lead">Multi Item Carousel</p>
+            <p>₹ 1</p>
+            <p>₹ 6000</p>
+            <p>50% off</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15">
+            <p class="lead">Multi Item Carousel</p>
+            <p>₹ 1</p>
+            <p>₹ 6000</p>
+            <p>50% off</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="pad15">
+            <p class="lead">Multi Item Carousel</p>
+            <p>₹ 1</p>
+            <p>₹ 6000</p>
+            <p>50% off</p>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary leftLst"><</button>
+      <button class="btn btn-primary rightLst">></button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <br/><br/><br/>
+      <hr/>
+    </div>
+  </div>
+</div>
+<div id="centerBody">
+  <div class="container col-lg-6 col-xs-6">
+    <img id="bodyPics" src="images/houses.jpg"/>
+    <h3>...that jewelry collection that gets used only for special occasions...</h3>
+  </div>
+  <div class="container col-lg-6 col-xs-6">
+    <h3>We're creating a community of neightbors who bought that 1 tool for that 1 job and never returned it....</h3><br><br><br>
+    <img id="bodyPics" src="images/shopping.jpg"/>
+  </div>
+  <div class="container col-lg-6 col-xs-6">
+    <img id="bodyPics" src="http://www.fotolip.com/wp-content/uploads/2016/05/Car-Clipart-1.png"/><br><br><br><br><br><br><br><br><br><br>
+    <h3>...the dress that you bought for that party, someone said "oh, you forgot to take the tag off," which you then instinctively reached back and ripped that thing off...</h3>
+  </div>
+  <div class="container col-lg-6 col-xs-6">
+    <h3>...that spare car you have in your garage that never gets used</h3>  <br><br><br><br>
+    <br><br><br><br><br><br><br><br>
+  </div>
+
+  <div class="container col-lg-6 col-xs-6">
+    <img id="bodyPics" src="images/jewelry.jpg" class="img-responsive"/>
+  </div>
+
+  <div class="container  col-lg-12 col-md-12 col-xs-12" style="background-color:white;">
+    <h3>We want you to be able to take advantage of that ownership and make some extra money in the process.</h3>
+    <img src="images/moneyClipart.jpeg"/>
+    <h3>With WeeClo, you can connect with your neightbors locally in a safe way to borrow that tool rather than buying on yourself for that specialty project, or borrow that dress for a night out.</h3>
+    <br><br>
+    <center><a class="button" id="joinWeecloButton" >Joint the WeeClo Experience!</a></center>
+    <center><br><br><h3>Sign up or <a id="loginLink">Log In</a> to start working with your neighbors!</h3></center>
+
+  </div>
+
+</body>
+
+<script src="js/script.js"></script>
+
+</body>
 </html>

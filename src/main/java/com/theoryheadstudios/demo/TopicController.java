@@ -1,5 +1,10 @@
 package com.theoryheadstudios.demo;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.theoryheadstudios.demo.weeclo.entities.UserEntity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +23,7 @@ import java.util.List;
 
 @RestController
 public class TopicController {
-
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
         @Autowired
         TopicService topicService;
 
@@ -40,8 +45,8 @@ public class TopicController {
 
         @RequestMapping("/postArtist2")
     public void postArtist(@RequestBody User artist){
-            topicService.addArtist(artist);
-        }
+        topicService.addArtist(artist);
+    }
 
 
         @Transactional
@@ -64,9 +69,13 @@ public class TopicController {
             user.setZip("30237");
             user.setUser_name("Goyito");
             user.setUser_email("freddyace@ayhoo.com");
+            try {
+                em.persist(user);
+                em.flush();
+            log.info("Persisted data successfully...");
+            }catch(Exception e){
 
-            em.persist(user);
-            em.flush();
+            }
 
 
             return Arrays.asList(user);
@@ -74,15 +83,17 @@ public class TopicController {
 
         }
 @Transactional
-    @RequestMapping("/foo")
-    public List<User> foo(){
+    @RequestMapping(value = "/listOfAllUsers", method = RequestMethod.GET)
+    public String listOfAllUsers() throws JsonProcessingException {
 
         Query query = em.createNativeQuery("SELECT * FROM Users", User.class);
         @SuppressWarnings("unchecked")
         List<User> items = (List<User>) query.getResultList();
-
-        return items;
-
+        ObjectMapper objectMapper = new ObjectMapper();
+        String listString = objectMapper.writeValueAsString(items);
+        System.out.println("{ \"users\":"+listString+"}");
+        log.info("SUCCESS!!!");
+        return "{ \"users\":"+listString+"}";
 
     }
 
@@ -110,6 +121,33 @@ public class TopicController {
         }catch (Exception e){
                 e.printStackTrace();
             }
+        return "Failure to create account";
+
+
+    }
+    @Transactional
+    @RequestMapping(value = "/createWeeCloUser", method = RequestMethod.POST)
+    public String createWeeCloUser(@RequestBody UserEntity weeCloUser){
+        try{
+            weeCloUser.setPassword(passwordEncoder.encode(weeCloUser.getPassword()));
+            em.persist(weeCloUser);
+            em.flush();
+            System.out.println("Input user password after encryption: "+ weeCloUser.getPassword());
+
+            //Compare User input with encrypted
+            if(passwordEncoder.matches("password", weeCloUser.getPassword())){
+                System.out.println("True");
+            }
+            else{
+                System.out.println("False");
+            }
+            return "Success";
+        }
+        catch(PersistenceException p){
+            p.printStackTrace();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return "Failure to create account";
 
 

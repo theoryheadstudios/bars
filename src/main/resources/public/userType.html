@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+h1{
+    font-family: 'Montserrat', sans-serif;
+     text-shadow: none;
+}
+h2{
+  font-family: 'Montserrat', sans-serif;
+ text-shadow: none;
+}
+h3{
+    font-family: 'Montserrat', sans-serif;
+ text-shadow: none;
+}
+.renterCard {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+    float:right;
+
+
+}
+p{
+  font-family: 'Montserrat', sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+
+
+}
+
+.renterCard:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.renterContainer {
+    padding: 2px 16px;
+
+}
+.ownerCard {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+
+}
+
+.ownerCard:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.ownerContainer {
+    padding: 2px 16px;
+}
+/* progress tracker stuff*/
+
+.trackerContainer{
+  width: 100%;
+  margin-bottom: 100px;
+
+}
+.progressbar{
+  counter-reset: step;
+
+}
+.progressbar li{
+  list-style-type: none;
+  float:left;
+  width:25%;
+  position: relative;
+  text-align: center;
+
+
+
+}
+.progressbar li:before{
+  content: counter(step);
+  counter-increment: step;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border:1px solid #ddd;
+  display: block;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  border-radius: 50%;
+  background-color: white;
+
+}
+/*.progressbar li:after{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: #ddd;
+  top: 15px;
+  left:-50%;
+  z-index: 1 !important;
+}*/
+.progressbar li:first-child::after{
+  content: none;
+}
+.progressbar li.active{
+  color:green;
+}
+.progressbar li.active:before{
+  border-color: green;
+
+}
+.progressbar li.active + li:after{
+  background-color: green;
+}
+
+/*---End of progress tracker stuff ---*/
+
+/* modal button that says "Next"*/
+.modalNextButton {
+  border-radius: 4px;
+  background-color: #CD5C5C;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.modalNextButton span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.modalNextButton span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.modalNextButton:hover span {
+  padding-right: 25px;
+}
+
+.modalNextButton:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+/*modal button that says "Back"*/
+.modalBackButton {
+  border-radius: 4px;
+  background-color: #CD5C5C;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+</style>
+</head>
+<body>
+  <div class="trackerContainer">
+  <ul class="progressbar">
+    <li id="step1" class="active">Step 1</li>
+    <li id="step2">Step 2</li>
+    <li id="step3">Step 3</li>
+    <li id="step4">Step 4</li>
+  </ul>
+  </div>
+  <div>
+  <div class="w3-container w3-center w3-animate-right" id="modalContent"><br>
+<!--INSERT MODAL CONTENT HERE -->
+<div class='renterCard' id="renterCard" onclick='isRenter()'>
+  <center><img src='images/rent.png' alt='Avatar' style='width:100%;'></center>
+  <div class='renterContainer' id='renterCardID'>
+    <center><h1><b>I'm here to rent stuff!</b></h1></center>
+    <center><p>Sign me up!</p></center>
+  </div>
+</div>
+
+
+
+<div class='ownerCard' id="ownerCard" onclick='isOwner()'>
+  <img src='images/owner.jpg' alt='Avatar' style='width:100%'>
+  <div class='ownerContainer' id='ownerCardID'>
+    <center><h1><b>I have stuff to rent!</b></h1></center>
+    <center><p>Sign me up!</p></center>
+  </div>
+</div>
+
+<!--***************************-->
+
+  </div>
+</div>
+<br><br><br>
+  <center><button class="modalNextButton" id="modalNextButton" onclick="onClickNext()"><span>Next </span></button></center>
+    <center><button class="modalBackButton" id="modalBackButton" onclick="restartModal()"><span>Start Over </span></button></center>
+  <!--  <div ng-include="'checkbox.html'"></div>  --> <!-- Add this when deployed to a server, dev or prod -->
+
+
+</body>
+<script src="script.js"></script>
+</html>

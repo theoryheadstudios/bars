@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url">jdbc:mysql://104.196.142.176:3306/weeclodb</property>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+     <property name="freddy"/>
+     <property name="password"/>
+      <mapping class="com.theoryheadstudios.demo.weeclo.entities.ItemEntity"/>
+      <mapping class="com.theoryheadstudios.demo.weeclo.entities.ItemStarsEntity"/>
+      <mapping class="com.theoryheadstudios.demo.weeclo.entities.ItemStarsTotalEntity"/>
+      <mapping class="com.theoryheadstudios.demo.weeclo.entities.ItemTagsEntity"/>
+      <mapping class="com.theoryheadstudios.demo.weeclo.entities.ItemsOwnedEntity"/>
+      <mapping class="com.theoryheadstudios.demo.weeclo.entities.ItemsRentedEntity"/>
+      <mapping class="com.theoryheadstudios.demo.weeclo.entities.OwnerEntity"/>
+      <mapping class="com.theoryheadstudios.demo.weeclo.entities.RenterEntity"/>
+      <mapping class="com.theoryheadstudios.demo.weeclo.entities.TagsEntity"/>
+      <mapping class="com.theoryheadstudios.demo.weeclo.entities.UsStatesEntity"/>
+      <mapping class="com.theoryheadstudios.demo.weeclo.entities.UserEntity"/>
+      <mapping class="com.theoryheadstudios.demo.weeclo.entities.UserRatingEntity"/>
+      <mapping class="com.theoryheadstudios.demo.weeclo.entities.UserRatingTotalEntity"/>
+      <mapping class="com.theoryheadstudios.demo.weeclo.entities.WcAdminEntity"/>
+
+      <!-- DB schema will be updated if needed -->
+    <!-- <property name="hbm2ddl.auto">update</property> -->
+  </session-factory>
+</hibernate-configuration>
