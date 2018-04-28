@@ -8,20 +8,20 @@
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
      <property name="freddy"/>
      <property name="password"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.ItemEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.ItemStarsEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.ItemStarsTotalEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.ItemTagsEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.ItemsOwnedEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.ItemsRentedEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.OwnerEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.RenterEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.TagsEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.UsStatesEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.UserEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.UserRatingEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.UserRatingTotalEntity"/>
-      <mapping class="com.theoryheadstudios.demo.weeclo.entities.WcAdminEntity"/>
+      <mapping class="com.theoryheadstudios.demo.bars.entities.ItemEntity"/>
+      <mapping class="com.theoryheadstudios.demo.bars.entities.ItemStarsEntity"/>
+      <mapping class="com.theoryheadstudios.demo.bars.entities.ItemStarsTotalEntity"/>
+      <mapping class="com.theoryheadstudios.demo.bars.entities.ItemTagsEntity"/>
+      <mapping class="com.theoryheadstudios.demo.bars.entities.ItemsOwnedEntity"/>
+      <mapping class="com.theoryheadstudios.demo.bars.entities.ItemsRentedEntity"/>
+      <mapping class="com.theoryheadstudios.demo.bars.entities.OwnerEntity"/>
+      <mapping class="com.theoryheadstudios.demo.bars.entities.RenterEntity"/>
+      <mapping class="com.theoryheadstudios.demo.bars.entities.TagsEntity"/>
+      <mapping class="com.theoryheadstudios.demo.bars.entities.UsStatesEntity"/>
+      <mapping class="com.theoryheadstudios.demo.bars.entities.UserEntity"/>
+      <mapping class="com.theoryheadstudios.demo.bars.entities.UserRatingEntity"/>
+      <mapping class="com.theoryheadstudios.demo.bars.entities.UserRatingTotalEntity"/>
+      <mapping class="com.theoryheadstudios.demo.bars.entities.WcAdminEntity"/>
 
       <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
