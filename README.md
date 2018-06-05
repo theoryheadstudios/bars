@@ -1,1 +1,1 @@
-# angulardemo
+# cool kids only
