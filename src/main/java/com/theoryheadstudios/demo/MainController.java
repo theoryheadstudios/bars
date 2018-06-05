@@ -5,23 +5,27 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 @RestController
-public class TopicController {
+public class MainController {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
         @Autowired
@@ -108,6 +112,27 @@ public class TopicController {
 
 
     }
+
+    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Object> uploadFile(@RequestParam("file") MultipartFile file) throws IOException{
+            File convertFile = new File("/Users/freddyacevedo/IdeaProjects/Bars2018/src/main/"+file.getOriginalFilename());
+            convertFile.createNewFile();
+        FileOutputStream fout = new FileOutputStream(convertFile);
+        fout.write(file.getBytes());
+            return new ResponseEntity<>("File is uploaded successfully", HttpStatus.OK);
+
+    }
+
+
+//    @PostMapping(value = "/uploadFile2", method=Reqconsumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//    public ResponseEntity<Object> uploadFile2(@RequestParam("file") MultipartFile file2) throws IOException{
+//        File convertFile = new File("/Users/freddyacevedo/IdeaProjects/Bars2018/src/main/"+file2.getOriginalFilename());
+//        convertFile.createNewFile();
+//        FileOutputStream fout = new FileOutputStream(convertFile);
+//        fout.write(file2.getBytes());
+//        return new ResponseEntity<>("File is uploaded successfully", HttpStatus.OK);
+//
+//    }
 
 
 

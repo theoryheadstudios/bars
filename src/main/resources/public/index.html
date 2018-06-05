@@ -12,13 +12,26 @@
 </head>
 <body ng-controller="MainController">
 
+<div class="header">
+  <a href="#default" class="logo"><img id="mainlogo" src="images/TheoryHeadStudiosLogo2.png"></a>
+  <div class="header-right">
+    <a href="#about" id="menuButton"><div id="hamburger"></div><div id="hamburger"></div><div id="hamburger"></div></a>
+  </div>
+</div>
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-right" style="display:none;right:0; width: 250px;" id="rightMenu">
+  <button id="menuCloseButton" class="w3-bar-item w3-button w3-large">Close &times;</button>
+  <a href="#" class="w3-bar-item w3-button">What is this?</a>
+  <a href="#" class="w3-bar-item w3-button">How it works</a>
+  <a href="#" class="w3-bar-item w3-button">Join</a>
+</div>
 
  <center><h1 style="font-family: 'Indie Flower', cursive;">No contracts. No labels. No B.S. Just music.</h1></center>
 <center><h3 style="font-family: 'Indie Flower', cursive;">Whether you're a bedroom musician or a touring musician, Bars will enable you to get heard by people all over the world.</h3></center>
   <center><button class="landingButtons" id="myBtn">Register</button></center>
   <center><button class="landingButtons" id="myBtn2">Listen</button></center>
   <center><button class="landingButtons" id="myBtn3">Market</button></center>
-<center>  <div id="badges"><img id="appleBadge" src="appleBadge2.png" class="responsive"><img id="googlePlayBadge" src="googlePlayBadge.png" class="responsive"></div>
+<center>  <div id="badges"><img id="appleBadge" src="images/appleBadge2.png" class="responsive"><img id="googlePlayBadge" src="images/googlePlayBadge.png" class="responsive"></div>
+<br><br><br><br><br><br>
 </center>
 
 
@@ -99,6 +112,15 @@
   </div>
 </div>
 
-<script src="script.js"></script>
+<script src="js/script.js"></script>
+ <center>
+ <div class="footer">
+   <ul>
+     <li><a>Contact us</a></li>
+     <li><a>About us</a></li>
+     <li><a>Terms of use</a></li>
+   </ul>
+ </div>
+ </center>
 </body>
 </html>

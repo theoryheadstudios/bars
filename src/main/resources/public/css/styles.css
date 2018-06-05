@@ -1,315 +1,344 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
-h1{
-    font-family: 'Montserrat', sans-serif;
-     text-shadow: none;
+@import 'https://fonts.googleapis.com/css?family=Alegreya+Sans';
+@import 'https://fonts.googleapis.com/css?family=Indie+Flower';
+
+* {
+    box-sizing: border-box;
 }
-h2{
-  font-family: 'Montserrat', sans-serif;
- text-shadow: none;
+#boxHeader{
+  display: inline-block;
+  margin-right: 3px;
+}
+#badges{
+  margin: auto;
+  width: 50%;
+  margin-top: 100px;
+}
+#appleBadge{
+  /* height: 165px; */
+}
+
+p{
+
+
+
+}
+h1{
+  font-family: 'Krona One', sans-serif;
+  color:white;
 }
 h3{
-    font-family: 'Montserrat', sans-serif;
- text-shadow: none;
+  font-family: 'Krona One', sans-serif;
+  color:white;
+}
+footer {
+   position:absolute;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+
+   color: white;
+   text-align: center;
+}
+/* modal picture table stuff*/
+
+/* end of modal picture table stuff */
+#text{
+  position: sticky;
+  max-width: 400px;
 }
 
 body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-
-}
-form{
-  border:none;
-}
-body{
-    min-height: 100%;
-}
-/****FOOTER STUFF*****/
-ul {
-    list-style-type: none;
     margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: transparent;
-    margin-top:20px;
+    font-family: Arial;
+    font-size: 17px;
+    background-image: url('../images/mic.jpg');
+    background-size: cover;
+
+
 }
 
-li {
-    float: right;
-}
 
-li a {
-    display: block;
+
+.landingButtons {
+    width: 300px;
+    margin: 4px;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    background: #acd2e2;
     color: white;
-    text-align: center;
-    padding: 16px;
-    text-decoration: none;
+    cursor: pointer;
+
 }
 
-li a:hover {
-    background-color: white;
-    text-decoration: none;
+.landingButtons:hover {
+    background: grey;
+    color: white;
+}
+/* The Modal (background) */
+.modal {
+
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/***********/
-p{
-    font-family: 'Montserrat', sans-serif;
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 100%;
+    height:90%;
+    overflow: auto;
+
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.button {
+  border-radius: 4px;
+  background: #acd2e2;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
+/*this is the checkbox stuff*/
+/* Customize the label (the container) */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 8px;
+  top: 2px;
+  width: 7px;
+  height: 15px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/*-----End of Checkbox stuff*/
+/*table styles*/
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
 
 
 }
-.bbb{
-  background: rgba(0, 0, 0, 0.5);
-}
-.container2{
-  margin: auto;
 
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 10px;
 }
-.col-lg-4{
-  margin: auto;
-}
-.button {
-    background-color:#CD5C5C;
-    border: none;
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
     color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-
-    cursor: pointer;
 }
+
+/*---End of table styles --*/
+
+
+
+/*---Start Footer --*/
+
+
+.wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 600px;
+    height: 400px;
+    border: 0px solid black;
+}
+
+#slide {
+    position: absolute;
+    left: -100px;
+    width: 100px;
+    height: 100px;
+    background: transparent;
+    color: black;
+    transition: 1s;
+}
+
+.wrapper:hover #slide {
+    transition: 1s;
+    left: 100px;
+
+}
+
+#tableWrapper{
+
+  background-color: #fff;
+
+}
+
+
 
 .topnav {
   overflow: hidden;
-  background-color: white;
+  width: 500px;
 }
 
 .topnav a {
-  float: right;
+  float: left;
   display: block;
-  color: white;
-  background-color: #CD5C5C;
-  /*margin-right: 5px;*/
-  margin: 1px;
+  color: black;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
-  transition: background-color 0.5s ease-in-out;
-
 }
 
 .topnav a:hover {
-  background-color: #CD5C5C;
+  background-color: #ddd;
   color: black;
-    transition: background-color 0.5s ease-in-out;
 }
 
-
-.topnav .icon {
-  display: none;
+.topnav a.active {
+  background-color: #2196F3;
+  color: white;
 }
 
-.logo{
-  float:left;
-  display: block;
-  color: #CD5C5C;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+.topnav .search-container {
+  float: right;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 0px;
   font-size: 17px;
-  transition: background-color 0.5s ease-in-out;
-}
-
-
-
-
-
-.navbar-nav{
-
-}
-
-.navbar{
-  border-radius: 0px;
-  background-color: white;
-}
-
-.container{
-  background-color: white;
-  padding: 30px;
-}
-
-.input-group{
-width: 400px;
-margin: auto;
-
-
-padding: 10px;
-
-}
-.form-control{
-width: 300px;
-
-
-}
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: white;
-
-}
-
-/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-.sticky + .content {
-  padding-top: 60px;
-}
-#navbar {
-
-  overflow: hidden;
-  /*background-color: none;*/
-  border:none;
-  width:400px;
-  z-index: 1000;
-
-
-}
-#bodyPics{
-  max-width: 300px;
-  max-height: 300px;
-}
-#centerBody{
-  margin: auto;
-  width: 50%;
-}
-
-.navbar-form{
-  border:none;
-
-}
-
-/* Navbar links */
-#navbar a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px;
-  text-decoration: none;
-}
-/*
-#gifSearch{
-margin-top:auto;
-} */
-
-.header {
-  background-color: #f1f1f1;
-
-  text-align: center;
-  overflow: hidden;
-}
-img{
-  width: 100%;
-/*  height: 300px;*/
-}
-
-#videoDiv {
-  width: 100%;
-  height: auto;
-  max-height: 800px;
-  position: relative;}
-#videoBlock {width: 100%; height: 100%;  display: flex;  justify-content: center; align-items: center; z-index: -1;}
-#videoMessage {width: 100%; height:100%; position: absolute; top: 0; left: 0;}
-#videoMessage *{padding:0.4em; margin:0}
-#videoMessage {text-shadow: 2px 2px 2px #000000; color:white;z-index:99 }
-#videoMessage h1{font-size: 2em;color:#ffffff;text-align:center;}
-#videoMessage h2{font-size: 1.5em;color:#ffffff;text-align:center;}
-#videoMessage h3{font-size: 1.2em;color:#ffffff;text-align:center;}
-.videoClick {text-align:center}
-.videoClick a{color:white;background-color:rgba(241, 241, 241, 0.25);font-size: 1.7em;cursor:pointer;cursor:hand}
-
-/* @media screen and (max-width: 600px) {
-  .topnav a:not(:first-child) {display: none;}
-  .topnav a.icon {
-    float: left;
-    display: block;
-  }
-} */
-
-/*carousel stuff*/
-.MultiCarousel { float: left; overflow: hidden; padding: 15px; width: 100%; position:relative; }
-    .MultiCarousel .MultiCarousel-inner { transition: 1s ease all; float: left; }
-        .MultiCarousel .MultiCarousel-inner .item { float: left;}
-        .MultiCarousel .MultiCarousel-inner .item > div { text-align: center; padding:10px; margin:10px; background:#f1f1f1; color:#666;}
-    .MultiCarousel .leftLst, .MultiCarousel .rightLst { position:absolute; border-radius:50%;top:calc(50% - 20px); }
-    .MultiCarousel .leftLst { left:0; }
-    .MultiCarousel .rightLst { right:0; }
-
-        .MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { pointer-events: none; background:#ccc; }
-
-
-
-@media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-
-  }
-  #gifSearch{
-    margin: auto;
-    float: right;
-  }
-  .input-group{
-  min-width: 200px;
   border: none;
-
-  }
-
-}
-@media screen and (max-width: 767px)  /*and (min-width:532px)*/{
-  .header {
-    background-color: white;
-    height: 300px;
-    min-height: 300px;
-    text-align: center;
-
-  }
-  .input-group{
   width: 400px;
-  margin-top: 20px;
-  width: 100%;
-  padding: 10px;
-
-  }
-  .form-control{
-    height: 50px;
-  }
-  .button{
-    height: 50px;
-  }
-  #gifSearch{
-    margin: 10px 10px 10px 10px;
-    float: right;
-  }
-  hr{
-    width: 0px;
-  }
-  img{
-    width: 100%;
-    height: auto;
-  }
 }
 
-/*modal?*/
+.topnav .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 0px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+
+}
 /* progress tracker stuff*/
 
 .trackerContainer{
@@ -319,6 +348,7 @@ img{
 }
 .progressbar{
   counter-reset: step;
+    background-color: white;
 
 }
 .progressbar li{
@@ -345,16 +375,6 @@ img{
   background-color: white;
 
 }
-/*.progressbar li:after{
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  background-color: #ddd;
-  top: 15px;
-  left:-50%;
-  z-index: 1 !important;
-}*/
 .progressbar li:first-child::after{
   content: none;
 }
@@ -371,332 +391,124 @@ img{
 
 /*---End of progress tracker stuff ---*/
 
-/* Modal Content */
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 85%;
-    height:70%;
-    overflow: auto;
-
+.topnav .search-container button:hover {
+  background: #ccc;
 }
-
-/* The Close Button */
-.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+.responsive {
+    max-width: 100%;
+    height: auto;
 }
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* modal button that says "Next"*/
-.modalNextButton {
-  border-radius: 4px;
-  background-color: #CD5C5C;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 28px;
-  padding: 20px;
-  width: 200px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}
-
-.modalNextButton span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.modalNextButton span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.modalNextButton:hover span {
-  padding-right: 25px;
-}
-
-.modalNextButton:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-/*modal button that says "Back"*/
-.modalBackButton {
-  border-radius: 4px;
-  background-color: #CD5C5C;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 28px;
-  padding: 20px;
-  width: 200px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}
-
-
-
-/*this is the checkbox stuff*/
-/* Customize the label (the container) */
-.Modalcontainer {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* Hide the browser's default checkbox */
-.Modalcontainer input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-
-/* Create a custom checkbox */
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
-}
-
-/* On mouse-over, add a grey background color */
-.Modalcontainer:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-
-/* When the checkbox is checked, add a blue background */
-.Modalcontainer input:checked ~ .checkmark {
-  background-color: #2196F3;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-
-}
-
-/* Show the checkmark when checked */
-.Modalcontainer input:checked ~ .checkmark:after {
-  display: block;
-}
-
-/* Style the checkmark/indicator */
-.Modalcontainer .checkmark:after {
-  left: 8px;
-  top: 2px;
-  width: 7px;
-  height: 15px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-/*-----End of Checkbox stuff*/
-/*table styles*/
-#customers {
-    font-family: 'Montserrat', sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-
-
-}
-
-#customers td, #customers th {
-    border: 1px solid #ddd;
-    padding: 5px;
-
-}
-
-#customers tr:nth-child(even){background-color: #f2f2f2;}
-
-#customers tr:hover {background-color: #ddd;}
-
-#customers th {
-    padding-top: 12px;
-    padding-bottom: 10px;
-    text-align: left;
-    background-color: #4CAF50;
-    color: white;
-}
-
-
-
-
-/*---End of table styles --*/
-/*-------*/
-
-/************THIS IS USER TYPE CARDS FOR MODAL********/
-.renterCard {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    width: 40%;
-    float:right;
-
-
-}
-
-.renterCard:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-.renterContainer {
-    padding: 2px 16px;
-
-}
-.ownerCard {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    width: 40%;
-
-}
-
-.ownerCard:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-.ownerContainer {
-    padding: 2px 16px;
-}
-
-/******NEIGHBORHOOD SELECTION RADIO BOX BUTTON STUFF*****/
-/* The container */
-.RadioButtonContainer {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-/* Hide the browser's default radio button */
-.RadioButtonContainer input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-}
-
-/* Create a custom radio button */
-.RadioCheckmark {
-    position: absolute;
-    top: 0;
+.footer {
+    position: fixed;
     left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-    border-radius: 50%;
-}
-
-/* On mouse-over, add a grey background color */
-.RadioContainer:hover input ~ .RadioCheckmark {
-    background-color: #ccc;
-}
-
-/* When the radio button is checked, add a blue background */
-.RadioButtonContainer input:checked ~ .RadioCheckmark {
-    background-color: #2196F3;
-}
-
-/* Create the indicator (the dot/circle - hidden when not checked) */
-.RadioCheckmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
-
-/* Show the indicator (dot/circle) when checked */
-.RadioButtonContainer input:checked ~ .RadioCheckmark:after {
-    display: block;
-}
-
-/* Style the indicator (dot/circle) */
-.RadioButtonContainer .RadioCheckmark:after {
- 	top: 9px;
-	left: 9px;
-	width: 8px;
-	height: 8px;
-	border-radius: 50%;
-	background: white;
-}
-/********************************************************/
-/********************************************************/
-/********************************************************/
-footer {
-    padding: 0px;
-    color: white;
-    background-color: #A9A9A9;
-    clear: left;
-    text-align: center;
+    bottom: 0;
     width: 100%;
-    margin-top:10px;
-    font-family: 'Montserrat', sans-serif;
+    background-color: #484848;
+    color: white;
+    text-align: center;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #484848;
 }
 
-
-
-@media screen and (max-width: 1000px){
-.hhh{
-  width: 100%;
-  height: auto;
+li {
+    float:right;
 }
-#centerBody{
-width: auto;
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
 }
-h1{
-  font-size: 100%;
+
+li a:hover {
+    background-color: #111111;
 }
 .header {
-  background-color: #f1f1f1;
+    overflow: hidden;
+    background-color: white;
+    padding: 1px;
+}
 
-  text-align: center;
-  overflow: hidden;
+.header a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
 }
-img{
-  width: 100%;
-/*  height: 300px;*/
+
+.header a.logo {
+    font-size: 25px;
 }
+
+.header a:hover {
+    background-color: #ddd;
+    color: black;
 }
-@media screen and(max-width: 450px){
-  .hhh{
-    width: 100%;
-    height: 450px;
-  }
-  #firstname{
-    width: 300px;
-  }
+
+.header a.active {
+    background-color: dodgerblue;
+    color: white;
 }
+
+.header-right {
+    float: right;
+}
+* {box-sizing: border-box;}
+
+#hamburger{
+    width: 25px;
+    height: 1px;
+    background-color: black;
+    margin: 6px 0;
+}
+#mainlogo{
+    max-height: 70px;
+    max-width: 220px;
+    z-index: 200;
+
+}
+
+@media screen and (max-width: 500px) {
+    .header a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+    .header-right {
+        float: none;
+    }
+    #badges{
+        margin: auto;
+        width: 50%;
+        margin-top: 50px;
+    }
+}
+
+
+
+@media screen and (max-width: 480px) {
+    body {
+
+    }
+    .responsive {
+    max-width: 100%;
+    height: auto;
+}
+    #hamburger{
+        width: 25px;
+        height: 1px;
+        background-color: black;
+    }
+}
+
