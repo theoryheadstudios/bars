@@ -6,7 +6,7 @@ Sample user (Json)
              "first_name": "ShitHead",
              "last_name": "Bozo",
              "password": "$2a$10$iVe4tpAro68BPwqqmc9l5ujJscXNuQY0BpmubHyBC4cSV1677C4Im",
-             "date_of_birth": "05/17/1993",
+             "date_of_birth": "1993-05-17",
              "country": "Mexico",
              "zip": "30237",
              "time_zone": "Western",

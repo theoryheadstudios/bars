@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="weeClo">
+<html ng-app="weeClo" id="htmlPage">
 <head>
   <meta charset="utf-8" />
 <script data-require="angular.js@*" data-semver="1.3.0-beta.5" src="https://code.angularjs.org/1.3.0-beta.5/angular.js"></script>
@@ -11,22 +11,24 @@
 
 </head>
 <body ng-controller="MainController">
+  
 
 <div class="header">
   <a href="#default" class="logo"><img id="mainlogo" src="images/TheoryHeadStudiosLogo2.png"></a>
   <div class="header-right">
-    <a href="#about" id="menuButton"><div id="hamburger"></div><div id="hamburger"></div><div id="hamburger"></div></a>
+    <a href="#about" id="menuButton" onclick="toggleMenu(this)"><div id="hamburger"></div><div id="hamburger"></div><div id="hamburger"></div></a>
   </div>
 </div>
-<div class="w3-sidebar w3-bar-block w3-card w3-animate-right" style="display:none;right:0; width: 250px;" id="rightMenu">
-  <button id="menuCloseButton" class="w3-bar-item w3-button w3-large">Close &times;</button>
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-right " style="display:block;right:0; width: 0px; transition: 0.5s" id="rightMenu">
+  <button id="menuCloseButton" class="w3-bar-item w3-button w3-large" onclick="closeMenu()">&times;</button>
   <a href="#" class="w3-bar-item w3-button">What is this?</a>
   <a href="#" class="w3-bar-item w3-button">How it works</a>
   <a href="#" class="w3-bar-item w3-button">Join</a>
 </div>
 
+
  <center><h1 style="font-family: 'Indie Flower', cursive;">No contracts. No labels. No B.S. Just music.</h1></center>
-<center><h3 style="font-family: 'Indie Flower', cursive;">Whether you're a bedroom musician or a touring musician, Bars will enable you to get heard by people all over the world.</h3></center>
+<center><h3 style="font-family: 'Indie Flower', cursive;">Whether you're a bedroom musician or a touring musician, BpM will enable you to get heard by people all over the world.</h3></center>
   <center><button class="landingButtons" id="myBtn">Register</button></center>
   <center><button onclick="location.href='listen.html'" class="landingButtons" id="myBtn2">Listen<span class="tooltiptext">You's gonna listen and enjoy the Music</span></button></center>
   <center><button class="landingButtons" id="myBtn3">Market</button></center>
@@ -35,19 +37,18 @@
 </center>
 
 
-
 <!-- Trigger/Open The Modal -->
 
 
 <!-- The Modal -->
-<div id="myModal" class="modal">
+<div id="myModal" class="modal" >
 
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span> <br><br>
 <!--  <div ng-include="'registerModalContent.html'"></div> --><!-- This is for deployed version. Seperate modal content-->
 
-<div class="trackerContainer">
+<div class="trackerContainer" >
 <ul class="progressbar">
   <li id="step1" class="active">Step 1</li>
     <li id="step2">Step 2</li>
@@ -56,122 +57,120 @@
 </ul>
 </div>
 
-<div>
-    <div class="w3-container w3-center w3-animate-right" id="first" value="1" style="display: none">
-    <center><p>What type of music do you like?</p><center>
-    <center><p></p></center>
-    <table id="customers" style="width: 100px;">
-      <tr><td><input onclick="saveData(this)"  type="checkbox" value="EDM">
-        <label class="container">EDM</label></td></tr>
-      <tr><td><input onclick="saveData(this)"  type="checkbox" value="House">
-    <label class="container">House</label></td></tr>
-      <tr><td><input onclick="saveData(this)" type="checkbox" value="Metal">
-    <label class="container">Metal</label></td></tr>
-      <tr><td><input onclick="saveData(this)" type="checkbox" value="Djent">
-    <label class="container">Djent</label></td></tr>
-      <tr><td><input onclick="saveData(this)" type="checkbox" value="Dubstep">
-    <label class="container">Dubstep</label></td></tr>
-      <tr><td><input onclick="saveData(this)" type="checkbox" value="Pop">
-    <label class="container">Pop</label></td></tr>
-      <tr><td><input onclick="saveData(this)" type="checkbox" value="Hip-Hop">
-    <label class="container">Hip-Hop</label></td></tr>
-      <tr><td><input onclick="saveData(this)" type="checkbox" value="RnB">
-    <label class="container">R & B</label></td></tr>
-      <tr><td><input onclick="saveData(this)" type="checkbox" value="Soul">
-    <label class="container">Soul</label></td></tr>
-      <tr><td><input onclick="saveData(this)" type="checkbox" value="Country">
-    <label class="container">Country</label></td></tr>
-    </table><br><br>
-    </div>
-    </div>
 
 <div>
-<div class="w3-container w3-center w3-animate-right" id="yup" value="1">
+<div class="w3-container w3-center w3-animate-right" id="firstForm" >
 <center><p>What type of music do you like?</p><center>
 <center><p></p></center>
-<table id="customers" style="width: 100px;">
-  <tr><td><input onclick="saveData(this)"  type="checkbox" value="EDM">
-    <label class="container">EDM</label></td></tr>
-  <tr><td><input onclick="saveData(this)"  type="checkbox" value="House">
-<label class="container">House</label></td></tr>
-  <tr><td><input onclick="saveData(this)" type="checkbox" value="Metal">
-<label class="container">Metal</label></td></tr>
-  <tr><td><input onclick="saveData(this)" type="checkbox" value="Djent">
-<label class="container">Djent</label></td></tr>
-  <tr><td><input onclick="saveData(this)" type="checkbox" value="Dubstep">
-<label class="container">Dubstep</label></td></tr>
-  <tr><td><input onclick="saveData(this)" type="checkbox" value="Pop">
-<label class="container">Pop</label></td></tr>
-  <tr><td><input onclick="saveData(this)" type="checkbox" value="Hip-Hop">
-<label class="container">Hip-Hop</label></td></tr>
-  <tr><td><input onclick="saveData(this)" type="checkbox" value="RnB">
-<label class="container">R & B</label></td></tr>
-  <tr><td><input onclick="saveData(this)" type="checkbox" value="Soul">
-<label class="container">Soul</label></td></tr>
-  <tr><td><input onclick="saveData(this)" type="checkbox" value="Country">
-<label class="container">Country</label></td></tr>
+<table id="customers">
+  <tr>
+    <td>
+      <div class="checkBoxStyle">
+        <input onclick="saveData(this)"  type="checkbox" style="display: none;" id="EDM" name="check" value="EDM"/>
+        <label for="EDM">EDM</label>
+      </div>
+    </td>
+    <td>
+      <div class="checkBoxStyle">
+        <input onclick="saveData(this)"  type="checkbox" style="display: none;" id="House" name="check" value="House"/>
+        <label for="House">House</label>
+      </div>
+     </td>
+    <td>
+      <div class="checkBoxStyle">
+        <input onclick="saveData(this)"  type="checkbox" style="display: none;" id="Metal" name="check" value="Metal"/>
+        <label for="Metal">Metal</label>
+      </div>
+    </td>
+    <td>
+      <div class="checkBoxStyle">
+        <input onclick="saveData(this)"  type="checkbox" style="display: none;" id="Djent" name="check" value="Djent"/>
+        <label for="Djent">Djent</label>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="checkBoxStyle">
+        <input onclick="saveData(this)"  type="checkbox" style="display: none;" id="Dubstep" name="check" value="Dubstep"/>
+        <label for="Dubstep">Dubstep</label>
+      </div>
+    </td>
+    <td>
+      <div class="checkBoxStyle">
+        <input onclick="saveData(this)"  type="checkbox" style="display: none;" id="Pop" name="check" value="Pop"/>
+        <label for="Pop">Pop</label>
+      </div>
+    </td>
+    <td>
+      <div class="checkBoxStyle">
+        <input onclick="saveData(this)"  type="checkbox" style="display: none;" id="Hip-Hop" name="check" value="Hip-Hop"/>
+        <label for="Hip-Hop">Hip-Hop</label>
+      </div>
+    </td>
+    <td>
+      <div class="checkBoxStyle">
+        <input onclick="saveData(this)"  type="checkbox" style="display: none;" id="RnB" name="check" value="RnB"/>
+        <label for="RnB">RnB</label>
+      </div>
+    </td>
+  </tr>
+  <tr>    
+    <td>
+      <div class="checkBoxStyle">
+        <input onclick="saveData(this)"  type="checkbox" style="display: none;" id="Soul" name="check" value="Soul"/>
+        <label for="Soul">Soul</label>
+      </div>
+    </td>
+    <td>
+      <div class="checkBoxStyle">
+        <input onclick="saveData(this)"  type="checkbox" style="display: none;" id="Country" name="check" value="Country"/>
+        <label for="Country">Country</label>
+      </div>
+    </td>
+  </tr>
 </table><br><br>
 </div>
+<center><button class="button" id="nextBtn" onclick="onClickNext()"><span>Next </span></button></center>
+<center><button class="button" id="backBtn" style="float: left; display: none" onclick="onClickBack()"><span>Back </span></button></center>
 </div>
 
 
-<center><button class="button" id="nextBtn"><span>Next </span></button></center>
-<center><button class="button" id="backBtn"><span>Back </span></button></center>
+
 
 <!-- <button align="left" class="previous button" id="prevBtn" onclick="nextPrev(-1)"><span>Back</span></button>
 
 <button href="#" class="previous round">&#8249;</button>
 <a href="#" class="next round">&#8250;</a> -->
 <!--  <div ng-include="'checkbox.html'"></div>  --> <!-- Add this when deployed to a server, dev or prod -->
-
-  </div>
-</div>
-
 <div class="w3-container w3-center w3-animate-right" id="step2form" style="display: none" value="2">
-  <div class="trackerContainer"></div>
-  <center>
-    <p>What is your gender?</p>
-    <center>
-      <table id="customers" >
-        <tr>
-          <td><input onclick="saveData(this)" type="checkbox" value="Male" >
-            <label class="container">Male</label>
-          </td>
-        </tr>
-        <tr>
-          <td><input onclick="saveData(this)" type="checkbox" value="Female">
-            <label class="container">Female</label>
-          </td>
-        </tr>
-        <tr>
-          <td><input onclick="saveData(this)" type="checkbox" value="Other">
-            <label class="container">Other</label>
-          </td>
-        </tr>
-      </table>
-      <br>
-      <br>
-</div>
-
-<div class="w3-container w3-center w3-animate-right" id="step3form" style="display: none" value="3">
     <div class="trackerContainer"></div>
     <center>
-      <p>What is your gender?</p>
+      <p>Filter for something else</p>
       <center>
         <table id="customers" >
           <tr>
-            <td><input onclick="saveData(this)" type="checkbox" value="something">
-              <label class="container">GIANDRE</label>
+            <td>
+              <div class="checkBoxStyle">
+                <input onclick="saveData(this)"  type="checkbox" style="display: none;" id="Male" name="check" value="Male"/>
+                <label for="Male">Male</label>
+              </div>
             </td>
           </tr>
           <tr>
-            <td><input onclick="saveData(this)" type="checkbox" value="else">
-              <label class="container">ACOSTA</label>
+            <td>
+              <div class="checkBoxStyle">
+                <input onclick="saveData(this)"  type="checkbox" style="display: none;" id="Female" name="check"value="Female"/>
+                <label for="Female">Female</label>
+              </div>
             </td>
           </tr>
           <tr>
-            <td><input onclick="saveData(this)" type="checkbox" value="Other">
-              <label class="container">Other</label>
+            <td>
+              <div class="checkBoxStyle">
+                <input onclick="saveData(this)"  type="checkbox" style="display: none;" id="Other" name="check"value="Other"/>
+                <label for="Other">Other</label>
+              </div>
             </td>
           </tr>
         </table>
@@ -179,36 +178,88 @@
         <br>
   </div>
 
-<div class="w3-container w3-center w3-animate-right" id="step4form" style="display: none" value="4">
-  <center>
-    <p>Setup Account Details</p>
-    <center>
-      <table id="customers">
-        <tr>
-          <td>
-            <form action="http://www.google.com"> 
-              First name:<br>
-              <input type="text" name="firstname" placeholder="firstName" style="background-color: grey" required>
-              <br>
-              Last name:<br>
-              <input type="text" name="lastname" placeholder="lastname" required>
-              <br><br>
-              <input type="submit" value="Submit">
-            </form>
-          </td>
-        </tr>
-      </table>
-      <br>
-      <br>
+  <div class="w3-container w3-center w3-animate-right" id="step3form" style="display: none" value="3">
+      <div class="trackerContainer"></div>
+      <center>
+        <p>What is your gender?</p>
+        <center>
+          <table id="customers">
+              <tr>
+                  <td>
+                    <div class="checkBoxStyle">
+                      <input onclick="saveData(this)"  type="checkbox" style="display: none;" id="Something" name="check" value="Something"/>
+                      <label for="Something">Something</label>
+                    </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                    <div class="checkBoxStyle">
+                      <input onclick="saveData(this)"  type="checkbox" style="display: none;" id="Goes" name="check" value="Goes"/>
+                      <label for="Goes">Goes</label>
+                    </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                    <div class="checkBoxStyle">
+                      <input onclick="saveData(this)"  type="checkbox" style="display: none;" id="Here" name="check" value="Here"/>
+                      <label for="Here">Here</label>
+                    </div>
+                  </td>
+              </tr>
+          </table>
+          <br>
+          <br>
+    </div>
+  
+  
+    <div class="w3-container w3-center w3-animate-right" id="step4form" style="display: none" value="4">
+      <center>
+      <h1 style="color: black; font-size: 50px">Join BpM</h1><br><br>
+      <img  id="appleBadge" src="images/verticalSubmitImg.jpg" style="width: 500px; height: 800px;" align="right">
+      <center>
+        <form>
+          <br><br><br><br><br><br><br><br>First Name<br>
+            <input type="text" name="firstname" id="first" onclick="saveJoinPageInput()" placeholder="firstName" required>
+            <br>Last Name<br>
+            <input type="text" name="lastname" id="last" placeholder="lastname" required>
+            <br>E-mail Address<br>
+            <input type="text" name="e-mail" id="email" placeholder="e-mail" required>
+            <br>Password<br>
+            <input type="password" name="pass" id="password" placeholder="pass" required>
+            <br>Re-enter Password<br>
+            <input type="password" name="pass" id="password" placeholder="pass" required>
+            <div>
+                <p>By joining BpM, you agree to the 
+                <a style="cursor: pointer" onclick="location.href='termsandcondition.html'">Terms</a>
+                and
+                <a style="cursor: pointer" onclick="location.href='termsandcondition.html'">Policy</a>
+                of BpM</p>
+              </div>
+            <br><br>
+            <div><p id="result"></p></div>
+        </form>
+        <br>
+        <br></center></center>
+  </div>
+  <button class="button" type="submit" id="submitBtn" style="display: none;float: right" action="http://www.google.com"><span>Finish </span></button>
+
+  </div>
 </div>
+
+
+
+
+
 
 <script type="text/javascript" src="js/script.js"></script>
  <center>
  <div class="footer">
    <ul>
-     <li><a>Contact us</a></li>
-     <li><a>About us</a></li>
-     <li><a>Terms of use</a></li>
+     <li><a style="cursor: pointer" onclick="location.href='termsandcondition.html'">Contact us</a></li>
+     <li><a style="cursor: pointer" onclick="location.href='termsandcondition.html'">About us</a></li>
+     <li><a style="cursor: pointer" onclick="location.href='termsandcondition.html'">Terms of use</a></li>
    </ul>
  </div>
  </center>
