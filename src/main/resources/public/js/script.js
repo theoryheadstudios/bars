@@ -227,19 +227,79 @@ function getSavedChecks(){
   }
 }
 
-var subButton = document.getElementById('submitBtn');
-subButton.addEventListener('mouseleave', saveJoinPageInput, false); 
+// var subButton = document.getElementById('submitBtn');
+// subButton.addEventListener('mouseleave', saveJoinPageInput, false); 
 // subButton.addEventListener('click', saveJoinPageInput, false); 
 
+
 function saveJoinPageInput(){
-    var nameField = document.getElementById('first').value;
+    var data = new FormData();
+    var firstname = document.getElementById('first').value;       data.append('first_name', firstname);
+    var lastname = document.getElementById('last').value;         data.append('last_name', lastname);
+    var email = document.getElementById('email').value;           data.append('user_email', email);
+    var password = document.getElementById('password').value;     data.append('password', password);
+    var accountNum = Math.ceil( Math.random() * 8000 );           data.append('account_number', accountNum);
+    var dob = "1999-01-01";                                       data.append('date_of_birth', dob);
+    var country = document.getElementById('selectCountry').value; data.append('country', country);
+    var zip = "30009";                                            data.append('zip', zip);
+    var timeZone = "Eastern";                                     data.append('time_zone', timeZone);
+    var userName = "Migos";                                       data.append('user_name', userName);
+    var socialLink1 = "http://myspace.com/bump";                  data.append('social_link_1', socialLink1);
+    var socialLink2 = "http://myspace.com/bump1";                 data.append('social_link_2', socialLink2);
+    var socialLink3 = "http://myspace.com/bump2";                 data.append('social_link_3', socialLink3);
+    var points = "7";                                             data.append('points_balance', points);
+
     var result = document.getElementById('result');
     
-    if (nameField.length < 3) {
-        // result.textContent = 'Username must contain at least 3 characters';
-        alert('Username must contain at least 3 characters');
+    if (firstname.length < 3) {
+        result.textContent = 'Username must contain at least 3 characters';
+        // alert('Username must contain at least 3 characters');
     } else {
-        result.textContent = 'Your username is: ' + nameField;
+        result.textContent = 'Your username is: ' + firstname;
         // alert(nameField);
     }
+    var j = JSON.stringify(data);
+    console.log(j)
+
+    for(var pair of data.entries()){
+      console.log(pair[0] + ', ' + pair[1]);
+    }
+
+    postIt(data);
+
  }
+
+ function postIt(data){
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "http://localhost:3000/createUser", true);
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.onload = function () {
+      // do something to response
+      console.log(this.responseText);
+  };
+  xhr.send(JSON.stringify(data));
+  console.log(xhr.response);
+  console.log(xhr.responseText);
+
+}
+
+function getIt(){
+  var xhr = new XMLHttpRequest();
+  // we defined the xhr
+  
+  xhr.onreadystatechange = function () {
+      if (this.readyState != 4) return;
+  
+      if (this.status == 200) {
+          var data = JSON.parse(this.responseText);
+  
+          // we get the returned data
+      }
+  
+      // end of state change: it can be after some time (async)
+  };
+  
+  xhr.open('GET', "http://localhost:3000/listOfAllUsers", true);
+  xhr.send();
+}

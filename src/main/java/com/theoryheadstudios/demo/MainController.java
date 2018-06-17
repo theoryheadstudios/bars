@@ -12,10 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceException;
-import javax.persistence.Query;
+import javax.persistence.*;
 import javax.transaction.Transactional;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -26,6 +23,7 @@ import java.util.List;
 
 @RestController
 public class MainController {
+
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
         @Autowired
@@ -84,10 +82,32 @@ public class MainController {
 
     }
 
+    public void printAllItems(User user){
+        System.out.println(user.getFirst_name());
+        System.out.println(user.getLast_name());
+        System.out.println(user.getUser_email());
+        System.out.println(user.getPassword());
+        System.out.println(user.getAccount_number());
+        System.out.println(user.getDate_of_birth());
+        System.out.println(user.getCountry());
+        System.out.println(user.getZip());
+        System.out.println(user.getTime_zone());
+        System.out.println(user.getUser_name());
+        System.out.println(user.getSocial_link_1());
+        System.out.println(user.getSocial_link_2());
+        System.out.println(user.getSocial_link_3());
+        System.out.println(user.getPoints_balance());
+
+    }
+
     @Transactional
-    @RequestMapping(value = "/createUser", method = RequestMethod.POST)
+    @RequestMapping(value = "/createUser", method = RequestMethod.POST, headers = "Accept=*/*")
     public String createUser(@RequestBody User user){
             try{
+                printAllItems(user);
+                user.setPassword("example");
+                user.setAccount_number(user.getId());
+                System.out.println(user.getPassword());
                 System.out.println("Input user password before encryption: "+ user.getPassword());
                 user.setPassword(passwordEncoder.encode(user.getPassword()));
                 em.persist(user);

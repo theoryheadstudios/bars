@@ -3,16 +3,16 @@ package com.theoryheadstudios.demo;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 
 @Table(name = "Users")
 public class User {
     @Id
+    @Column(name = "ID", unique=true, nullable=false)
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private int id;
     //@Column(name = "user_email")
     private String user_email;
     //@Column(name = "user_email")
@@ -42,6 +42,9 @@ public class User {
     //@Column(name = "user_email")
     private int points_balance;
 
+
+    public int getId(){ return id;}
+    public void setId(int ID){id = ID;}
     //@JsonGetter("userEmail")
     public String getUser_email() {
         return user_email;

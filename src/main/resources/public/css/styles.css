@@ -146,7 +146,7 @@ body {
 
 .button {
   border-radius: 4px;
-  background: #acd2e2;
+  background: navy;
   border: none;
   color: #FFFFFF;
   text-align: center;
@@ -260,8 +260,6 @@ body {
   background-color: #fff;
 
 }
-
-
 
 .topnav {
   overflow: hidden;
@@ -468,7 +466,6 @@ li a:hover {
 }
 
 
-
 @media screen and (max-width: 480px) {
     body {
 
@@ -495,27 +492,6 @@ a:hover {
   color: black;
 }
 
-.previous {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.next {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.round {
-  border-radius: 50%;
-}
-
-.tab {
-  display: none;
-}
-
-.cntr{
-        margin-left: 30 0;
-}
 
 select:focus,
 textarea:focus,
@@ -560,6 +536,6 @@ input[type=text], input[type=password]{
 }
 
 .checkBoxStyle input[type=checkbox]:checked + label {
-  background: #26ca28;
+  background: chartreuse;
 }
 

@@ -1,12 +1,11 @@
-body 
-{
-background-image: url('../images/Dark-Flashes-Neon.jpg');
-padding-left: 11em;
-padding-right: 20em;
-font-family: Georgia, "Times New Roman", Times, serif; 
-background-repeat: no-repeat;
-background-size: cover;
-height: 100%; 
-color: white;
-background-position: initial;
+body {
+    /* padding-left: 11em;
+    padding-right: 20em; */
+    font-family: Georgia, "Times New Roman", Times, serif; 
+    background-repeat: no-repeat;
+    background-size: 100% 100vh;
+    /* height: 100%;  */
+    color: white;
+    overflow: hidden;
+    background-position: initial;
 }
