@@ -1,5 +1,50 @@
 @import 'https://fonts.googleapis.com/css?family=Alegreya+Sans';
 @import 'https://fonts.googleapis.com/css?family=Indie+Flower';
+/* START - responsive table */
+@media screen and (max-width: 850px) {
+  #customers,
+  #customers tbody {
+      display: block;
+      width: 100%;
+      height: 100%;
+  }
+
+  /* #customers thead { display: none; } */
+  #customers p {display: none;}
+  #customers tr,
+  #customers th,
+  #customers td {
+      display: block;
+      padding: 0;
+      text-align: center;
+      white-space: normal;
+  }
+  #customers tr {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 11px;
+    margin-bottom: 11px;
+  }
+  #customers th[data-title]:before,
+  #customers td[data-title]:before {
+        content: attr(data-title) ":\00A0";
+        font-weight: bold;
+  }
+  #customers td {
+      border: none;
+      margin-bottom: 6px;
+      color: #444;
+  }
+  #customerse td:first-child {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #333;
+}
+#customers td:first-child:before { content: ''; }
+}
+
+/* END - responsive table */
+
 
 * {
     box-sizing: border-box;
@@ -200,8 +245,6 @@ body {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 50%;
-
-
 }
 
 /* border of the table */
@@ -217,9 +260,11 @@ body {
 #customers tr:hover {background-color: #ddd;}
 
 #customers th {
-    padding-top: 12px;
+    /* padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
+    padding-right: 20px; */
+    align-self: center;
+    text-align: center;
     background-color: #4CAF50;
     color: white;
 }
@@ -492,14 +537,13 @@ a:hover {
   color: black;
 }
 
-
-select:focus,
+/* START - Checkbox styles */
 textarea:focus,
 input[type=text], input[type=password]{
   border-radius: 25px;
   border: 2px solid rgb(15, 182, 43);
   padding: 20px; 
-  width: 200px;
+  width: 300px;
   height: 15px; 
   outline: none;   
 }
@@ -538,4 +582,4 @@ input[type=text], input[type=password]{
 .checkBoxStyle input[type=checkbox]:checked + label {
   background: chartreuse;
 }
-
+/* END - checkbox Styles */
