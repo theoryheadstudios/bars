@@ -164,7 +164,7 @@ function saveData(checkbox){
   }else{
     arr = arr.filter(e => e !== checkbox.value)
   }
-console.log("TagName: " + checkbox.tagName + " The checkbox is: " + checkbox.checked);
+// console.log("TagName: " + checkbox.tagName + " The checkbox is: " + checkbox.checked);
 }
 
 /* function to call to toggle the menu button

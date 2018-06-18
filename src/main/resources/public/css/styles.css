@@ -2,15 +2,38 @@
 @import 'https://fonts.googleapis.com/css?family=Indie+Flower';
 /* START - responsive table */
 @media screen and (max-width: 850px) {
-  #customers,
-  #customers tbody {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .header-right {
+    float: none;
+  }
+  table,
+   tbody {
       display: block;
       width: 100%;
       height: 100%;
   }
 
+  #customers label {
+    display: inline-block;
+    text-align: left;
+    padding-right: 10px;
+    padding-top: 9px;
+  }
+
+  select {
+    width: 150px;
+    /* max-width: 100%; */
+     /* font-size: 8px; */
+    display: inline-block;
+    padding-left: -500px;
+  }
+  
+
   /* #customers thead { display: none; } */
-  #customers p {display: none;}
   #customers tr,
   #customers th,
   #customers td {
@@ -19,6 +42,7 @@
       text-align: center;
       white-space: normal;
   }
+
   #customers tr {
     border-bottom: 1px solid #eee;
     padding-bottom: 11px;
@@ -246,6 +270,9 @@ body {
     border-collapse: collapse;
     width: 50%;
 }
+#customers tbody{
+  background-color: transparent;
+}
 
 /* border of the table */
 #customers td, #customers th {
@@ -257,7 +284,7 @@ body {
 
 #customers tr:nth-child(even){background-color: #f2f2f2;}
 
-#customers tr:hover {background-color: #ddd;}
+#customers tr:hover {background-color: transparent;}
 
 #customers th {
     /* padding-top: 12px;
@@ -583,3 +610,81 @@ input[type=text], input[type=password]{
   background: chartreuse;
 }
 /* END - checkbox Styles */
+
+
+/* START - Select Styles */
+/*the container must be positioned relative:*/
+.select {
+  font-size: 16px;
+  position: relative;
+  display: inline-block;
+}
+.select select {
+  outline: none;
+  -webkit-appearance: none;
+  display: block;
+  padding: 0.3em;
+  margin: 0;
+
+  transition: border-color 0.2s;
+  border: 5px solid navy;
+  border-radius: 5px;
+
+  background: #fff;
+  color: #555;
+  line-height: normal;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+.select .arr {
+  background: #fff;
+  bottom: 5px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 50px;
+  pointer-events: none;
+}
+.select .arr:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  margin-top: -5px;
+  pointer-events: none;
+  border-top: 10px solid navy;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+
+.select .arr:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 28px;
+  margin-top: -5px;
+  pointer-events: none;
+  border-top: 6px solid #fff;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+}
+.select select:focus {
+  border-color:#1A70FF;
+}
+
+.select select:focus + .arr:before {
+  border-top-color:#1A70FF;
+}
+/* END - Select Styles */
+
+/* Step 2 table alignment for items */
+label {
+  display: inline-block;
+  /* float: left; */
+  /* clear: left; */
+  width: 250px;
+  text-align: right;
+  padding-right: 10px;
+  padding-top: 9px;
+}
