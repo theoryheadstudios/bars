@@ -175,7 +175,7 @@
         <h1 style="color: black">Localization</h1>
     <center>  
   <div class="trackerContainer"></div>
-    <table id="customers">
+    <table id="localization">
       <tr>
         <td><label>Country:</label>
           <div class="select">
@@ -203,7 +203,7 @@
       </tr>
       <tr>
         <td>
-          <div class="checkBoxStyle">
+          <!-- <div class="checkBoxStyle">
             <input onclick="saveData(this)"  type="checkbox" style="display: none;" id="Male" name="check" value="Male"/>
             <label for="Male">Male</label>
           </div>
@@ -222,7 +222,7 @@
           <div class="checkBoxStyle">
             <input onclick="saveData(this)"  type="checkbox" style="display: none;" id="Other" name="check"value="Other"/>
             <label for="Other">Other</label>
-          </div>
+          </div> -->
         </td>
       </tr>
     </table>
@@ -238,7 +238,17 @@
           <table id="customers">
               <tr>
                   <td>
-                    <div class="checkBoxStyle">
+                      <form action="">
+                        <label class="gender">Male
+                          <input type="radio" name="gender" value="Male">
+                          <span class="checkmark"></span>
+                        </label>
+                        <label class="gender">Female
+                          <input type="radio" name="gender" value="Female">
+                          <span class="checkmark"></span>
+                        </label>
+                      </form>
+                    <!-- <div class="checkBoxStyle">
                       <input onclick="saveData(this)"  type="checkbox" style="display: none;" id="Something" name="check" value="Something"/>
                       <label for="Something">Something</label>
                     </div>
@@ -257,7 +267,7 @@
                     <div class="checkBoxStyle">
                       <input onclick="saveData(this)"  type="checkbox" style="display: none;" id="Here" name="check" value="Here"/>
                       <label for="Here">Here</label>
-                    </div>
+                    </div> -->
                   </td>
               </tr>
           </table>
