@@ -13,7 +13,7 @@
   
 
 <div class="header">
-  <a href="#default" class="logo"><img id="mainlogo" src="images/TheoryHeadStudiosLogo2.png"></a>
+  <a href="#default" class="logo" onclick="location.href='index.html'"><img id="mainlogo" src="images/TheoryHeadStudiosLogo2.png"></a>
   <div class="header-right">
     <a href="#about" id="menuButton" onclick="toggleMenu(this)"><div id="hamburger"></div><div id="hamburger"></div><div id="hamburger"></div></a>
   </div>
@@ -150,12 +150,14 @@
             <label for="Soul">Soul</label>
           </div>
         </td>
-        <td>
-          <div class="checkBoxStyle" data-title="Category">
-            <input onclick="saveData(this)"  type="checkbox"  id="Country" name="check" value="Country"/>
-            <label for="Country">Country</label>
-          </div>
-        </td>
+        <tr>
+          <td>
+            <div class="checkBoxStyle" data-title="Category">
+              <input onclick="saveData(this)"  type="checkbox"  id="Country" name="check" value="Country"/>
+              <label for="Country">Country</label>
+            </div>
+          </td>
+        </tr >
       </tr>
     </table><br><br>
   </center>

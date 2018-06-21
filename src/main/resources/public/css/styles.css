@@ -45,12 +45,12 @@
         margin-bottom: 6px;
         color: #444;
     }
-    #customerse td:first-child {
+    /* #customers td:first-child {
       font-size: 14px;
       font-weight: bold;
       margin-bottom: 6px;
       color: #333;
-  }
+  } */
 
   #localization label {
     display: inline-block;
@@ -285,6 +285,7 @@ body {
     width: 150px;
     white-space: nowrap;
 }
+
 
 /* #customers tr:nth-child(even){background-color: #f2f2f2;} */
 
