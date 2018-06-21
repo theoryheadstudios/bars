@@ -200,7 +200,7 @@ function closeMenu() {
 }
 
 
-var checkboxes = ["EDM", "House", "Metal", "Djent", "Dubstep", "Pop", "Hip-Hop", "RnB", "Soul", "Country"];
+var checkboxes = ["Alternative", "Jazz", "Latino", "World", "EDM", "House", "Metal", "Djent", "Dubstep", "Pop", "Hip-Hop", "RnB", "Soul", "Country"];
 var checkboxes2 = ["Male", "Female", "Other"];
 var checkboxes3 = ["Something", "Goes", "Here"];
 /* Function to re-check all enabled checkboxes that the 
@@ -213,14 +213,7 @@ function getSavedChecks(){
   for(i = 0; i < arr.length; ++i){
     if(count == 0){
       if(checkboxes.includes(arr[i])){
-        document.getElementById(arr[i]).checked = true;
-      }
-    }else if(count == 1){
-      if(checkboxes2.includes(arr[i])){
-        document.getElementById(arr[i]).checked = true;
-      }
-    }else if(count == 2){
-      if(checkboxes3.includes(arr[i])){
+        console.log(arr[i]);
         document.getElementById(arr[i]).checked = true;
       }
     }
