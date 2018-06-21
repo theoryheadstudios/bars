@@ -213,7 +213,6 @@ function getSavedChecks(){
   for(i = 0; i < arr.length; ++i){
     if(count == 0){
       if(checkboxes.includes(arr[i])){
-        console.log(arr[i]);
         document.getElementById(arr[i]).checked = true;
       }
     }
