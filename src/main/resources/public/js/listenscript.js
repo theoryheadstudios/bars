@@ -54,7 +54,6 @@ function addClass( element, classname ) {
       }
       else{
         audioPlay.pause();
-        addClass(progressBarEl, "pause");
         addClass(controlsPlayEl, "pause");
       }
       c++;
