@@ -48,6 +48,7 @@ function addClass( element, classname ) {
     var c = 0;
     function play() {
       if(c % 2 == 0){
+        audioPlay.volume = 0.3;
         audioPlay.play();
         addClass(progressBarEl, "play");
         addClass(controlsPlayEl, "play");
