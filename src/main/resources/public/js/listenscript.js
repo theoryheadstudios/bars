@@ -20,16 +20,18 @@ $(document).ready(function() {
 	
 	setTimeout(function(){
 		$('body').addClass('loaded');
-        $('h1').css('color','#ffffff');
+    $('h1').css('color','#ffffff');
 	}, 500);
 });
 
 
 function addClass( element, classname ) {
-    if (element.classList)
+    if (element.classList){
       element.classList.add(classname);
-    else
+    }
+    else{
       element.className += ' ' + classname;
+    }
     }
     
     function removeClass( classname, element ) {
@@ -41,8 +43,19 @@ function addClass( element, classname ) {
     
     var progressBarEl = document.getElementById("progress-bar");
     var controlsPlayEl = document.getElementById("controls-play");
+    var audioPlay = document.getElementById("audioPlay");
     
+    var c = 0;
     function play() {
-      addClass(progressBarEl, "play");
-      addClass(controlsPlayEl, "play");
+      if(c % 2 == 0){
+        audioPlay.play();
+        addClass(progressBarEl, "play");
+        addClass(controlsPlayEl, "play");
+      }
+      else{
+        audioPlay.pause();
+        addClass(progressBarEl, "pause");
+        addClass(controlsPlayEl, "pause");
+      }
+      c++;
     }

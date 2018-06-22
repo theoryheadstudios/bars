@@ -560,6 +560,7 @@ body {
     height: .4rem;
     background-color: #F7CAC9;
   }
+  
   #progress-bar.play {
     animation: progress-bar 240s infinite;
   }

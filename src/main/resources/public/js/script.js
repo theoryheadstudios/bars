@@ -177,6 +177,7 @@ var area = new Array();
 var select = ["selectCountry", "selectTimeZone"];
 function saveLocalization(data){
   if(data.id === "selectCountry"){
+    console.log(data.options[data.selectedIndex].value);
     area[data.id] = data.selectedIndex
   }else if(data.id === "selectTimeZone"){
     area[data.id] = data.selectedIndex;
