@@ -813,7 +813,7 @@ input[type=text]:hover, input[type=password]:hover {
 
 
 /* START - Ripple Loader */
-.lds-ripple {
+/* .lds-ripple {
   display: inline-block;
   position: relative;
   width: 64px;
@@ -845,5 +845,5 @@ input[type=text]:hover, input[type=password]:hover {
     height: 58px;
     opacity: 0;
   }
-}
+} */
 /* END - Ripple Loader */

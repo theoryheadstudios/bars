@@ -80,9 +80,9 @@ app.controller("MainController", ["$scope","$http", MainController]);
 
 
 /* 
----------------------------------------------------------------------------------------
-------------------- FUNCTIONS CREATED OUTSIDE OF THE CONTROLLER ------------------------ 
-----------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+--------------------------- FUNCTIONS CREATED OUTSIDE OF THE CONTROLLER ------------------------ 
+------------------------------------------------------------------------------------------------
 */
 
 
@@ -93,7 +93,7 @@ var switchPage = {
              document.getElementById("step3form").innerHTML, document.getElementById("step4form").innerHTML],
   'ul'    : [document.getElementById("step1"), document.getElementById("step2"),
              document.getElementById("step3"), document.getElementById("step4")]
-}
+};
 /* next button will allow user to progress to next page 
   -
   The next button will grab htlm code form the array of 'switchPage' to switch to the next page,
@@ -103,19 +103,20 @@ var switchPage = {
 var count = 0;
 function onClickNext (){
   if(count < 3){
-    document.getElementById('firstForm').innerHTML = switchPage.check[count+1]
-    document.getElementById('nextBtn').style.float = "right"
-    switchPage.ul[count+1].className="active"
+    document.getElementById('firstForm').innerHTML = switchPage.check[count+1];
+    document.getElementById('nextBtn').style.float = "right";
+    switchPage.ul[count+1].className="active";
     console.log(arr);
     count++;
   }
   else{
-    document.getElementById('firstForm').innerHTML = switchPage.check[count]
-    switchPage.ul[count].className="active"
+    document.getElementById('firstForm').innerHTML = switchPage.check[count];
+    switchPage.ul[count].className="active";
   }
-  //do not display back button on first page
-  //display on any other page
-  // on last page, display 'Finish' button, not the 'next' button
+  /* 
+     do not display back button on first page display on any other page
+     but on last page, display 'Finish' button, not the 'next' button 
+  */
   if(count == 0){
     document.getElementById("backBtn").style.display = "none";
   }else if(count == 1){
@@ -124,7 +125,7 @@ function onClickNext (){
     document.getElementById("submitBtn").style.display = "Block";
     document.getElementById("nextBtn").style.display = "none";
   }
-  getSavedChecks();
+  getSavedData();
 }
 
 /* The back button will allow the user to go back a single page
@@ -135,19 +136,19 @@ function onClickNext (){
 function onClickBack(){
   if(count !== 0){
     count--;
-    console.log("COUNT: " + count)
-  document.getElementById('firstForm').innerHTML = switchPage.check[count]
-  switchPage.ul[count+1].className="inactive"
+    console.log("COUNT: " + count);
+  document.getElementById('firstForm').innerHTML = switchPage.check[count];
+  switchPage.ul[count+1].className="inactive";
   }
   if(count === 0){
-  switchPage.ul[0].className="active"
+  switchPage.ul[0].className="active";
   document.getElementById("backBtn").style.display = "none";
   document.getElementById('nextBtn').style.float = "none"
   }else{
     document.getElementById("submitBtn").style.display = "none";
     document.getElementById("nextBtn").style.display = "block";
   }
-  getSavedChecks();
+  getSavedData();
 }
 
 
@@ -158,13 +159,47 @@ function onClickBack(){
 */
 var arr = new Array();
 function saveData(checkbox){
-  if(checkbox.checked){
-    arr = arr.filter(e => e !== checkbox.value)
-    arr.push(checkbox.value);
-  }else{
-    arr = arr.filter(e => e !== checkbox.value)
-  }
+    if(checkbox.checked){
+      arr = arr.filter(e => e !== checkbox.value);
+      arr.push(checkbox.value);
+    }else{
+      arr = arr.filter(e => e !== checkbox.value);
+    }
 // console.log("TagName: " + checkbox.tagName + " The checkbox is: " + checkbox.checked);
+}
+
+/* function to save localization select items
+  -
+  if user selects a value in on the drop down item
+  then save it to 'area' array
+*/
+var area = new Array();
+var select = ["selectCountry", "selectTimeZone"];
+function saveLocalization(data){
+  if(data.id === "selectCountry"){
+    area[data.id] = data.selectedIndex
+  }else if(data.id === "selectTimeZone"){
+    area[data.id] = data.selectedIndex;
+  }
+  else if(data.id === "zip"){
+    area[data.id] = data.value;
+  }
+}
+
+/* function to save gender data
+   -
+   if user already clicked on a radio button,
+   then delete the old value and add the new one
+   otherwise, just add the new value into the 'gender' array
+*/
+var gender = new Array();
+function saveGender(data){
+  if(Object.keys(gender).length > 0){
+    gender = gender.filter(e => e === data.id);
+    gender[data.id] = data.checked;
+  }else{
+    gender[data.id] = data.checked;
+  }
 }
 
 /* function to call to toggle the menu button
@@ -200,28 +235,39 @@ function closeMenu() {
 }
 
 
-var checkboxes = ["Alternative", "Jazz", "Latino", "World", "EDM", "House", "Metal", "Djent", "Dubstep", "Pop", "Hip-Hop", "RnB", "Soul", "Country"];
-var checkboxes2 = ["Male", "Female", "Other"];
-var checkboxes3 = ["Something", "Goes", "Here"];
 /* Function to re-check all enabled checkboxes that the 
   user provided when filling out the form
   -
   if the each table respectively is reached, then call this function
   and check any boxes that the user had checked before 
  */
-function getSavedChecks(){
-  for(i = 0; i < arr.length; ++i){
-    if(count == 0){
+var checkboxes = ["Alternative", "Jazz", "Latino", "World", "EDM", "House", "Metal", "Djent", "Dubstep", "Pop", "Hip-Hop", "RnB", "Soul", "Country"];
+var checkboxes2 = ["Male", "Female", "Other"];
+var checkboxes3 = ["Something", "Goes", "Here"];
+function getSavedData(){
+  if(count == 0){
+    for(i = 0; i < arr.length; ++i){
       if(checkboxes.includes(arr[i])){
         document.getElementById(arr[i]).checked = true;
       }
     }
   }
+  else if(count == 1){
+    /* key is the id of the element, area[key] is the value | or could be the index of select element*/
+    for(key in area){
+      if(key === "selectCountry"){
+        document.getElementById(key).selectedIndex = area[key];
+      }else if(key === "selectTimeZone"){
+        document.getElementById(key).selectedIndex = area[key];
+      }
+    }
+  }
+  else if(count == 2){
+    for(key in gender){
+      document.getElementById(key).checked = gender[key];
+    }
+  }
 }
-
-// var subButton = document.getElementById('submitBtn');
-// subButton.addEventListener('mouseleave', saveJoinPageInput, false); 
-// subButton.addEventListener('click', saveJoinPageInput, false); 
 
 
 function saveJoinPageInput(){
