@@ -1,0 +1,295 @@
+/* progress tracker stuff*/
+
+.trackerContainer{
+    width: 100%;
+    margin-bottom: 100px;
+  
+  }
+  .progressbar{
+    counter-reset: step;
+      background-color: white;
+  
+  }
+  .progressbar li{
+    list-style-type: none;
+    float:left;
+    width:25%;
+    position: relative;
+    text-align: center;
+  
+  
+  
+  }
+  .progressbar li:before{
+    content: counter(step);
+    counter-increment: step;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border:1px solid #ddd;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    background-color: white;
+  
+  }
+  .progressbar li:first-child::after{
+    content: none;
+  }
+  .progressbar li.active{
+    color:navy;
+  }
+  .progressbar li.active:before{
+    border-color: navy;
+  
+  }
+  .progressbar li.active + li:after{
+    background-color: navy;
+  }
+  
+  /*---End of progress tracker stuff ---*/
+
+/* START - Checkbox styles */
+textarea:focus,
+input[type=text], input[type=password]{
+  border-radius: 25px;
+  border: 2px solid lightseagreen;
+  padding: 20px; 
+  width: 300px;
+  height: 15px; 
+  outline: none;   
+}
+input[type=text]:hover, input[type=password]:hover {
+  border-radius: 25px;
+  border: 2px solid navy;
+  padding: 20px; 
+  width: 300px;
+  height: 15px; 
+  outline: none; 
+}
+
+.checkBoxStyle{ 
+  width: 30px;
+  height: 30px;
+  background: #ddd;
+  margin: 20px 90px;
+
+  align-self: left;
+  border-radius: 100%;
+  position: relative;
+  box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+}
+
+.checkBoxStyle input {
+  display: none;
+}
+
+.checkBoxStyle label {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+
+  padding-top: 0.5px;
+  transition: all .5s ease;
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 1;
+  text-indent: 30px;
+
+  background: #333;
+  box-shadow:inset 0px 1px 3px rgba(0,0,0,0.5);
+}
+
+.checkBoxStyle label:hover{
+  background: springgreen;
+}
+
+.checkBoxStyle input[type=checkbox]:checked + label {
+  background: #30E4C6;
+}
+/* END - checkbox Styles */
+
+
+/* START - Zip/Postal Code Style*/
+#zip {
+  border-radius: 25px;
+  border: 3px solid navy;
+  padding: 20px; 
+  width: 300px;
+  height: 15px; 
+  outline: none;  
+  width: 200px;
+}
+
+#zip:hover { 
+  border-radius: 25px;
+  border: 3px solid #1A70FF;
+  padding: 20px; 
+  width: 200px;
+  height: 15px; 
+  outline: none;  
+}
+
+/* END - Zip/Postal Code Style*/
+
+/* START - Select Styles */
+/*the container must be positioned relative:*/
+.select {
+  font-size: 16px;
+  position: relative;
+  display: inline-block;
+
+}
+
+/* if user hover away from the select area, paint it this color */
+.select select:focus{
+  border-color:navy;
+}
+
+.select select {
+  outline: none;
+  -webkit-appearance: none;
+  display: inline-block;
+  padding: 0.3em;
+  margin: 0;
+
+  transition: border-color 0.2s;
+  border: 5px solid navy;
+  border-radius: 5px;
+
+  background: #fff;
+  color: #555;
+  line-height: normal;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  width: 350px;
+}
+
+/* .select .country_TimeZone_downarrow {
+  background: #fff;
+  bottom: 5px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 50px;
+  pointer-events: none;
+}
+
+.select .country_TimeZone_downarrow:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  margin-top: -5px;
+  pointer-events: none;
+  border-top: 10px solid navy;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+
+.select .country_TimeZone_downarrow:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 28px;
+  margin-top: -5px;
+  pointer-events: none;
+  border-top: 6px solid #fff;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+}
+
+.select select:focus + .country_TimeZone_downarrow:before {
+  border-top-color:#1A70FF;
+} */
+
+.select select:hover {
+  border-radius: 5px;
+  border: 5px solid #1A70FF;
+}
+/* END - Select Styles */
+
+/* START - Localizaton Label Style */
+/* Step 2 table alignment for items */
+#localization label {
+  display: inline-block;
+  /* float: left; */
+  /* clear: left; */
+  width: 250px;
+  text-align: right;
+  padding-right: 10px;
+  padding-top: 9px;
+}
+/* END - Localizaton Label Style */
+
+
+/* START - Gender Radio Styles */
+/* Customize the label (the container) */
+.gender {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.gender input {
+  position: absolute;
+  opacity: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.gender:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.gender input:checked ~ .checkmark {
+  background-color: navy;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.gender input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.gender .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+/* END - Gender Radio Styles */

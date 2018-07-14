@@ -1,0 +1,43 @@
+#volume {
+    position: absolute;
+    /* left: 46%; */
+    top: 58%;
+    margin: 0 auto;
+    height: 5px;
+    width: 100px;
+    background: #555;
+    border-radius: 15px;
+    z-index: 999;
+  }
+  #volume .ui-slider-range-min {
+    height: 5px;
+    width: 300px;
+    position: absolute;
+    background: aqua;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    bottom: 0;
+  }
+  #volume .ui-slider-handle {
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background: white;
+    position: absolute;
+    margin-left: -8px;
+    margin-top: -8px;
+    cursor: pointer;
+    outline: none;
+  }
+
+  #volume .ui-slider-handle:active {
+    background: rgb(197, 191, 191);
+  }
+
+  #speaker{
+    position: absolute;
+    border: 0;
+    top: 56%;
+    left: 68%;
+  }

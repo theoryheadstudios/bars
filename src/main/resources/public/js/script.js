@@ -44,9 +44,8 @@ var span = document.getElementsByClassName("close")[0];
 btn.onclick = function() {
     modal.style.display = "block";
     // if the right menu is already displaying, then close it, open the modal, and increment click counter on menu 
-    if(document.getElementById('rightMenu').style.width !== "0px" ){
+    if(document.getElementById('rightMenu').style.width === "250px"){
       document.getElementById('rightMenu').style.width = "0px";
-      document.getElementById('menuButton').clickcount = Number(document.getElementById('menuButton').clickcount)+1;
     }
 }
    
@@ -60,7 +59,7 @@ span.onclick = function() {
 // if User presses 'Escape' then close the modal
 document.onkeydown = function(event) {
   event = event || window.event;
-  if (event.keyCode == 27) {
+  if (event.keyCode === 27) {
     if(modal.style.display === "block"){
       modal.style.display = "none";
     }
@@ -76,7 +75,6 @@ window.onclick = function(event) {
 
 app.controller("MainController", ["$scope","$http", MainController]);
 }());
-
 
 
 /* 
@@ -106,7 +104,6 @@ function onClickNext (){
     document.getElementById('firstForm').innerHTML = switchPage.check[count+1];
     document.getElementById('nextBtn').style.float = "right";
     switchPage.ul[count+1].className="active";
-    console.log(arr);
     count++;
   }
   else{
@@ -117,11 +114,11 @@ function onClickNext (){
      do not display back button on first page display on any other page
      but on last page, display 'Finish' button, not the 'next' button 
   */
-  if(count == 0){
+  if(count === 0){
     document.getElementById("backBtn").style.display = "none";
-  }else if(count == 1){
+  }else if(count === 1){
     document.getElementById("backBtn").style.display = "block";
-  }else if(count == 3){
+  }else if(count === 3){
     document.getElementById("submitBtn").style.display = "Block";
     document.getElementById("nextBtn").style.display = "none";
   }
@@ -136,7 +133,7 @@ function onClickNext (){
 function onClickBack(){
   if(count !== 0){
     count--;
-    console.log("COUNT: " + count);
+    // console.log("COUNT: " + count);
   document.getElementById('firstForm').innerHTML = switchPage.check[count];
   switchPage.ul[count+1].className="inactive";
   }
@@ -157,15 +154,13 @@ function onClickBack(){
   if the checkbox is checked, then save the value
   otherwise, if unchecked, remove it from the array
 */
-var arr = new Array();
+var music = new Array();
 function saveData(checkbox){
     if(checkbox.checked){
-      arr = arr.filter(e => e !== checkbox.value);
-      arr.push(checkbox.value);
+      music[checkbox.id] = true;
     }else{
-      arr = arr.filter(e => e !== checkbox.value);
+      delete music[checkbox.id];
     }
-// console.log("TagName: " + checkbox.tagName + " The checkbox is: " + checkbox.checked);
 }
 
 /* function to save localization select items
@@ -177,12 +172,10 @@ var area = new Array();
 var select = ["selectCountry", "selectTimeZone"];
 function saveLocalization(data){
   if(data.id === "selectCountry"){
-    console.log(data.options[data.selectedIndex].value);
     area[data.id] = data.selectedIndex
-  }else if(data.id === "selectTimeZone"){
+  } else if(data.id === "selectTimeZone"){
     area[data.id] = data.selectedIndex;
-  }
-  else if(data.id === "zip"){
+  } else if(data.id === "zip"){
     area[data.id] = data.value;
   }
 }
@@ -203,36 +196,28 @@ function saveGender(data){
   }
 }
 
-/* function to call to toggle the menu button
-  -
-  if menu is first clicked, then open it up
-  else if menu is clicked thereafter on 2nd hit, open
-  otherwise, close it.
- */
-function toggleMenu(menu){
-  if(typeof(menu.clickcount) === "undefined"){
-    menu.clickcount = 1;
-    document.getElementById("rightMenu").style.width = "250px";
-  }
-  else if(menu.clickcount % 2 === 0){
-    menu.clickcount = Number(menu.clickcount)+1;
-    document.getElementById("rightMenu").style.width = "250px";
-  }
-  else{
-    menu.clickcount = Number(menu.clickcount)+1;
-    document.getElementById("rightMenu").style.width = "0";
-  }
+
+/* function to save form data
+   -
+   whenever the user changes the input value
+   it will be saved in the array using
+   'onchange=saveFormData(this)' in html code
+*/
+var formArr = new Array();
+function saveFormData(data){
+  formArr[data.id] = data.value;
 }
 
-/* function to call whenever the 'x' is clicked in the menuButton
-    -
-    if user clicks on the 'x' in the menu button, then close it
-    and increment the counter of the menuButton so that next time
-    the user clicks, they can toggle it and open again
-*/
-function closeMenu() {
-  document.getElementById("rightMenu").style.width = "0";
-  document.getElementById("menuButton").clickcount += 1;
+/* function to call to toggle the menu button
+  -
+  toggle the menu whenever it is clicked
+ */
+function toggleMenu(menu){
+  if(menu.style.width === "250px"){
+    menu.style.width = 0;
+  }else{
+    menu.style.width = "250px";
+  }
 }
 
 
@@ -242,30 +227,31 @@ function closeMenu() {
   if the each table respectively is reached, then call this function
   and check any boxes that the user had checked before 
  */
-var checkboxes = ["Alternative", "Jazz", "Latino", "World", "EDM", "House", "Metal", "Djent", "Dubstep", "Pop", "Hip-Hop", "RnB", "Soul", "Country"];
-var checkboxes2 = ["Male", "Female", "Other"];
-var checkboxes3 = ["Something", "Goes", "Here"];
 function getSavedData(){
-  if(count == 0){
-    for(i = 0; i < arr.length; ++i){
-      if(checkboxes.includes(arr[i])){
-        document.getElementById(arr[i]).checked = true;
-      }
+  if(count === 0){
+    for(key in music){
+      document.getElementById(key).checked = music[key];
     }
   }
-  else if(count == 1){
+  else if(count === 1){
     /* key is the id of the element, area[key] is the value | or could be the index of select element*/
     for(key in area){
       if(key === "selectCountry"){
         document.getElementById(key).selectedIndex = area[key];
       }else if(key === "selectTimeZone"){
         document.getElementById(key).selectedIndex = area[key];
+      }else if(key === "zip"){
+        document.getElementById(key).value = area[key];
       }
     }
   }
-  else if(count == 2){
+  else if(count === 2){
     for(key in gender){
       document.getElementById(key).checked = gender[key];
+    }
+  }else if(count === 3){
+    for(key in formArr){
+      document.getElementById(key).value = formArr[key];
     }
   }
 }
@@ -291,7 +277,8 @@ function saveJoinPageInput(){
     var result = document.getElementById('result');
     
     if (firstname.length < 3) {
-        result.textContent = 'Username must contain at least 3 characters';
+        // result.textContent = 'Username must contain at least 3 characters';
+        // firstname.style.borderColor = "red";
         // alert('Username must contain at least 3 characters');
     } else {
         result.textContent = 'Your username is: ' + firstname;
@@ -304,7 +291,7 @@ function saveJoinPageInput(){
       console.log(pair[0] + ', ' + pair[1]);
     }
 
-    postIt(data);
+    // postIt(data);
 
  }
 
@@ -339,6 +326,89 @@ function getIt(){
       // end of state change: it can be after some time (async)
   };
   
-  xhr.open('GET', "http://localhost:3000/listOfAllUsers", true);
+  // xhr.open('GET', "http://localhost:3000/listOfAllUsers", true);
   xhr.send();
 }
+
+function formValidation(fn){
+//First Name Validation 
+var fn = document.getElementById('first');
+  if(fn.value == ""){
+      alert('Please Enter First Name');
+      fn.style.borderColor = "red";
+      return false;
+  }else{
+    fn.style.borderColor = "lightseagreen";
+  }
+  if (/^[0-9]+$/.test(fn.value)) {
+      alert("First Name Contains Numbers!");
+      fn.style.borderColor = "red";
+      return false;
+  }else{
+    fn.style.borderColor = "lightseagreen";
+  }
+  if(fn.value.length <=2){
+      alert('Your Name is To Short');
+      fn.style.borderColor = "red";
+      return false;
+  }else{
+    fn.style.borderColor = "lightseagreen";
+  }
+}
+
+
+
+
+var currentBrdObj;
+var msg =["First name should not be empty","Last name should not be empty",
+"Email id required",
+"Please type a password","Please confirm password"];
+msg[msg.length]="Passwords must be equal.<br>Please type a password";
+function regvalidate(formObj){ 
+  document.getElementById("une").innerHTML=""; // clear msg line before resubmitting
+ // gather object ref to input boxes
+  var allInputs=document.getElementById("regform").getElementsByTagName("input");
+ // check if value of box is "" 
+  for(var i=0;i<allInputs.length;i++){ 
+    if(allInputs[i].name !=="submitBtn"){    // ignore submit button
+     if(allInputs[i].value===""){
+       console.log(msg[i]);
+       document.getElementById("une").innerHTML=msg[i];
+        if(currentBrdObj){
+          currentBrdObj.style.border="2px solid lightseagreen"; 
+        }   
+        allInputs[i].style.border="2px solid #F00"; 
+        currentBrdObj=allInputs[i];
+        allInputs[i].onchange = function (){
+        allInputs[i].style.border="2px solid lightseagreen";
+        }
+        return;
+     }
+    }
+  }  
+// check if password and confirm are the same      
+  if((formObj.pwdtxt.value) != (formObj.cpwdtxt.value)){ 
+    document.getElementById("une").innerHTML = msg[msg.length-1];       // last msg in array
+     formObj.pwdtxt.value = ""; formObj.pwdtxt.style.border="";
+     formObj.cpwdtxt.value = ""; formObj.cpwdtxt.style.border="";
+
+     if(/^[0-9]+$/.test(formObj.firstname.value)){
+      document.getElementById("une").innerHTML += "\nFirst Name Contains Numbers!";
+      formObj.firstname.value = ""; 
+      formObj.firstname.style.border="2px solid #F00";
+      return;
+    }
+  if(/^[0-9]+$/.test(formObj.lastname.value)){
+    document.getElementById("une").innerHTML += "\nLast Name Contains Numbers!";
+    formObj.lastname.value = ""; 
+    formObj.lastname.style.border="2px solid #F00";
+    return;
+  }
+     return;
+    }
+// all ok so submit form
+document.getElementById("une").innerHTML = "All ok submit form";
+  // formObj.submit(); 
+  return true;
+}
+// -----
