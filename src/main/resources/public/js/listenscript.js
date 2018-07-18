@@ -29,10 +29,8 @@ function randomizeImage(){
 function openCloseQueue(queue) {
   if(queue.style.width === "250px"){
     queue.style.width = "0px";    
-    document.getElementById('queueTable').style.visibility = 'hidden';
   }else{
     queue.style.width = "250px";
-    document.getElementById('queueTable').style.visibility = 'visible';
   }
 }
 
