@@ -65,13 +65,13 @@
                         </div>
                     <div id="mySidenav" class="sidenav">
                             <!-- <p id='xCloseSide' class="closebtn" onclick="openCloseQueue(mySidenav)">&times;</p> -->
-                        <table id="queueTable"  onclick="addRowtoQueue()">
+                        <table id="queueTable"  onclick="addRowtoQueue('Sample','Another Sample Track giandre giandre')">
                             <tr>
                                 <td>
                                     <div>
                                         <img id="sidenavimage1" name="sideimg" class="navimage" src="images/listen1.jpg">
-                                        <p name="track">Sample:
-                                            <br>Sample Track</p>
+                                        <p name="track">Sample 1:
+                                            <br>Sample Track 1</p>
                                     </div>
                                 </td>
                             </tr>
@@ -79,8 +79,8 @@
                                 <td>
                                     <div>
                                         <img id="sidenavimage2" name="sideimg" class="navimage" src="images/listen2.jpg">
-                                        <p name="track">Sample:
-                                            <br>Sample Track</p>
+                                        <p name="track">Sample 2:
+                                            <br>Sample Track 2</p>
                                     </div>
                                 </td>
                             </tr>
@@ -88,8 +88,8 @@
                                 <td>
                                     <div>
                                         <img id="sidenavimage3" name="sideimg" class="navimage" src="images/listen3.jpg">
-                                        <p name="track">Sample:
-                                            <br>Sample Track</p>
+                                        <p name="track">Sample 3:
+                                            <br>Sample Track 3</p>
                                     </div>
                                 </td>
                             </tr>
@@ -97,8 +97,8 @@
                                 <td>
                                     <div>
                                         <img id="sidenavimage4" name="sideimg" class="navimage" src="images/listen4.jpg">
-                                        <p name="track">Sample:
-                                            <br>Sample Track</p>
+                                        <p name="track">Sample 4:
+                                            <br>Sample Track 4</p>
                                     </div>
                                 </td>
                             </tr>
@@ -106,8 +106,8 @@
                                 <td>
                                     <div>
                                         <img id="sidenavimage5" name="sideimg" class="navimage" src="images/listen5.jpg">
-                                        <p name="track">Sample:
-                                            <br>Sample Track</p>
+                                        <p name="track">Sample 5:
+                                            <br>Sample Track 5</p>
                                     </div>
                                 </td>
                             </tr>
@@ -115,8 +115,8 @@
                                 <td>
                                     <div>
                                         <img id="sidenavimage6" name="sideimg" class="navimage" src="images/listen6.jpg">
-                                        <p name="track">Sample:
-                                            <br>Sample Track</p>
+                                        <p name="track">Sample 6:
+                                            <br>Sample Track 6</p>
                                     </div>
                                 </td>
                             </tr>
@@ -124,8 +124,8 @@
                                 <td>
                                     <div>
                                         <img id="sidenavimage7" name="sideimg" class="navimage" src="images/listen1.jpg">
-                                        <p name="track">Sample:
-                                            <br>Sample Track</p>
+                                        <p name="track">Sample 7:
+                                            <br>Sample Track 7</p>
                                     </div>
                                 </td>
                             </tr>
@@ -133,8 +133,8 @@
                                 <td>
                                     <div>
                                         <img id="sidenavimage7" name="sideimg" class="navimage" src="images/listen2.jpg">
-                                        <p name="track">Sample:
-                                            <br>Sample Track</p>
+                                        <p name="track">Sample 8:
+                                            <br>Sample Track 8</p>
                                     </div>
                                 </td>
                             </tr>
@@ -142,8 +142,8 @@
                                 <td>
                                     <div>
                                         <img id="sidenavimage7" name="sideimg" class="navimage" src="images/listen3.jpg">
-                                        <p name="track">Sample:
-                                            <br>Sample Track</p>
+                                        <p name="track">Sample 9:
+                                            <br>Sample Track 9</p>
                                     </div>
                                 </td>
                             </tr>
@@ -167,13 +167,19 @@
                     <div id="overlayPlay" class="video-thumbnail" onclick="play()"></div>
                     <div id="albumCover"></div>
                 </center>
-                
-              <div id="progress">
+                <div id="progress">
                 <div id="progress-bar"></div>
               </div>
+
+              <div class="progressTime">
+                <p class="progressBarTime" id="startTime">0:00</p>
+                <p class="progressBarTime" id="endTime">0:00</p>
+            </div>
+
               <div id="title">
                 <div id="title-text">Drake - Passionfruit</div>
               </div>
+
               <div id="controls">
                 <!-- <div class="control" id="controls-play" onclick="play()">
                     <div class="lds-ripple"><div></div><div></div><div></div></div> -->

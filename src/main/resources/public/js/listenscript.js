@@ -71,25 +71,40 @@ function addClass( element, classname ) {
     
 
     var Play_Pause = 0;
+    var startTime = document.getElementById('startTime');
+    audioPlay.onloadedmetadata = function() {
+      var endMinutes = "0" + Math.floor(audioPlay.duration / 60);
+      var endseconds = "0" +  Math.floor(audioPlay.duration - endMinutes * 60);
+      var endDurTime = endMinutes.substr(-2) + ":" + endseconds.substr(-2);
+      document.getElementById('endTime').innerHTML = endDurTime;
+    };
+
     function play() {
       document.getElementById('overlayPlay').style.display = "none";
+        var endMinutes = "0" + Math.floor(audioPlay.duration / 60);
+        var endseconds = "0" +  Math.floor(audioPlay.duration - endMinutes * 60);
+        var endDurTime = endMinutes.substr(-2) + ":" + endseconds.substr(-2);
+        document.getElementById('endTime').innerHTML = endDurTime;
       if(Play_Pause % 2 == 0){
-        // randomizeImage();
         audioPlay.play();
         audioPlay.addEventListener("ended", function(){
           audioPlay.currentTime = 0;
          console.log("ended");
-        //  audioPlayer.src="No Flex Zone.mp3";
-        // document.getElementById('title-text').innerHTML = "Rae Sremmurd - No Flex Zone";
-          audioPlayer.src="sampleAudio.mp3";
-          audioPlayer.type="audio/mpeg";
-          document.getElementById('title-text').innerHTML = "Sampler - Sample Track 2";
-          addRowtoQueue();
-          audioPlayer.play();
+         audioPlay.type="audio/mpeg";
+         audioPlay.src="No Flex Zone.mp3";
+          document.getElementById('title-text').innerHTML = "Rae Sremmurd - No Flex Zone";
+          // audioPlay.src="sampleAudio.mp3";
+          // document.getElementById('title-text').innerHTML = "Sampler - Sample Track 2";
+          addRowtoQueue("Rae Sremmurd", "No Flex Zone");
+          audioPlay.play();
     });
         document.getElementById('title-text').innerHTML = "Sampler - Sample Track";
         audioPlay.addEventListener("timeupdate", function() {
             var currentTime = audioPlay.currentTime;
+            var minutes = "0" + Math.floor(currentTime / 60);
+            var seconds = "0" +  Math.floor(currentTime - minutes * 60);
+            var durTime = minutes.substr(-2) + ":" + seconds.substr(-2);
+            startTime.innerHTML = durTime;
             var duration = audioPlay.duration;
             $('#progress-bar').stop(true,true).animate({'width':(currentTime +.25)/duration*100+'%'},200,'linear');
             if((currentTime >= 3 && currentTime <= 3.2) || (currentTime >= 7 && currentTime <= 7.2)){
@@ -115,7 +130,7 @@ function addClass( element, classname ) {
     }
 
     var count = 1;
-    function addRowtoQueue(){
+    function addRowtoQueue(artist, track){
       if(count === 8){
         count = 1;
       }
@@ -124,7 +139,7 @@ function addClass( element, classname ) {
       var len = table.rows.length;
       var row = table.insertRow(len);
       var cell1 = row.insertCell(0);      
-      cell1.innerHTML = "<div><img id='sidenavimage' name='sideimg' class='navimage' src='images/listen"+count+".jpg'><p name='track'>Sample:<br>Sample Track</p></div>";
+      cell1.innerHTML = "<div><img id='sidenavimage' name='sideimg' class='navimage' src='images/listen"+count+".jpg'><p name='track'>"+artist+":<br>"+track+"</p></div>";
       table.deleteRow(0);
       var pathToImages = "url("+firstRow.cells.item(0).getElementsByTagName('img')[0].src+")";
       document.getElementById('bg-before').style.backgroundImage = pathToImages;
