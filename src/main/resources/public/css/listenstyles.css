@@ -870,72 +870,72 @@ h1 {
   }
 }
 span.coin-face {
-  display: none;
-  background: gold url(../images/dollar.png) no-repeat center center;
-  color: gold;
-  width: 32px;
-  height: 32px;
-  font-family: sans-serif;
-  position: absolute;
-  top: 50%;
-  right: auto;
-  bottom: auto;
-  left: 50%;
-  margin-top: -16px;
-  margin-left: -16px;
-  text-align: center;
-  line-height: 32px;
-  border-radius: 16px;
-  -webkit-animation: flip 2s infinite;
-          animation: flip 2s infinite;
-  -webkit-backface-visibility: visible;
-          backface-visibility: visible;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-}
-
-.coin-face::before {
-  content: '';
-  z-index: 6;
-  display: block;
-  background: gold url(../images/dollar.png) no-repeat center center;
-  color: gold;
-  width: 32px;
-  height: 32px;
-  font-family: sans-serif;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  text-align: center;
-  line-height: 32px;
-  border-radius: 16px;
-  -webkit-transform: translateZ(4px);
-          transform: translateZ(4px);
-  -webkit-backface-visibility: visible;
-          backface-visibility: visible;
-}
-.coin-face::after {
-  content: '';
-  display: block;
-  background: gold;
-  color: gold;
-  border-radius: 5px;
-  width: 5px;
-  height: 32px;
-  position: relative;
-  top: 0;
-  left: 50%;
-  margin-left: -2.5px;
-  -webkit-transform: rotateY(90deg) translateX(-2px);
-          transform: rotateY(90deg) translateX(-2px);
-  -webkit-backface-visibility: visible;
-          backface-visibility: visible;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-}
-
+    display: none;
+    background: gold url(../images/dollar.png) no-repeat center center;
+    color: gold;
+    width: 32px;
+    height: 32px;
+    font-family: sans-serif;
+    position: absolute;
+    top: 45%;
+    /* right: auto;
+    bottom: auto; */
+    left: 50%;
+    margin-top: -16px;
+    margin-left: -16px;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 16px;
+    -webkit-animation: flip 2s infinite linear;
+            animation: flip 2s infinite linear;
+    -webkit-backface-visibility: visible;
+            backface-visibility: visible;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+  }
+  
+  /* .coin-face::before {
+    content: '';
+    z-index: -1;
+    display: block;
+    background: gold url(../images/dollar.png) no-repeat center center;
+    color: gold;
+    width: 32px;
+    height: 32px;
+    font-family: sans-serif;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 16px;
+    -webkit-transform: translateZ(4px);
+            transform: translateZ(4px);
+    -webkit-backface-visibility: visible;
+            backface-visibility: visible;
+  }
+  .coin-face::after {
+    content: '';
+    display: block;
+    background: gold url(../images/dollar.png) no-repeat center center;;
+    color: gold;
+    border-radius: 5px;
+    width: 5px;
+    height: 32px;
+    position: relative;
+    top: 0;
+    left: 50%;
+    margin-left: -2.5px;
+    -webkit-transform: rotateY(90deg) translateX(-2px);
+            transform: rotateY(90deg) translateX(-2px);
+    -webkit-backface-visibility: visible;
+            backface-visibility: visible;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+  } */
+  
 @keyframes fadeInOut {
     0% {
       opacity: 0;
@@ -959,7 +959,7 @@ span.coin-face {
     font-family: sans-serif;
     position: absolute;
     padding-left: 32px;
-    top: 50%;
+    top: 45%;
     right: 50%;
     bottom: auto;
     left: 50%;
