@@ -640,7 +640,7 @@ h1 {
 }
 
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:active {
     background: rgba(255,255,255,.5); 
 }
 
