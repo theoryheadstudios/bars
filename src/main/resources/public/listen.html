@@ -35,35 +35,54 @@
  
             <!-- </header> -->
     
-            <div id="loader-wrapper">
+            <!-- <div id="loader-wrapper">
                 <div>
                     <h1 id="welcome-text">Welcome to BpM
                      <br>
                     <p>Enjoy the music, relax, and sit back</p>
                     </h1>
                 </div>
-                <div id="loader"></div>
+                <div id="loader"></div> -->
                 
                 <!-- left and right screen that disappear upon load of the page -->
-                <div class="loader-section section-left"></div>
+                <!-- <div class="loader-section section-left"></div>
                 <div class="loader-section section-right"></div>
-            </div>
+            </div> -->
             
             <!-- <div class="loaded"></div> -->
                 
             <div id="bg-before"></div>
             <div id="bg"></div>
+            <center>
+                <div class="container" id="loginModal">
+                    <div class="info">
+                        <h1>Login</h1>
+                    </div>
+                </div>
+              <div class="form" id="loginModalForm">
+                <div class="thumbnail"><img><span>Logo goes here</span></div>
+                <form class="login-form" >
+                  <input type="text" placeholder="Username"/>
+                  <input type="password" placeholder="Password"/>
+                  <button>Login</button>
+                  <p class="message">Not registered? <a href="#">Create an account</a></p>
+                </form>
+              </div>
+            </center>
             <main id="main">
-                    <div id="menu" class="menu" onclick="openCloseMenu()">
+                    <div id="menu" class="menu">
                             <div class="title">M<br>E<br>N<br>U</div>
+                            <center><li><a href="#" id="login" onclick="openLoginModalPage()">Login</a></li></center>
                             <li id="coinsEarned" value="0"></li>
                             <ul class="nav">
                               <li><a href="index.html">Home</a></li>
                               <li><a href="#">Profile</a></li>
+                              <li><a href="#">Register</a></li>
                               <li><a href="#">Market</a></li>
                             </ul>
                         </div>
-                    <div id="mySidenav" class="sidenav">
+
+                        <div id="mySidenav" class="sidenav">
                             <!-- <p id='xCloseSide' class="closebtn" onclick="openCloseQueue(mySidenav)">&times;</p> -->
                         <table id="queueTable"  onclick="addRowtoQueue('Sample','Another Sample Track giandre giandre')">
                             <tr>
@@ -172,8 +191,8 @@
               </div>
 
               <div class="progressTime">
-                <p class="progressBarTime" id="startTime">0:00</p>
-                <p class="progressBarTime" id="endTime">0:00</p>
+                <p class="progressBarTime" id="startTime">00:00</p>
+                <p class="progressBarTime" id="endTime">00:00</p>
             </div>
 
               <div id="title">

@@ -1,3 +1,41 @@
+var loginModal = document.getElementById('loginModal');
+var loginModalForm = document.getElementById('loginModalForm');
+var isLoginOpen = false;
+function openLoginModalPage(){
+  if(isLoginOpen){
+    loginModal.style.display = 'none';
+    loginModalForm.style.display= 'none';
+    isLoginOpen = false;
+  }else{
+    loginModal.style.display = 'block';
+    loginModalForm.style.display= 'block';
+    isLoginOpen = true;
+  }
+}
+
+// if User presses 'Escape' then close the modal
+document.onkeydown = function(event) {
+  event = event || window.event;
+  if (event.keyCode === 27) {
+    if(loginModal.style.display === "block" || loginModalForm.style.display === "block"){
+      loginModal.style.display = "none";
+      loginModalForm.style.display = "none";
+      isLoginOpen = false;
+    }
+  }
+};
+
+var main = document.getElementById("main");
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (isLoginOpen && (event.target === main)) {
+    loginModal.style.display = "none";
+    loginModalForm.style.display = "none";
+    isLoginOpen = false;
+  }
+};
+
+
 var audioPlay = document.getElementById("audioPlayer");
 window.onload = function(){ 
   randomizeImage();
@@ -148,7 +186,6 @@ function addClass( element, classname ) {
 
 $(document).ready(function () {
 $('#volume').slider({
-  // orientation: "vertical",
   min: 0,
   max: 100,
   value: 0,
@@ -178,11 +215,3 @@ function openCloseMenu(){
     isMenuOpen = true;
   }
 }
-
-// menu.onmouseleave = function () {
-//   menu.style.transform = 'translate3d(0px, 0, 0)';
-//   menu.style.cursor = "pointer";
-//   isMenuOpen = false;
-// }
-
-

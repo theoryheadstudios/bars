@@ -6,44 +6,54 @@
     margin: 4px;
     background: transparent;
     border: 50%;
-    border-bottom-color: var(--inv);
+    border-bottom-color: white;
     border-top-color: transparent;
     border-left-color: transparent;
     border-right-color: transparent;
     outline: none;
-      position: relative;	
+    position: relative;	
     /* padding: 1.4rem 4.2rem; */
     padding: 10px;
-      font-size: 1.4rem;
-      color: var(--inv);
-      /* text-transform: uppercase; */
-      transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);	
-      cursor: pointer;
-      -webkit-user-select: none;
-         -moz-user-select: none;
-          -ms-user-select: none;
-              user-select: none;
+    font-size: 1.4rem;
+    color: white;
+    /* text-transform: uppercase; */
+    -webkit-transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
+    -moz-transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
+    transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
   
   .btn:before, .btn:after {
       content: '';
-      position: absolute;	
+      position: absolute;
+      -webkit-transition: inherit;
+      -moz-transition: inherit;	
       transition: inherit;
       z-index: -1;
   }
   
   .btn:hover {
-      color: var(--def);
+      color: rgba(9, 176, 218, 0.534);
+      -webkit-transition-delay: .6s;
+      -moz-transition-delay: .6s;
       transition-delay: .6s;
   }
   
   .btn:hover:before {
-      transition-delay: 0s;
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    transition-delay: 0s;
   }
   
   .btn:hover:after {
-      background: var(--inv);
-      transition-delay: .4s;
+    background: white;
+    -webkit-transition-delay: .4s;
+    -moz-transition-delay: .4s;
+    transition-delay: .4s;
   }
   
   /* From Top */
@@ -57,7 +67,7 @@
   
   .from-top:before {
       bottom: 0;	
-      border: 1px solid var(--inv);
+      border: 1px solid white;
       border-top: 0;
       border-bottom: 0;
   }
@@ -82,7 +92,7 @@
   
   .from-right:before {
       left: 0;
-      border: 1px solid var(--inv);
+      border: 1px solid white;
       border-left: 0;
       border-right: 0;	
   }
@@ -107,7 +117,7 @@
   
   .from-left:before {
       right: 0;
-      border: 1px solid var(--inv);
+      border: 1px solid white;
       border-left: 0;
       border-right: 0;	
   }
@@ -128,7 +138,7 @@
       left: 50%;
       height: 100%;
       width: 0;
-      border: 1px solid var(--inv);
+      border: 1px solid white;
       border-left: 0;
       border-right: 0;
   }
@@ -138,7 +148,7 @@
       left: 0;
       height: 0;
       width: 100%;
-      background: var(--inv);
+      background: white;
   }
   
   .from-middle:hover:before {
@@ -162,7 +172,7 @@
   
   .from-bottom:before {
       top: 0;	
-      border: 1px solid var(--inv);
+      border: 1px solid white;
       border-top: 0;
       border-bottom: 0;
   }
