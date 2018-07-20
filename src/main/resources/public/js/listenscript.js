@@ -3,12 +3,16 @@ var loginModalForm = document.getElementById('loginModalForm');
 var isLoginOpen = false;
 function openLoginModalPage(){
   if(isLoginOpen){
-    loginModal.style.display = 'none';
-    loginModalForm.style.display= 'none';
+    loginModal.style.opacity = '0';
+    loginModal.style.visibility = 'hidden';
+    loginModalForm.style.opacity = '0';
+    loginModalForm.style.visibility = 'hidden';
     isLoginOpen = false;
   }else{
-    loginModal.style.display = 'block';
-    loginModalForm.style.display= 'block';
+    loginModal.style.opacity = '1';
+    loginModal.style.visibility = 'visible';
+    loginModalForm.style.opacity = '1';
+    loginModalForm.style.visibility = 'visible';
     isLoginOpen = true;
   }
 }
@@ -17,9 +21,11 @@ function openLoginModalPage(){
 document.onkeydown = function(event) {
   event = event || window.event;
   if (event.keyCode === 27) {
-    if(loginModal.style.display === "block" || loginModalForm.style.display === "block"){
-      loginModal.style.display = "none";
-      loginModalForm.style.display = "none";
+    if(loginModal.style.opacity === '1' || loginModalForm.style.opacity === '1'){
+      loginModal.style.opacity = '0';
+      loginModal.style.visibility = 'hidden';
+    loginModalForm.style.opacity = '0';
+    loginModalForm.style.visibility = 'hidden';
       isLoginOpen = false;
     }
   }
@@ -29,8 +35,10 @@ var main = document.getElementById("main");
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (isLoginOpen && (event.target === main)) {
-    loginModal.style.display = "none";
-    loginModalForm.style.display = "none";
+    loginModal.style.opacity = '0';
+    loginModal.style.visibility = 'hidden';
+    loginModalForm.style.opacity = '0';
+    loginModalForm.style.visibility = 'hidden';
     isLoginOpen = false;
   }
 };

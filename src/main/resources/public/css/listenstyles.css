@@ -1090,6 +1090,7 @@ span.coin-face {
   .menu .nav li {
     /* padding: 10px; */
     padding-bottom: 30px;
+    outline: none;
     white-space: nowrap;
     list-style-type: none;
     -webkit-user-select: none;
@@ -1101,6 +1102,7 @@ span.coin-face {
   }
   .menu li a,
   .menu .nav li a {
+    outline: none;
     padding-right: 20px;
     display: block;
     text-decoration: none;
@@ -1182,13 +1184,14 @@ span.coin-face {
 
   /* Form */
 .form {
-  display: none;
+  /* display: none; */
+  visibility: hidden;
   position: relative;
   z-index: 10;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.877);
   max-width: 300px;
-  /* margin: 0 auto 100px; */
+  /* margin: 20% auto 100px; */
   padding: 30px;
   border-style: solid;
   border-color: aqua;
@@ -1196,7 +1199,10 @@ span.coin-face {
   border-top-right-radius: 25px;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
+  opacity: 0;
+  transition: 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   text-align: center;
+  outline: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1261,12 +1267,14 @@ span.coin-face {
 }
 
 .container {
-  display: none;
   position: relative;
+  visibility: hidden;
   z-index: 10;
   overflow: hidden;
   max-width: 300px;
   margin: 0 auto;
+  opacity: 0;
+  transition: 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 .container:before, .container:after {
   content: "";
