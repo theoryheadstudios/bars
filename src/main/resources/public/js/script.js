@@ -36,7 +36,8 @@ var MainController = function($scope, $http){
 
 
 
-var btn2 = document.getElementById("innerButton")
+var next = document.getElementById("nextBtn")
+var back = document.getElementById("backBtn")
 var video = document.getElementById("myVideo");
 var menuButton = document.getElementById("menuButton")
 var modal = document.getElementById('myModal');
@@ -56,7 +57,7 @@ span.onclick = function() {
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-    if (event.target == modal) {
+    if (event.target === modal) {
         modal.style.display = "none";
     }
 }
@@ -69,31 +70,111 @@ menuCloseButton.onclick=function () {
     document.getElementById("rightMenu").style.display = "none";
 }
 
+var nextPage = {
+  'check' : [document.getElementById("first").innerHTML, document.getElementById("step2form").innerHTML, 
+document.getElementById("step3form").innerHTML, document.getElementById("step4form").innerHTML],
+'ul' : [document.getElementById("step1"), document.getElementById("step2"),
+document.getElementById("step3"), document.getElementById("step4")]
+}
 
-btn2.onclick = function(){
+
+// next button will allow user to progress to next page
+var count = 0;
+next.onclick = function (){
+  if(count < 3){
   $scope.innerButtonClickCount++;
-  if($scope.innerButtonClickCount==1){
-    console.log($scope.innerButtonClickCount);
-  document.getElementById('yup').innerHTML = '<link rel = "stylesheet" href="css/styles.css"><link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"><div class="w3-container w3-center w3-animate-right"><div class="trackerContainer"></div><center><p>What is your gender?</p><center><table id="customers"><tr><td><label class="container">Male<input type="checkbox"><span class="checkmark"></span></label></td></tr><tr><td><label class="container">Female<input type="checkbox"><span class="checkmark"></span></label></td></tr><tr><td><label class="container">Other<input type="checkbox"><span class="checkmark"></span></label></td></tr></table><br><br></div>';
-  document.getElementById('step2').className+="active";
+    // console.log($scope.innerButtonClickCount);
+    // console.log(nextPage.check[count])
+  document.getElementById('yup').innerHTML = nextPage.check[count+1]
+  nextPage.ul[count+1].className="active"
+  console.log(arr);
+  count++;
+  console.log("COUNT: " + count)
+  }
+  else{
+    document.getElementById('yup').innerHTML = nextPage.check[count]
+    nextPage.ul[count].className="active"
+  }
 }
-else if($scope.innerButtonClickCount==2){
-  console.log($scope.innerButtonClickCount);
-  document.getElementById('yup').innerHTML = '<link rel = "stylesheet" href="css/styles.css"><link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"><div class="w3-container w3-center w3-animate-right"><div class="trackerContainer"></div><center><p>What is your gender?</p><center><table id="customers"><tr><td><label class="container">Male<input type="checkbox"><span class="checkmark"></span></label></td></tr><tr><td><label class="container">Female<input type="checkbox"><span class="checkmark"></span></label></td></tr><tr><td><label class="container">Other<input type="checkbox"><span class="checkmark"></span></label></td></tr></table><br><br></div>';
-  document.getElementById('step3').className+="active";
-}
-else if($scope.innerButtonClickCount==3){
-  console.log($scope.innerButtonClickCount);
-  document.getElementById('yup').innerHTML = '<link rel = "stylesheet" href="css/styles.css"><link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"><div class="w3-container w3-center w3-animate-right"><div class="trackerContainer"></div><center><p>What is your gender?</p><center><table id="customers"><tr><td><label class="container">Male<input type="checkbox"><span class="checkmark"></span></label></td></tr><tr><td><label class="container">Female<input type="checkbox"><span class="checkmark"></span></label></td></tr><tr><td><label class="container">Other<input type="checkbox"><span class="checkmark"></span></label></td></tr></table><br><br></div>';
-  document.getElementById('step4').className+="active";
-}
-}
+
+// The back button will allow the user to go back a single page
+back.onclick = function (){
+  if(count !== 0){
+    count--;
+    console.log("COUNT: " + count)
+  document.getElementById('yup').innerHTML = nextPage.check[count]
+  nextPage.ul[count+1].className="inactive"
+  $scope.innerButtonClickCount++;
+  }
+  if(count === 0){
+  nextPage.ul[0].className="active"
+  }
+}};
+
+// function Forward(){
+//   nextPage.push("stp2")
+//   $scope.innerButtonClickCount++;
+//   if($scope.innerButtonClickCount===1){
+//     console.log($scope.innerButtonClickCount);
+//   document.getElementById('yup').innerHTML = document.getElementById("step2form").innerHTML
+//   document.getElementById('step2').className+="active";
+//   console.log(arr);
+// }
+// else if($scope.innerButtonClickCount===2){
+//   console.log($scope.innerButtonClickCount);
+//   document.getElementById('yup').innerHTML = document.getElementById("step2form").innerHTML
+//   document.getElementById('step3').className+="active";
+// }
+// else if($scope.innerButtonClickCount===3){
+//   console.log($scope.innerButtonClickCount);
+//   document.getElementById('yup').innerHTML =  document.getElementById("step4form").innerHTML
+//   document.getElementById('step4').className+="active";
+// }
+// }
 
 
 
 
-};
+//   if($scope.innerButtonClickCount===4){
+//     console.log($scope.innerButtonClickCount);
+//   document.getElementById('yup').innerHTML = document.getElementById("step2form").innerHTML
+//   document.getElementById('step4').className+="inactive";
+
+// }
+// else if($scope.innerButtonClickCount===5){
+//   console.log(document.activeElement)
+//   console.log($scope.innerButtonClickCount);
+//   document.getElementById('yup').innerHTML = document.getElementById("step4form").innerHTML
+//   document.getElementById('step3').className+="inactive";
+// }
+// else if($scope.innerButtonClickCount===6){
+//   console.log(document.activeElement)
+//   console.log($scope.innerButtonClickCount);
+//   document.getElementById('yup').innerHTML =  document.getElementById("step2form").innerHTML
+//   document.getElementById('step2').className+="inactive";
+// }
+// }};
 
 
 app.controller("MainController", ["$scope","$http", MainController]);
 }());
+
+
+// save values of each checkbox
+var arr = new Array();
+function saveData(checkbox){
+  if(checkbox.checked){
+    arr.push(checkbox.value);
+  }else{
+    arr.pop(checkbox.value);
+  }
+
+  // if(typeof(Storage) !== "undefined"){
+  //   localStorage.setItem("check", checkbox.value)
+  //   console.log(localStorage.getItem("check"));
+  // }else{
+  //   document.getElementById("yup").innerHTML = "Sorry, your browser does not support Web Storage...";
+  // }
+console.log("TagName: " + checkbox.tagName + " The checkbox is: " + checkbox.checked);
+}
+
