@@ -241,7 +241,7 @@
       <!-- <img  id="appleBadge" src="images/verticalSubmitImg.jpg" style="width: 500px; height: 800px;" align="top"> -->
       <center>
           <div id="une" style="color: #F00"></div><br>
-        <form enctype="multipart/form-data" method="post" action="listen.html" id="regform"> 
+        <form enctype="multipart/form-data" method="post" id="regform">
           First Name<br>
             <input type="text" name="firstname" id="first" placeholder="firstName"  onchange="saveFormData(this)" required>
             <br>Last Name<br>
@@ -261,8 +261,8 @@
               </div>
             <br><br>
             <div><p id="result"></p></div>
-              <button class="button" type="submit" id="submitBtn" onclick="regvalidate(this.form)" style="display: none;align-self: auto; float: right"><span>Finish </span></button>
             </form>
+        <button class="button" type="submit" id="submitBtn" onclick="saveJoinPageInput()" style="display: none;align-self: auto; float: right"><span>Finish </span></button>
         <br></center></center>
   </div>
   <!-- <button class="button" type="submit" id="submitBtn"  onclick="saveJoinPageInput()" style="display: none;float: right"><span>Finish </span></button> -->

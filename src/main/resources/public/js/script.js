@@ -85,6 +85,24 @@ app.controller("MainController", ["$scope","$http", MainController]);
 
 /* this array will be used to switch to different pages when user clicks on 'next' or 'back' buttons
  and will mark the progress bar as active or inactive */
+
+var userToBeCreated =          {
+    user_email: null,
+    account_number: null,
+    "first_name": "ShitHead",
+    "last_name": "Bozo",
+    "password": "$2a$10$iVe4tpAro68BPwqqmc9l5ujJscXNuQY0BpmubHyBC4cSV1677C4Im",
+    "date_of_birth": "05/17/1993",
+    "country": "Mexico",
+    "zip": "30237",
+    "time_zone": "Western",
+    "user_name": "Goyito",
+    "social_link_1": "http://myspace.com/bump",
+    "social_link_2": "http://facebook.com/bump2",
+    "social_link_3": "http://soundcloud.com/bump3",
+    "points_balance": 5
+}
+
 var switchPage = {
   'check' : [document.getElementById('firstForm').innerHTML, document.getElementById("step2form").innerHTML, 
              document.getElementById("step3form").innerHTML, document.getElementById("step4form").innerHTML],
@@ -257,6 +275,10 @@ function getSavedData(){
 
 
 function saveJoinPageInput(){
+
+
+
+    //#TODO -> find out why this is disrepecting us
     var data = new FormData();
     var firstname = document.getElementById('first').value;       data.append('first_name', firstname);
     var lastname = document.getElementById('last').value;         data.append('last_name', lastname);
@@ -283,8 +305,22 @@ function saveJoinPageInput(){
         result.textContent = 'Your username is: ' + firstname;
         // alert(nameField);
     }
+    var user = {
+        firstname:document.getElementById("first").value,
+        lastname:document.getElementById("last").value,
+        userEmail:document.getElementById("email").value,
+        accountNumber:233343563
+    };
+
+    console.log(JSON.stringify(user));
+
+    console.log("***************************");
+    console.log(data.toJSON);
+    console.log("***************************");
+    console.log("___________________________");
     var j = JSON.stringify(data);
-    console.log(j)
+    console.log(j);
+    console.log("___________________________");
 
     for(var pair of data.entries()){
       console.log(pair[0] + ', ' + pair[1]);

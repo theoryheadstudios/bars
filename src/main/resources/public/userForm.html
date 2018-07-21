@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Details</title>
+</head>
+<body>
+<div class="w3-container w3-center w3-animate-right" id="step4form" style="display: none" value="4">
+    <center>
+        <h1 style="color: black; font-size: 50px">Join BpM</h1><br><br>
+        <!-- <img  id="appleBadge" src="images/verticalSubmitImg.jpg" style="width: 500px; height: 800px;" align="top"> -->
+        <center>
+            <form>
+                First Name<br>
+                <input type="text" name="firstname" id="first" placeholder="firstName" value="example" required>
+                <br>Last Name<br>
+                <input type="text" name="lastname" id="last" placeholder="lastname" value="example" required>
+                <br>E-mail Address<br>
+                <input type="text" name="e-mail" id="email" placeholder="e-mail" value="example@email.com" required>
+                <br>Password<br>
+                <input type="password" name="pass" id="password" placeholder="pass" value="example" required>
+                <br>Re-enter Password<br>
+                <input type="password" name="pass" id="password2" placeholder="pass" value="example" required>
+                <div>
+                    <p>By joining BpM, you agree to the
+                        <a style="cursor: pointer" onclick="location.href='termsandcondition.html'">Terms</a>
+                        and
+                        <a style="cursor: pointer" onclick="location.href='termsandcondition.html'">Policy</a>
+                        of BpM</p>
+                </div>
+                <br><br>
+                <div><p id="result"></p></div>
+                <button class="button" id="submitBtn"  onclick="saveJoinPageInput()" style="display: none;align-self: auto; float: right"><span>Finish </span></button>
+            </form>
+            <br>
+            <br></center></center>
+</div>
+</body>
+</html>
