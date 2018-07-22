@@ -187,6 +187,7 @@ function addClass( element, classname ) {
          audioPlay.currentTime = 0;
          audioPlay.type="audio/mpeg";
          audioPlay.src="No Flex Zone.mp3";
+        //  audioPlay.load();
           document.getElementById('title-text').innerHTML = "Rae Sremmurd - No Flex Zone";
           // audioPlay.src="sampleAudio.mp3";
           // document.getElementById('title-text').innerHTML = "Sampler - Sample Track 2";
@@ -254,3 +255,14 @@ function openCloseMenu(){
     isMenuOpen = true;
   }
 }
+
+$('#CreateAnAccLink').click(function(){
+  $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+  document.getElementById('SignInLink').style.display = 'block';
+  document.getElementById('CreateAnAccLink').style.display = 'none';
+});
+$('#SignInLink').click(function(){
+  $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+  document.getElementById('CreateAnAccLink').style.display = 'block';
+  document.getElementById('SignInLink').style.display = 'none';
+});

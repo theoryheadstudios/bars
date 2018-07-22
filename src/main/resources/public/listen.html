@@ -15,6 +15,8 @@
 
 </head>
 <body>
+
+
         <audio controls muted="muted" autoplay="true" style="display: none;" id="audioPlayer">
                 <source src="SampleAudio.mp3"  type="audio/mpeg">
                 <p>If you can read this, your browser does not support the audio element.</p>
@@ -60,16 +62,51 @@
                     </div>
                 </div>
               <div class="form" id="loginModalForm">
-                <div class="thumbnail"><img><span>Logo goes here</span></div>
-                <form class="login-form" >
-                  <input type="text" placeholder="Username"/>
-                  <input type="password" placeholder="Password"/>
-                  <button>Login</button>
-                  <p class="message">Not registered? <a href="#">Create an account</a></p>
+                <div class="thumbnail"><img><span>Logo Goes Here</span></div>
+                <form class="register-form" onchange="saveFormData()">
+                    <!-- First Name<br> -->
+                    <input type="text" name="firstname" id="first" placeholder="First Name">
+                    <!-- <br>Last Name<br> -->
+                    <input type="text" name="lastname" id="last" placeholder="Last Name">
+                    <!-- <br>E-mail Address<br> -->
+                    <input type="text" name="e-mail" id="email" placeholder="E-mail address">
+                    <!-- <br>Password<br> -->
+                    <input type="password" name="pwdtxt" id="password" placeholder="Password">
+                    <!-- <br>Confirm Password<br> -->
+                    <input type="password" name="cpwdtxt" id="password2" placeholder="Confirm Password">
+                    <input  type="text" name="zip" id="zip" placeholder="zip">
+                    <label class="gender">
+                        Male<input type="radio" name="gender" id="male" value="Male">
+                        <span class="checkmark"></span>
+                        Female<input type="radio" name="gender" id="female" value="Female">
+                        <span class="checkmark"></span>    
+                    </label>
+                    <select id="selectCountry" onchange="saveLocalization(this)"></select>
+                    <select id="selectTimeZone" onchange="saveLocalization(this)"></select>
+                    <div>
+                        <p>By joining BpM, you agree to the 
+                        <a style="cursor: pointer; color: white" onclick="location.href='termsandcondition.html'">Terms</a>
+                        and
+                        <a style="cursor: pointer; color: white" onclick="location.href='termsandcondition.html'">Policy</a>
+                        of BpM</p>
+                      </div>
+                    <br><br>        
+                    <button>Register</button>
+
                 </form>
-              </div>
+                <form class="login-form" >
+                    <input type="text" placeholder="Username/Email Address"/>
+                    <input type="password" placeholder="Password"/>
+                    <button>Login</button>
+                </form>
+                <p class="message" id="CreateAnAccLink">Not Registered? <a href="#">Create An Account</a></p>
+                <p class="message" id="SignInLink" style="display: none">Already Registered? <a href="#">Sign In</a></p>
+            </div>
             </center>
             <main id="main">
+                    <!-- <div>
+                            <iframe src="registrationModal.html" name="targetframe" allowTransparency="false" scrolling="no" frameborder="0" ></iframe>
+                        </div></li> -->
                     <div id="menu" class="menu">
                             <div class="title">M<br>E<br>N<br>U</div>
                             <center><li><a href="#" id="login" onclick="openLoginModalPage()">Login</a></li></center>
@@ -77,7 +114,7 @@
                             <ul class="nav">
                               <li><a href="index.html">Home</a></li>
                               <li><a href="#">Profile</a></li>
-                              <li><a href="#">Register</a></li>
+                              <li><a onclick="openRegistration()">Register</a>
                               <li><a href="#">Market</a></li>
                             </ul>
                         </div>
@@ -210,7 +247,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://code.jquery.com/ui/jquery-ui-git.js"></script>
         <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
-        <script src="js/listenscript.js"></script>
+        <script type="text/javascript" src="js/listenscript.js"></script>
 
 </body>
 </html>
