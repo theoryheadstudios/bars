@@ -1199,7 +1199,7 @@ span.coin-face {
   border-top-right-radius: 25px;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
-  opacity: 1;
+  opacity: 0;
   /* visibility: hidden; */
   transition: 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   text-align: center;
@@ -1211,7 +1211,6 @@ span.coin-face {
 }
 
 .form .thumbnail {
-  /* overflow-y: scroll; */
   background: rgb(7, 174, 224);
   width: 150px;
   height: 150px;
