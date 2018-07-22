@@ -1200,7 +1200,7 @@ span.coin-face {
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
   opacity: 0;
-  /* visibility: hidden; */
+  visibility: hidden;
   transition: 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   text-align: center;
   outline: none;
