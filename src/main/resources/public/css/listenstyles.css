@@ -1137,21 +1137,26 @@ span.coin-face {
     width: 320px;
     height: 320px;
     z-index: 4;
-    background: rgba(45, 70, 117, 0.527);
   }
   .video-thumbnail:before {
+    visibility: hidden;
     position: absolute;
-    top: 50%;
+    top: 50%; 
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    content: "\25B6";
+    content: url("../images/speakerMute.png");
     font-size: 100px;
     color: #fff;
     opacity: .8;
     text-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
   }
+  .video-thumbnail:hover {
+    background: rgba(45, 70, 117, 0.342);
+  }
   .video-thumbnail:hover:before {
+    /* background: rgba(45, 70, 117, 0.527); */
+    visibility: visible;
     color: rgba(195, 199, 207, 0.527);
   }
 

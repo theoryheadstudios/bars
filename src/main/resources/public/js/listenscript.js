@@ -1,3 +1,25 @@
+var UID = {
+	_current: 0,
+	getNew: function(){
+		this._current++;
+		return this._current;
+	}
+};
+HTMLElement.prototype.pseudoStyle = function(element,prop,value){
+	var _this = this;
+	var _sheetId = "pseudoStyles";
+	var _head = document.head || document.getElementsByTagName('head')[0];
+	var _sheet = document.getElementById(_sheetId) || document.createElement('style');
+	_sheet.id = _sheetId;
+	var className = "pseudoStyle" + UID.getNew();
+	
+	_this.className +=  " "+className; 
+	
+	_sheet.innerHTML += " ."+className+":"+element+"{"+prop+":"+value+"}";
+	_head.appendChild(_sheet);
+	return this;
+};
+
 var loginModal = document.getElementById('loginModal');
 var loginModalForm = document.getElementById('loginModalForm');
 var isLoginOpen = false;
@@ -16,6 +38,7 @@ function openLoginModalPage(){
     isLoginOpen = true;
   }
 }
+
 
 // if User presses 'Escape' then close the modal
 document.onkeydown = function(event) {
@@ -48,11 +71,35 @@ var audioPlay = document.getElementById("audioPlayer");
 window.onload = function(){ 
   randomizeImage();
   audioPlay.volume = 0.0;
+  audioPlay.muted=true;
+  audioPlay.autoplay=true;
   	setTimeout(function(){
       document.body.classList.add('#welcome')
     document.body.classList.add("loaded");
     // document.getElementById("welcome").style.display = "none";
-	}, 1000);
+  }, 1000);
+  audioPlay.addEventListener("timeupdate", function() {
+    var currentTime = audioPlay.currentTime;
+    var minutes = "0" + Math.floor(currentTime / 60);
+    var seconds = "0" +  Math.floor(currentTime - minutes * 60);
+    var durTime = minutes.substr(-2) + ":" + seconds.substr(-2);
+    startTime.innerHTML = durTime;
+    var duration = audioPlay.duration;
+    $('#progress-bar').stop(true,true).animate({'width':(currentTime +.25)/duration*100+'%'},200,'linear');
+    if((currentTime >= 3 && currentTime <= 3.2) || (currentTime >= 7 && currentTime <= 7.2)){
+      document.getElementById('coinsEarned').value += 1;
+      var coin = document.getElementById('coinsEarned').value;
+      document.getElementById('coinsEarned').innerHTML = 'Coins: '+coin;              
+    }
+    if(currentTime >= 3 && currentTime <= 7){
+      document.getElementById('coin').style.display = 'block';
+      document.getElementById('coinPlusOne').style.display = 'block';
+    }
+    else{
+      document.getElementById('coin').style.display = 'none';
+      document.getElementById('coinPlusOne').style.display = 'none';
+    }
+});
 } 
 
 function randomizeImage(){
@@ -124,16 +171,20 @@ function addClass( element, classname ) {
     };
 
     function play() {
-      document.getElementById('overlayPlay').style.display = "none";
         var endMinutes = "0" + Math.floor(audioPlay.duration / 60);
         var endseconds = "0" +  Math.floor(audioPlay.duration - endMinutes * 60);
         var endDurTime = endMinutes.substr(-2) + ":" + endseconds.substr(-2);
         document.getElementById('endTime').innerHTML = endDurTime;
-      if(Play_Pause % 2 == 0){
-        audioPlay.play();
+      if(Play_Pause % 2 === 0){
+        document.getElementById('volume').value = "100";
+        audioPlay.muted=false;
+        document.getElementById('overlayPlay').pseudoStyle("before", "content", "url('images/speaker.png')");
+        setVolume(1);
+
         audioPlay.addEventListener("ended", function(){
-          audioPlay.currentTime = 0;
          console.log("ended");
+        //  audioPlay.pause();
+         audioPlay.currentTime = 0;
          audioPlay.type="audio/mpeg";
          audioPlay.src="No Flex Zone.mp3";
           document.getElementById('title-text').innerHTML = "Rae Sremmurd - No Flex Zone";
@@ -143,32 +194,12 @@ function addClass( element, classname ) {
           audioPlay.play();
     });
         document.getElementById('title-text').innerHTML = "Sampler - Sample Track";
-        audioPlay.addEventListener("timeupdate", function() {
-            var currentTime = audioPlay.currentTime;
-            var minutes = "0" + Math.floor(currentTime / 60);
-            var seconds = "0" +  Math.floor(currentTime - minutes * 60);
-            var durTime = minutes.substr(-2) + ":" + seconds.substr(-2);
-            startTime.innerHTML = durTime;
-            var duration = audioPlay.duration;
-            $('#progress-bar').stop(true,true).animate({'width':(currentTime +.25)/duration*100+'%'},200,'linear');
-            if((currentTime >= 3 && currentTime <= 3.2) || (currentTime >= 7 && currentTime <= 7.2)){
-              document.getElementById('coinsEarned').value += 1;
-              var coin = document.getElementById('coinsEarned').value;
-              document.getElementById('coinsEarned').innerHTML = 'Coins: '+coin;              
-            }
-            if(currentTime >= 3 && currentTime <= 7){
-              document.getElementById('coin').style.display = 'block';
-              document.getElementById('coinPlusOne').style.display = 'block';
-            }
-            else{
-              document.getElementById('coin').style.display = 'none';
-              document.getElementById('coinPlusOne').style.display = 'none';
-            }
-        });
-
       }
       else{
-        audioPlay.pause();
+        document.getElementById('volume').value = "0";
+        audioPlay.muted=true;
+        setVolume(0);
+        document.getElementById('overlayPlay').pseudoStyle("before", "content", "url('images/speakerMute.png')");
       }
       Play_Pause++;
     }
