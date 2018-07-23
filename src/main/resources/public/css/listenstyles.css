@@ -14,6 +14,7 @@ body {
     background-color: #000;
     color: rgba(255, 255, 255, 0.7);
     cursor: default;
+    overflow: hidden;
 }
 
 
@@ -1137,21 +1138,26 @@ span.coin-face {
     width: 320px;
     height: 320px;
     z-index: 4;
-    background: rgba(45, 70, 117, 0.527);
   }
   .video-thumbnail:before {
+    visibility: hidden;
     position: absolute;
-    top: 50%;
+    top: 50%; 
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    content: "\25B6";
+    content: url("../images/speakerMute.png");
     font-size: 100px;
     color: #fff;
     opacity: .8;
     text-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
   }
+  .video-thumbnail:hover {
+    background: rgba(45, 70, 117, 0.342);
+  }
   .video-thumbnail:hover:before {
+    /* background: rgba(45, 70, 117, 0.527); */
+    visibility: visible;
     color: rgba(195, 199, 207, 0.527);
   }
 
@@ -1179,18 +1185,12 @@ span.coin-face {
     right: -380px;
   }
 
-
-
-
   /* Form */
 .form {
-  /* display: none; */
-  visibility: hidden;
   position: relative;
   z-index: 10;
-  overflow: hidden;
   background: rgba(0, 0, 0, 0.877);
-  max-width: 300px;
+  width: 350px;
   /* margin: 20% auto 100px; */
   padding: 30px;
   border-style: solid;
@@ -1200,6 +1200,7 @@ span.coin-face {
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
   opacity: 0;
+  visibility: hidden;
   transition: 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   text-align: center;
   outline: none;
@@ -1208,6 +1209,7 @@ span.coin-face {
   -ms-user-select: none;
   user-select: none;
 }
+
 .form .thumbnail {
   background: rgb(7, 174, 224);
   width: 150px;
@@ -1225,6 +1227,7 @@ span.coin-face {
   width: 100%;
 }
 .form input {
+  overflow-y: auto;
   outline: 0;
   background: #f2f2f2;
   width: 100%;
@@ -1263,7 +1266,13 @@ span.coin-face {
   text-decoration: none;
 }
 .form .register-form {
+  /* position: fixed; */
+  overflow-y: auto;
+  height: 300px;
+  padding-right: 15px;
+  /* width: 350px; */
   display: none;
+  /* top: 0; right: 0; bottom: 0; left: 0; */
 }
 
 .container {
