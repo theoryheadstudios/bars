@@ -1207,8 +1207,8 @@ span.coin-face {
   border-top-right-radius: 25px;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
-  opacity: 1;
-  /* visibility: hidden; */
+  opacity: 0;
+  visibility: hidden;
   transition: 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   text-align: center;
   outline: none;
@@ -1296,8 +1296,8 @@ span.coin-face {
   border: #000;
   outline-color: #000;
   position: relative;
-  opacity: 1;
-  /* visibility: hidden; */
+  opacity: 0;
+  visibility: hidden;
   z-index: 10;
   max-width: 300px;
   margin: 0 auto;
