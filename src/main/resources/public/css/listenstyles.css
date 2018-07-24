@@ -1,6 +1,4 @@
-@media only screen and (max-width: 760px) {
 
-}
 
 body {
     /* margin: 0; */
@@ -14,7 +12,7 @@ body {
     background-color: #000;
     color: rgba(255, 255, 255, 0.7);
     cursor: default;
-    overflow: hidden;
+    overflow: auto;
 }
 
 
@@ -356,9 +354,6 @@ h2 {
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (min-width: 35em) {
-    /* Style adjustments for viewports that meet the condition */
-}
 
 @media print,
        (-o-min-device-pixel-ratio: 5/4),
@@ -1185,6 +1180,19 @@ span.coin-face {
     right: -380px;
   }
 
+  @media  screen and (max-width: 520px) {
+    .form {
+      width: 200px !important;
+    }
+  }
+
+  @media screen and (max-width: 350px){
+    .form,
+    .container {
+      left: -10px !important;
+    }
+  }    
+
   /* Form */
 .form {
   position: relative;
@@ -1199,8 +1207,8 @@ span.coin-face {
   border-top-right-radius: 25px;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
-  opacity: 0;
-  visibility: hidden;
+  opacity: 1;
+  /* visibility: hidden; */
   transition: 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   text-align: center;
   outline: none;
@@ -1241,6 +1249,16 @@ span.coin-face {
   box-sizing: border-box;
   font-size: 14px;
 }
+.genderRadio {
+  line-height: 50px;
+}
+.genderRadio input {
+  position: relative;
+  width: auto;
+  top: 17px;
+  margin: 0 12px 0 12px;
+  vertical-align: top;
+}
 .form button {
   outline: 0;
   background: rgb(7, 174, 224);;
@@ -1266,23 +1284,23 @@ span.coin-face {
   text-decoration: none;
 }
 .form .register-form {
-  /* position: fixed; */
   overflow-y: auto;
+  overflow-x: hidden;
   height: 300px;
   padding-right: 15px;
-  /* width: 350px; */
   display: none;
-  /* top: 0; right: 0; bottom: 0; left: 0; */
 }
 
 .container {
+  outline: #000000;
+  border: #000;
+  outline-color: #000;
   position: relative;
-  visibility: hidden;
+  opacity: 1;
+  /* visibility: hidden; */
   z-index: 10;
-  overflow: hidden;
   max-width: 300px;
   margin: 0 auto;
-  opacity: 0;
   transition: 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 .container:before, .container:after {
@@ -1312,3 +1330,36 @@ span.coin-face {
 .container .info span .fa {
   color: rgb(7, 174, 224);;
 }
+
+
+.radio-group input[type=radio] {
+  position: absolute;
+  visibility: hidden;
+  display: none;
+}
+
+.radio-group label {
+  color: white;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 5px 20px;
+}
+
+.radio-group input[type=radio]:checked + label {
+  color: #ccc8ce;
+  background: rgba(111, 122, 122, 0.568);
+}
+
+.radio-group label + .radio-group input[type=radio] + label {
+  border-left: solid 3px #675f6b;
+}
+
+.radio-group {
+  border: solid 3px aqua;
+  display: inline-block;
+  margin: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+

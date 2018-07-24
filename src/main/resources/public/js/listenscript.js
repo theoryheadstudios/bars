@@ -55,9 +55,14 @@ document.onkeydown = function(event) {
 };
 
 var main = document.getElementById("main");
+var bg = document.getElementById("bg");
+var album = document.getElementById("albumCover");
+var overlayMuteUnmute = document.getElementById("overlayMuteUnmute");
+
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (isLoginOpen && (event.target === main)) {
+  if (isLoginOpen && ((event.target === main) || (event.target === bg)
+  || (event.target === album) || (event.target === overlayMuteUnmute))) {
     loginModal.style.opacity = '0';
     loginModal.style.visibility = 'hidden';
     loginModalForm.style.opacity = '0';
@@ -176,9 +181,9 @@ function addClass( element, classname ) {
         var endDurTime = endMinutes.substr(-2) + ":" + endseconds.substr(-2);
         document.getElementById('endTime').innerHTML = endDurTime;
       if(Play_Pause % 2 === 0){
-        document.getElementById('volume').value = "100";
+        // setVolume(1);
         audioPlay.muted=false;
-        document.getElementById('overlayPlay').pseudoStyle("before", "content", "url('images/speaker.png')");
+        document.getElementById('overlayMuteUnmute').pseudoStyle("before", "content", "url('images/speaker.png')");
         setVolume(1);
 
         audioPlay.addEventListener("ended", function(){
@@ -197,10 +202,9 @@ function addClass( element, classname ) {
         document.getElementById('title-text').innerHTML = "Sampler - Sample Track";
       }
       else{
-        document.getElementById('volume').value = "0";
         audioPlay.muted=true;
-        setVolume(0);
-        document.getElementById('overlayPlay').pseudoStyle("before", "content", "url('images/speakerMute.png')");
+        // setVolume(0);
+        document.getElementById('overlayMuteUnmute').pseudoStyle("before", "content", "url('images/speakerMute.png')");
       }
       Play_Pause++;
     }

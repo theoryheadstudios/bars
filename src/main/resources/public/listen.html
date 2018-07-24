@@ -64,23 +64,21 @@
               <div class="form" id="loginModalForm">
                 <div class="thumbnail"><img><span>Logo Goes Here</span></div>
                 <form class="register-form" onchange="saveFormData()">
-                    <!-- First Name<br> -->
                     <input type="text" name="firstname" id="first" placeholder="First Name">
-                    <!-- <br>Last Name<br> -->
                     <input type="text" name="lastname" id="last" placeholder="Last Name">
-                    <!-- <br>E-mail Address<br> -->
                     <input type="text" name="e-mail" id="email" placeholder="E-mail address">
-                    <!-- <br>Password<br> -->
                     <input type="password" name="pwdtxt" id="password" placeholder="Password">
-                    <!-- <br>Confirm Password<br> -->
                     <input type="password" name="cpwdtxt" id="password2" placeholder="Confirm Password">
                     <input  type="text" name="zip" id="zip" placeholder="zip">
-                    <label class="gender">
-                        Male<input type="radio" name="gender" id="male" value="Male">
-                        <span class="checkmark"></span>
-                        Female<input type="radio" name="gender" id="female" value="Female">
-                        <span class="checkmark"></span>    
-                    </label>
+                    <div class="radio-group">
+                        <input type="radio" id="male" name="selector"><label for="male">Male</label>
+                        <input type="radio" id="female" name="selector"><label for="female">Female</label>
+                        <input type="radio" id="other" name="selector"><label for="other">Other</label>
+                    </div>
+                    <!-- <div class="genderRadio">
+                        <input type="radio" name="gender" id="male" value="Male">Male
+                        <input type="radio" name="gender" id="female" value="Female">Female
+                    </div> -->
                     <select id="selectCountry" onchange="saveLocalization(this)"></select>
                     <select id="selectTimeZone" onchange="saveLocalization(this)"></select>
                     <div>
@@ -214,13 +212,13 @@
                 </nav> -->
                 <span id='coin' class="coin-face"></span><h2 id="coinPlusOne" class="fadeInOut">+1</h2>
 
-                <center>
+                <!-- <center>
                 <div id="player">
                     <div id="volume" value="0"></div>
                 </div>
-            </center>
+                </center> -->
                 <center>
-                    <div id="overlayPlay" class="video-thumbnail" onclick="play()"></div>
+                    <div id="overlayMuteUnmute" class="video-thumbnail" onclick="play()"></div>
                     <div id="albumCover"></div>
                 </center>
                 <div id="progress">
