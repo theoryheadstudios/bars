@@ -2,6 +2,7 @@ package com.theoryheadstudios.demo;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.theoryheadstudios.demo.model.UsersEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import javax.sound.sampled.AudioFileFormat;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.transaction.Transactional;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -82,37 +86,43 @@ public class MainController {
 
     }
 
-    public void printAllItems(User user){
-        System.out.println(user.getFirst_name());
-        System.out.println(user.getLast_name());
-        System.out.println(user.getUser_email());
+    public void printAllItems(UsersEntity user){
+        System.out.println(user.getFirstName());
+        System.out.println(user.getLastName());
+        System.out.println(user.getUserEmail());
         System.out.println(user.getPassword());
-        System.out.println(user.getAccount_number());
-        System.out.println(user.getDate_of_birth());
+        System.out.println(user.getAccountNumber());
         System.out.println(user.getCountry());
         System.out.println(user.getZip());
-        System.out.println(user.getTime_zone());
-        System.out.println(user.getUser_name());
-        System.out.println(user.getSocial_link_1());
-        System.out.println(user.getSocial_link_2());
-        System.out.println(user.getSocial_link_3());
-        System.out.println(user.getPoints_balance());
+        System.out.println(user.getTimeZone());
+        System.out.println(user.getUserName());
+        System.out.println(user.getSocialLink1());
+        System.out.println(user.getSocialLink2());
+        System.out.println(user.getSocialLink3());
+        System.out.println(user.getPointsBalance());
+        try {
+            AudioFileFormat format = AudioSystem.getAudioFileFormat(new File("/Users/freddyacevedo/IdeaProjects/Bars2018/src/main/Bounce.mp3"));
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
     @Transactional
-    @RequestMapping(value = "/createUser", method = RequestMethod.POST, headers = "Accept=*/*")
-    public String createUser(@RequestBody User user){
+    @RequestMapping(value = "/createUser", method = RequestMethod.POST)
+    public String createUser(@RequestBody UsersEntity user){
             try{
                 printAllItems(user);
-                user.setPassword("example");
-                user.setAccount_number(user.getId());
-                System.out.println(user.getPassword());
-                System.out.println("Input user password before encryption: "+ user.getPassword());
-                user.setPassword(passwordEncoder.encode(user.getPassword()));
+//                user.setPassword("example");
+//                user.setAccountNumber(user.getAccountNumber());
+//                System.out.println(user.getPassword());
+//                System.out.println("Input user password before encryption: "+ user.getPassword());
+//                user.setPassword(passwordEncoder.encode(user.getPassword()));
                 em.persist(user);
                 em.flush();
-               System.out.println("Input user password after encryption: "+ user.getPassword());
+//               System.out.println("Input user password after encryption: "+ user.getPassword());
 
                //Compare User input with encrypted
                if(passwordEncoder.matches("password", user.getPassword())){

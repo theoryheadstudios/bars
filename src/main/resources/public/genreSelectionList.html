@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Genre Selection</title>
+</head>
+<style>
+    #customers {
+        display: block;
+        width: 100%
+    }
+
+    /* #customers thead { display: none; } */
+    #customers th,
+    #customers td {
+        display: block;
+        padding: 0;
+        text-align: center;
+        white-space: normal;
+    }
+
+    #customers tr {
+        padding-bottom: 11px;
+        margin-bottom: 11px;
+    }
+
+    #customers th[data-title]:before,
+    #customers td[data-title]:before {
+        content: attr(data-title) ":\00A0";
+        font-weight: bold;
+    }
+    #customers td {
+        border: none;
+        margin-bottom: 6px;
+        color: #444;
+    }
+
+
+
+    .checkBoxStyle{
+        width: 30px;
+        height: 30px;
+        background: #ddd;
+        margin: 20px 90px;
+
+        align-self: left;
+        border-radius: 100%;
+        position: relative;
+        box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .checkBoxStyle input {
+        display: none;
+    }
+
+    .checkBoxStyle label {
+        display: block;
+        width: 20px;
+        height: 20px;
+        border-radius: 100px;
+
+        padding-top: 0.5px;
+        transition: all .5s ease;
+        cursor: pointer;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        z-index: 1;
+        text-indent: 30px;
+
+        background: #333;
+        box-shadow:inset 0px 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .checkBoxStyle label:hover{
+        background: springgreen;
+    }
+
+    .checkBoxStyle input[type=checkbox]:checked + label {
+        background: chartreuse;
+    }
+
+
+
+
+
+    .button {
+        border-radius: 4px;
+        background:#2196F3;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+    }
+
+    .button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+
+    .button span::after{
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+
+    .button span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+
+    .button:hover span {
+        padding-right: 25px;
+    }
+
+    .button:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+</style>
+<body>
+<div>
+    <div class="w3-container w3-center w3-animate-right" id="firstForm" >
+        <center>
+            <table id="customers">
+                <center><p>What type of music do you like?</p></center>
+                <tr>
+                    <td>
+                        <div class="checkBoxStyle" data-title="Category">
+                            <input onclick="saveData(this)"  type="checkbox"  id="Alternative" name="check" value="Alternative"/>
+                            <label for="Alternative">Alternative</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="checkBoxStyle" data-title="Category">
+                            <input onclick="saveData(this)"  type="checkbox"  id="Country" name="check" value="Country"/>
+                            <label for="Country">Country</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="checkBoxStyle" data-title="Category">
+                            <input onclick="saveData(this)"  type="checkbox"  id="Jazz" name="check" value="Jazz"/>
+                            <label for="Jazz">Jazz</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="checkBoxStyle" data-title="Category">
+                            <input onclick="saveData(this)"  type="checkbox"  id="Latino" name="check" value="Latino"/>
+                            <label for="Latino">Latino</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="checkBoxStyle" data-title="Category">
+                            <input onclick="saveData(this)"  type="checkbox"  id="World" name="check" value="World"/>
+                            <label for="World">World</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="checkBoxStyle" data-title="Category">
+                            <input onclick="saveData(this)"  type="checkbox"  id="EDM" name="check" value="EDM"/>
+                            <label for="EDM">EDM</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="checkBoxStyle" data-title="Category">
+                            <input onclick="saveData(this)"  type="checkbox"  id="House" name="check" value="House"/>
+                            <label for="House">House</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td >
+                        <div class="checkBoxStyle" data-title="Category">
+                            <input onclick="saveData(this)"  type="checkbox"  id="Metal" name="check" value="Metal"/>
+                            <label for="Metal">Metal</label>
+                        </div>
+                    </td>
+                    <td >
+                        <div class="checkBoxStyle" data-title="Category">
+                            <input onclick="saveData(this)"  type="checkbox"  id="Djent" name="check" value="Djent"/>
+                            <label for="Djent">Djent</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="checkBoxStyle" data-title="Category">
+                            <input onclick="saveData(this)"  type="checkbox"  id="Dubstep" name="check" value="Dubstep"/>
+                            <label for="Dubstep">Dubstep</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="checkBoxStyle" data-title="Category">
+                            <input onclick="saveData(this)"  type="checkbox"  id="Pop" name="check" value="Pop"/>
+                            <label for="Pop">Pop</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="checkBoxStyle" data-title="Category">
+                            <input onclick="saveData(this)"  type="checkbox"  id="Hip-Hop" name="check" value="Hip-Hop"/>
+                            <label for="Hip-Hop">Hip-Hop</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="checkBoxStyle" data-title="Category">
+                            <input onclick="saveData(this)"  type="checkbox"  id="RnB" name="check" value="RnB"/>
+                            <label for="RnB">RnB</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="checkBoxStyle" data-title="Category">
+                            <input onclick="saveData(this)"  type="checkbox"  id="Soul" name="check" value="Soul"/>
+                            <label for="Soul">Soul</label>
+                        </div>
+                    </td>
+                </tr>
+            </table><br><br>
+            <center><button class="button" id="nextBtn" onclick="onClickNext()"><span>Next </span></button></center>
+            <center><button class="button" id="backBtn" style="float: left; display: none;" onclick="onClickBack()"><span>Back </span></button></center>
+        </center>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gender Selection</title>
+</head>
+<body>
+<div class="w3-container w3-center w3-animate-right" id="step3form" style="display: none" value="3">
+    <div class="trackerContainer"></div>
+    <center>
+        <p>What is your gender?</p>
+        <center>
+            <table id="customers">
+                <tr>
+                    <td>
+                        <form action="" >
+                            <label class="gender">Male
+                                <input type="radio" name="gender" id="male" value="Male" onchange="saveGender(this)">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="gender">Female
+                                <input type="radio" name="gender" id="female" value="Female" onchange="saveGender(this)">
+                                <span class="checkmark"></span>
+                            </label>
+                        </form>
+                        <!-- <div class="checkBoxStyle">
+                          <input onclick="saveData(this)"  type="checkbox"  id="Something" name="check" value="Something"/>
+                          <label for="Something">Something</label>
+                        </div>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>
+                        <div class="checkBoxStyle">
+                          <input onclick="saveData(this)"  type="checkbox"  id="Goes" name="check" value="Goes"/>
+                          <label for="Goes">Goes</label>
+                        </div>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>
+                        <div class="checkBoxStyle">
+                          <input onclick="saveData(this)"  type="checkbox"  id="Here" name="check" value="Here"/>
+                          <label for="Here">Here</label>
+                        </div> -->
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <br>
+</div>
+<center><button class="button" id="nextBtn" onclick="onClickNext()"><span>Next </span></button></center>
+<center><button class="button" id="backBtn" style="float: left; display: none;" onclick="onClickBack()"><span>Back </span></button></center>
+</body>
+</html>
