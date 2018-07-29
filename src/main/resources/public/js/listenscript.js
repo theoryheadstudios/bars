@@ -76,8 +76,11 @@ var audioPlay = document.getElementById("audioPlayer");
 window.onload = function(){ 
   randomizeImage();
   audioPlay.volume = 0.0;
+  audioPlay.setAttribute("type", "audio/mpeg");
+  audioPlay.setAttribute("src", "DarkBells.mp3");
   audioPlay.muted=true;
   audioPlay.autoplay=true;
+  audioPlay.preload="all";
   	setTimeout(function(){
       document.body.classList.add('#welcome')
     document.body.classList.add("loaded");
@@ -113,7 +116,7 @@ function randomizeImage(){
     var tmp = num;
     while(tmp === num)
       num = Math.ceil( Math.random() * totalCount );
-
+  num = 7;
     var pathToImages = "url(images/listen"+num+'.jpg'+')';
     document.getElementById('bg-before').style.backgroundImage = pathToImages;
     document.getElementById('albumCover').style.backgroundImage =  pathToImages;
@@ -181,6 +184,7 @@ function addClass( element, classname ) {
         var endDurTime = endMinutes.substr(-2) + ":" + endseconds.substr(-2);
         document.getElementById('endTime').innerHTML = endDurTime;
       if(Play_Pause % 2 === 0){
+        audioPlay.play();
         // setVolume(1);
         audioPlay.muted=false;
         document.getElementById('overlayMuteUnmute').pseudoStyle("before", "content", "url('images/speaker.png')");
@@ -190,8 +194,8 @@ function addClass( element, classname ) {
          console.log("ended");
         //  audioPlay.pause();
          audioPlay.currentTime = 0;
-         audioPlay.type="audio/mpeg";
-         audioPlay.src="No Flex Zone.mp3";
+         audioPlay.setAttribute("type", "audio/mpeg");
+         audioPlay.setAttribute("src", "No Flex Zone.mp3");
         //  audioPlay.load();
           document.getElementById('title-text').innerHTML = "Rae Sremmurd - No Flex Zone";
           // audioPlay.src="sampleAudio.mp3";
@@ -270,3 +274,17 @@ $('#SignInLink').click(function(){
   document.getElementById('CreateAnAccLink').style.display = 'block';
   document.getElementById('SignInLink').style.display = 'none';
 });
+
+
+function httpGetAsync(){
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.onreadystatechange = function() {
+    if(xmlHttp.readyState === 4 && xmlHttp.status === 200){
+      console.log((xmlHttp.responseText));
+    }else {
+      console.log("Error");
+    }
+  }
+  xmlHttp.open("GET", "http://localhost:3000/listOfAllUsers", true);
+  xmlHttp.send(null);
+}

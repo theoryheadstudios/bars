@@ -1318,6 +1318,8 @@ span.coin-face {
   font-size: 36px;
   font-weight: 300;
   color: white;
+  text-shadow: 5px 5px 5px #222222;
+  -webkit-text-stroke: 0.2px black;
 }
 .container .info span {
   color: #4d4d4d;
