@@ -626,7 +626,9 @@ h1 {
 }
 /* Track */
 ::-webkit-scrollbar-track {
-    background: grey; 
+    border-radius: 4px;
+    background: rgba(255, 254, 254, 0.904);; 
+    box-shadow: 0 0 1px rgba(255, 254, 254, 0.904);;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -638,7 +640,7 @@ h1 {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:active {
-    background: rgba(255,255,255,.5); 
+    background: rgba(37, 37, 37, 0.5); 
 }
 
 .sidenav:hover, .sidenav:active, .sidenav:focus {
@@ -739,6 +741,7 @@ h1 {
 
   #progress {
     width: 100%;
+    border-radius: 4px;
     background-color: rgba(186, 195, 211, 0.2);
   }
   
