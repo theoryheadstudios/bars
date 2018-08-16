@@ -58,7 +58,7 @@ function initProgressBar() {
   else{
     flag = false;
     document.getElementById('coin').style.display = 'none';
-    document.getElementById('coinPlusOne').style.opacity = '0%';
+    document.getElementById('coinPlusOne').style.display = 'none';
   }
   
   // calculate current value time
@@ -232,20 +232,18 @@ function addClass( element, classname ) {
       document.getElementById('overlayMuteUnmute').pseudoStyle("before", "content", "url('images/speaker.png')");
       setVolume(1);
 
-      // player.addEventListener("ended", function(){
-      //  console.log("ended");
-      // //  player.pause();
-      //  player.currentTime = 0;
-      // //  player.setAttribute("type", "audio/mpeg");
-      // //  player.setAttribute("src", "No Flex Zone.mp3");
-      // //  player.load();
-      //   // document.getElementById('title-text').innerHTML = "Rae Sremmurd - No Flex Zone";
-      //   // player.src="sampleAudio.mp3";
-      //   // document.getElementById('title-text').innerHTML = "Sampler - Sample Track 2";
-      //   // addRowtoQueue("Rae Sremmurd", "No Flex Zone");
-      //   player.play();
-  // });
-      document.getElementById('title-text').innerHTML = "Sampler - Sample Track";
+      player.addEventListener("ended", function(){
+       console.log("ended");
+      //  player.pause();
+       player.currentTime = 0;
+       player.setAttribute("type", "audio/mpeg");
+       player.setAttribute("src", "DarkBells.mp3");
+       player.load();
+        document.getElementById('title-text').innerHTML = "Drake - NonStop";
+        addRowtoQueue("Rae Sremmurd", "No Flex Zone");
+        player.play();
+    });
+      document.getElementById('title-text').innerHTML = "Anonymous - DarkBells";
     }
     else{
       player.muted=true;
