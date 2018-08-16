@@ -40,22 +40,25 @@ player.onloadedmetadata = function() {
   var length = player.duration
   var totalLength = calculateTotalValue(length)
   document.getElementById('endTime').innerHTML = totalLength;
-  console.log(totalLength);
 };
+var flag = false;
 function initProgressBar() {
   var currentTime = player.currentTime;
-  if((currentTime >= 3 && currentTime <= 3.2) || (currentTime >= 7 && currentTime <= 7.2)){
-    document.getElementById('coinsEarned').value += 1;
-    var coin = document.getElementById('coinsEarned').value;
-    document.getElementById('coinsEarned').innerHTML = 'Coins: '+coin;              
-  }
-  if(currentTime >= 3 && currentTime <= 7){
+  if(parseInt(currentTime.toFixed()) >= 3 && parseInt(currentTime.toFixed()) <= 9){
+    if(flag == false){
+      document.getElementById('coinsEarned').value += 1;
+      var coin = document.getElementById('coinsEarned').value;
+      document.getElementById('coinsEarned').innerHTML = 'Coins: '+coin;
+      flag = true;
+    }
+  
     document.getElementById('coin').style.display = 'block';
     document.getElementById('coinPlusOne').style.display = 'block';
   }
   else{
+    flag = false;
     document.getElementById('coin').style.display = 'none';
-    document.getElementById('coinPlusOne').style.display = 'none';
+    document.getElementById('coinPlusOne').style.opacity = '0%';
   }
   
   // calculate current value time

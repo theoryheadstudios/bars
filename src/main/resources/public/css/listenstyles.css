@@ -920,12 +920,12 @@ span.coin-face {
     height: 32px;
     font-family: sans-serif;
     position: absolute;
-    top: 45%;
+    /* top: 45%; */
     /* right: auto;
     bottom: auto; */
-    left: 50%;
-    margin-top: -16px;
-    margin-left: -16px;
+    /* left: 50%; */
+    margin-top: 250px;
+    margin-left: 135px;
     text-align: center;
     line-height: 32px;
     border-radius: 16px;
@@ -1001,16 +1001,13 @@ span.coin-face {
     color: gold;
     width: 32px;
     height: 32px;
-    font-size: 17px;
+    font-size: 20px;
     font-family: sans-serif;
     position: absolute;
     padding-left: 32px;
-    top: 45%;
-    right: 50%;
+    margin-top: 250px;
+    margin-left: 140px;
     bottom: auto;
-    left: 50%;
-    margin-top: -16px;
-    margin-left: -16px;
     text-align: center;
     line-height: 32px;
     border-radius: 16px;
@@ -1018,11 +1015,11 @@ span.coin-face {
     -webkit-animation-name: fadeInOut;
     -moz-animation-name: fadeInOut;
     animation-name: fadeInOut;
-    /* animation-delay: 5.5s; */
     -webkit-animation-duration: 10s;
     -moz-animation-duration: 10s;
     animation-duration: 10s;
-}
+    /* animation-delay: 5.5s; */
+  }
 
 
 #coinsEarned{
