@@ -17,8 +17,8 @@
 <body>
 
 
-        <audio controls muted autoplay style="display: none;" id="audioPlayer">
-                <source src="SampleAudio.mp3"  type="audio/mpeg">
+        <audio controls muted autoplay style="display: none;" id="audioPlayer" ontimeupdate="initProgressBar()">
+                <source src="DarkBells.mp3"  type="audio/mpeg">
                 <p>If you can read this, your browser does not support the audio element.</p>
         </audio>
 <!-- <script type="text/javascript" src="js/listenscript.js">
@@ -49,9 +49,9 @@
                 <!-- left and right screen that disappear upon load of the page -->
                 <!-- <div class="loader-section section-left"></div>
                 <div class="loader-section section-right"></div>
-            </div> -->
+            </div>
             
-            <!-- <div class="loaded"></div> -->
+            <div class="loaded"></div> -->
                 
             <div id="bg-before"></div>
             <div id="bg"></div>
@@ -226,8 +226,8 @@
               </div>
 
               <div class="progressTime">
-                <p class="progressBarTime" id="startTime">00:00</p>
-                <p class="progressBarTime" id="endTime">00:00</p>
+                <p class="progressBarTime" id="startTime">0:00</p>
+                <p class="progressBarTime" id="endTime"></p>
             </div>
 
               <div id="title">
