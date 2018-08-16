@@ -89,16 +89,16 @@
                         of BpM</p>
                       </div>
                     <br><br>        
-                    <button>Register</button>
+                    <button onclick="createUser()">Register</button>
 
                 </form>
                 <form class="login-form" >
                     <input type="text" placeholder="Username/Email Address"/>
                     <input type="password" placeholder="Password"/>
-                    <button>Login</button>
+                    <button onclick="listAllUsers()">Login</button>
                 </form>
                 <p class="message" id="CreateAnAccLink">Not Registered? <a href="#">Create An Account</a></p>
-                <p class="message" id="SignInLink" style="display: none">Already Registered? <a href="#">Sign In</a></p>
+                <p class="message" id="SignInLink" style="display: none" >Already Registered? <a href="#">Sign In</a></p>
             </div>
             </center>
             <main id="main">
@@ -112,14 +112,14 @@
                             <ul class="nav">
                               <li><a href="index.html">Home</a></li>
                               <li><a href="#">Profile</a></li>
-                              <li><a onclick="openRegistration()">Register</a>
+                              <li><a id="menuRegister" onclick="openRegistration()">Register</a>
                               <li><a href="#">Market</a></li>
                             </ul>
                         </div>
 
                         <div id="mySidenav" class="sidenav">
                             <!-- <p id='xCloseSide' class="closebtn" onclick="openCloseQueue(mySidenav)">&times;</p> -->
-                        <table id="queueTable"  onclick="addRowtoQueue('Sample','Another Sample Track giandre giandre')">
+                        <table id="queueTable"  onclick="addRowtoQueue('Sample','Another Sample Track')">
                             <tr>
                                 <td>
                                     <div>

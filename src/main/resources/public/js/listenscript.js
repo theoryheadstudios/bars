@@ -332,10 +332,21 @@ $('#SignInLink').click(function(){
   document.getElementById('SignInLink').style.display = 'none';
 });
 
+function openRegistration(){
+  $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+  document.getElementById('SignInLink').style.display = 'block';
+  document.getElementById('CreateAnAccLink').style.display = 'none';
+  loginModal.style.opacity = '1';
+  loginModal.style.visibility = 'visible';
+  loginModalForm.style.opacity = '1';
+  loginModalForm.style.visibility = 'visible';
+  isLoginOpen = true;
+console.log("here");
+}
 
-function httpGetAsync(){
+function listAllUsers(){
   var xmlHttp = new XMLHttpRequest();
-  xmlHttp.onreadystatechange = function() {
+  xmlHttp.onload = function() {
     if(xmlHttp.readyState === 4 && xmlHttp.status === 200){
       console.log((xmlHttp.responseText));
     }else {
@@ -344,4 +355,55 @@ function httpGetAsync(){
   }
   xmlHttp.open("GET", "http://localhost:3000/listOfAllUsers", true);
   xmlHttp.send(null);
+}
+
+function createUser(){
+  var data = {}
+  data.firstName = "John";
+  data.lastName = "Doe";
+  data.accountNumber = Math.ceil( Math.random() * 8000 );
+  data.userEmail = "SampleEmail"+data.accountNumber+"@email.com";
+  data.password = "SamplePassword123";  
+  data.dateOfBirth = "1999-01-01";
+  data.country = "USA";
+  data.zip = "30009";
+  data.timeZone = "Eastern";
+  data.userName = "Migos";
+  data.socialLink1 = "http://myspace.com/bump";
+  data.socialLink2 = "http://myspace.com/bump1";
+  data.socialLink3 = "http://myspace.com/bump2";
+  data.pointsBalance = parseInt("7");
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "http://localhost:3000/createUser", true);
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.onload = function () {
+    if (xhr.readyState == 4 && xhr.status == 201) {
+      console.log(xhr.response);
+    } else {
+      ;
+    }
+  }
+  xhr.send(JSON.stringify(data));
+}
+
+function updateUser(){
+  var url = "http://localhost:3000/";
+
+  var data = {};
+  data.firstname = "John2";
+  data.lastname  = "Snow2";
+  var json = JSON.stringify(data);
+  
+  var xhr = new XMLHttpRequest();
+  xhr.open("PUT", url, true);
+  xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+  xhr.onload = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      console.log(xhr.response);
+    } else {
+     ;
+    }
+  }
+  xhr.send(json); 
 }
