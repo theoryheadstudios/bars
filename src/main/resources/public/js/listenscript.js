@@ -70,6 +70,7 @@ function initProgressBar() {
 
   progressbar.value = (player.currentTime / player.duration);
   $('#progress-bar').stop(true,true).animate({'width':progressbar.value*100+'%'},200,'linear');
+  // $('#progress-bar').stop(true,true).animate({'width':(currentTime +.25)/player.duration*100+'%'},200,'linear');
 };
 
 var UID = {
@@ -332,32 +333,46 @@ $('#SignInLink').click(function(){
   document.getElementById('SignInLink').style.display = 'none';
 });
 
-function openRegistration(){
-  $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-  document.getElementById('SignInLink').style.display = 'block';
-  document.getElementById('CreateAnAccLink').style.display = 'none';
-  loginModal.style.opacity = '1';
-  loginModal.style.visibility = 'visible';
-  loginModalForm.style.opacity = '1';
-  loginModalForm.style.visibility = 'visible';
-  isLoginOpen = true;
-console.log("here");
-}
 
 function listAllUsers(){
+console.log("Grabbing request: localhost:3000/listAllUsers");
   var xmlHttp = new XMLHttpRequest();
+  var fname = "", lname="";
   xmlHttp.onload = function() {
     if(xmlHttp.readyState === 4 && xmlHttp.status === 200){
-      console.log((xmlHttp.responseText));
+      // console.log((xmlHttp.responseText));
+      var data = JSON.parse(xmlHttp.responseText);
+      console.log("Account Number: "+ data.users[0].account_number)
+      for( var event in data){
+          var dataCpy = data[event];
+          for(var data in dataCpy){
+            var mainData = dataCpy[data];
+              for(var key in mainData){
+              if(key.match("first_name"))
+                fname = mainData[key];
+              else if(key.match("last_name"))
+                lname = mainData[key];
+//               console.log(key + " : " + mainData[key]);
+              }
+             addRowtoQueue(fname, lname);
+            }
+//        console.log(usr.first_name + ' ' + usr.last_name);
+      }
+      
     }else {
       console.log("Error");
     }
   }
   xmlHttp.open("GET", "http://localhost:3000/listOfAllUsers", true);
   xmlHttp.send(null);
+  
+  
+  // console.log(data.users.account_number + " " + data.users.user_email+" : " +data.users.id);
+  
 }
 
 function createUser(){
+console.log("Posting request: localhost:3000/createUser");
   var data = {}
   data.firstName = "John";
   data.lastName = "Doe";
@@ -388,6 +403,7 @@ function createUser(){
 }
 
 function updateUser(){
+console.log("Posting request: localhost:3000/updateUser");
   var url = "http://localhost:3000/";
 
   var data = {};

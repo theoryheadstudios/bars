@@ -1057,7 +1057,7 @@ span.coin-face {
     transform: translate3d(-130px, 0, 0);
      animation-timing-function: 1s ease-in;
    }
-  .menu .title {
+  .menu .menuTitle {
     position: absolute;
     top: 50%;
     -webkit-transform: translateY(-50%);
@@ -1069,8 +1069,12 @@ span.coin-face {
     font-size: 15px;
     font-style: normal;
   }
-  .menu .title:hover {
+  .menu .menuTitle:hover {
     cursor: pointer;
+  }
+  #login {
+    position: relative;
+    right: 12px;  
   }
   .menu .nav {
     position: absolute;
@@ -1129,8 +1133,8 @@ span.coin-face {
     display: inline-block;
     cursor: pointer;
     margin: auto;
-    width: 320px;
-    height: 320px;
+    width: 20rem;
+    height: 20rem;
     z-index: 4;
   }
   .video-thumbnail:before {
