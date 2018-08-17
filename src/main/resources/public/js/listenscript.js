@@ -150,6 +150,7 @@ window.onclick = function(event) {
 
 var audioPlay = document.getElementById("audioPlayer");
 window.onload = function(){ 
+  initializeQueue("Bankai", "Mighty Thunder");
   randomizeImage();
   player.volume = 0.0;
   player.setAttribute("type", "audio/mpeg");
@@ -171,7 +172,7 @@ function randomizeImage(){
     var tmp = num;
     while(tmp === num)
       num = Math.ceil( Math.random() * totalCount );
-  num = 7;
+
     var pathToImages = "url(images/listen"+num+'.jpg'+')';
     document.getElementById('bg-before').style.backgroundImage = pathToImages;
     document.getElementById('albumCover').style.backgroundImage =  pathToImages;
@@ -274,6 +275,24 @@ function addRowtoQueue(artist, track){
   document.getElementById('bg-before').style.backgroundImage = pathToImages;
   document.getElementById('albumCover').style.backgroundImage =  pathToImages;
   count++;
+}
+
+/*
+  function to initialize the queue upon page load
+*/
+function initializeQueue(artist, track) {
+  var c = 1;
+  for(var addRow = 0; addRow <= 20; addRow++){
+    if(c === 8){
+      c = 1;
+    }
+    var table = document.getElementById('queueTable');
+    var len = table.rows.length;
+    var row = table.insertRow(len);
+    var cell1 = row.insertCell(0);      
+    cell1.innerHTML = "<div><img id='sidenavimage' name='sideimg' class='navimage' src='images/listen"+c+".jpg'><p name='track'>"+artist+":<br>"+track+"</p></div>";
+    c++;
+  }
 }
 
 
