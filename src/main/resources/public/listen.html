@@ -62,23 +62,23 @@
                     </div>
                 </div>
               <div class="form" id="loginModalForm">
-                <div class="thumbnail"><img><span>Logo Goes Here</span></div>
+                <span id="loginModalClose" onclick="closeLoginModalForm()">×</span>
+                <div class="thumbnail"></div>
                 <form class="register-form" onchange="saveFormData()">
                     <input type="text" name="firstname" id="first" placeholder="First Name">
                     <input type="text" name="lastname" id="last" placeholder="Last Name">
                     <input type="text" name="e-mail" id="email" placeholder="E-mail address">
                     <input type="password" name="pwdtxt" id="password" placeholder="Password">
                     <input type="password" name="cpwdtxt" id="password2" placeholder="Confirm Password">
-                    <input  type="text" name="zip" id="zip" placeholder="zip">
+                    <input type="text" name="zip" id="zip" placeholder="Zip" onkeyup="validateZIP(this)" maxlength="10">
+                    <input type="text" name="dob" id="dob" placeholder="MM-DD-YYYY" onkeyup="validateDOB(this)" maxlength="10">
+                    <!-- FOR HTML5 use type="date" -->
+                    <!-- <input type="date" name="dateofbirth" id="dob" value="1900-01-01" onchange="validateDOB(this)"> -->
                     <div class="radio-group">
-                        <input type="radio" id="male" name="selector"><label for="male">Male</label>
-                        <input type="radio" id="female" name="selector"><label for="female">Female</label>
-                        <input type="radio" id="other" name="selector"><label for="other">Other</label>
+                        <input type="radio" id="male" name="selector" onchange="saveGender(this)"><label for="male">Male</label>
+                        <input type="radio" id="female" name="selector" onchange="saveGender(this)"><label for="female">Female</label>
+                        <input type="radio" id="other" name="selector" onchange="saveGender(this)"><label for="other">Other</label>
                     </div>
-                    <!-- <div class="genderRadio">
-                        <input type="radio" name="gender" id="male" value="Male">Male
-                        <input type="radio" name="gender" id="female" value="Female">Female
-                    </div> -->
                     <select id="selectCountry" onchange="saveLocalization(this)"></select>
                     <select id="selectTimeZone" onchange="saveLocalization(this)"></select>
                     <div>
@@ -102,56 +102,51 @@
             </div>
             </center>
             <main id="main">
-                    <!-- <div>
-                            <iframe src="registrationModal.html" name="targetframe" allowTransparency="false" scrolling="no" frameborder="0" ></iframe>
-                        </div></li> -->
-                    <div id="menu" class="menu">
-                            <div class="menuTitle">M<br>E<br>N<br>U</div>
-                            <li><a id="login" onclick="openLoginModalPage()">Login/Register</a></li>
-                            <li id="coinsEarned" value="0"></li>
-                            <ul class="nav">
-                              <li><a href="index.html">Home</a></li>
-                              <li><a href="#">Profile</a></li>
-                              <li><a href="#">Market</a></li>
-                            </ul>
-                        </div>
+            <!-- <div>
+                    <iframe src="registrationModal.html" name="targetframe" allowTransparency="false" scrolling="no" frameborder="0" ></iframe>
+                </div></li> -->
+                <div id="menu" class="menu">
+                    <div class="menuTitle">M<br>E<br>N<br>U</div>
+                    <li><a id="login" onclick="openLoginModalPage()">Login/Register</a></li>
+                    <li id="coinsEarned" value="0"></li>
+                    <ul class="nav">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Market</a></li>
+                    </ul>
+                </div>
 
-                        <div id="mySidenav" class="sidenav">
-                            <!-- <p id='xCloseSide' class="closebtn" onclick="openCloseQueue(mySidenav)">&times;</p> -->
-                        <table id="queueTable"  onclick="addRowtoQueue('Sample','Another Sample Track')"></table>
-                    </div>
-                        
-                    <span id="queue" style="font-size:20px;cursor:pointer" onclick="openCloseQueue(mySidenav)">&#8682;Queue</span>
-                          
+                <span id="queue" onclick="openCloseQueue(mySidenav)">&#8682;Queue</span>
+                <div id="mySidenav" class="sidenav">
+                        <span id="queue2" onclick="openCloseQueue(mySidenav)">&times;</span>
+                    <!-- <p id='xCloseSide' class="closebtn" onclick="openCloseQueue(mySidenav)">&times;</p> -->
+                <table id="queueTable"  onclick="addRowtoQueue('Sample','Another Sample Track')"></table>
+                </div>
+                  
                 <!-- <nav class="back-link">
                     <a onclick="location.href='index.html'" rel="prev" ><span>&larr;</span>Home<br><br></a>
                  <br><br>
                 </nav> -->
                 <span id='coin' class="coin-face"></span><h2 id="coinPlusOne" class="fadeInOut">+1</h2>
 
-                <!-- <center>
-                <div id="player">
-                    <div id="volume" value="0"></div>
-                </div>
-                </center> -->
                 <center>
                     <div id="overlayMuteUnmute" class="video-thumbnail" onclick="play()"></div>
                     <div id="albumCover"></div>
                 </center>
                 <div id="progress">
-                <div id="progress-bar"></div>
-              </div>
+                    <div id="progress-bar"></div>
+                </div>
 
-              <div class="progressTime">
-                <p class="progressBarTime" id="startTime">0:00</p>
-                <p class="progressBarTime" id="endTime"></p>
-            </div>
+                <div class="progressTime">
+                    <p class="progressBarTime" id="startTime">0:00</p>
+                    <p class="progressBarTime" id="endTime"></p>
+                </div>
 
-              <div id="title">
+                <div id="title">
                 <div id="title-text">Drake - Passionfruit</div>
-              </div>
+                </div>
 
-              <div id="controls">
+                <div id="controls">
                 <!-- <div class="control" id="controls-play" onclick="play()">
                     <div class="lds-ripple"><div></div><div></div><div></div></div> -->
                 </div>

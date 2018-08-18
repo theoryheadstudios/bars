@@ -562,13 +562,32 @@ h1 {
     -ms-user-select: none;
     user-select: none;  
     color: white;
+    font-size:20px;cursor:pointer
+  }
+
+  #queue2{
+    position: absolute;
+    top: -26px;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    font-size:50px;
+    color: white;
+    cursor:pointer;
   }
 
   #queue:hover{
       color: lightseagreen;
   }
 
-
+  #loginModalClose {
+    position: absolute;
+    font-size: 40px;
+    cursor:pointer;
+    right:10px;
+    top: 0;
+    color: white;
+  }
   /* #queueTable {
       width: 100%;
       border: 0;
@@ -621,14 +640,14 @@ h1 {
 ::-webkit-scrollbar {
     appearance: none;
     -webkit-appearance: none;
-    position: sticky;
+    position: absolute;
     width: 9px;
 }
 /* Track */
 ::-webkit-scrollbar-track {
     border-radius: 4px;
     background: rgba(255, 254, 254, 0.904);; 
-    box-shadow: 0 0 1px rgba(255, 254, 254, 0.904);;
+    box-shadow: 0 0 1px rgba(255, 254, 254, 0.904);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -644,8 +663,8 @@ h1 {
 }
 
 .sidenav:hover, .sidenav:active, .sidenav:focus {
-    overflow-y: auto;
-    background-color: rgba(66, 76, 94, 0.527);
+  overflow-y: auto;
+  background-color: rgba(66, 76, 94, 0.527);
 }
 
 .sidenav p{
@@ -1226,17 +1245,18 @@ span.coin-face {
   width: 150px;
   height: 150px;
   margin: 0 auto 30px;
-  padding: 50px 30px;
+  border: 3px solid;
+  border-color: aqua;
   border-top-left-radius: 100%;
   border-top-right-radius: 100%;
   border-bottom-left-radius: 100%;
   border-bottom-right-radius: 100%;
   box-sizing: border-box;
+  background-image: url(../images/listen7.jpg);
+  background-size: cover;
+  background-position: center;
 }
-.form .thumbnail img {
-  display: block;
-  width: 100%;
-}
+
 .form input {
   overflow-y: auto;
   outline: 0;

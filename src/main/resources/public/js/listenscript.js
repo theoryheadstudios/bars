@@ -96,6 +96,22 @@ HTMLElement.prototype.pseudoStyle = function(element,prop,value){
 	return this;
 };
 
+
+// if User presses 'Escape' then close the modal
+document.onkeydown = function(event) {
+  event = event || window.event;
+  if (event.keyCode === 27) {
+    if(loginModal.style.opacity === '1' || loginModalForm.style.opacity === '1'){
+      loginModal.style.opacity = '0';
+      loginModal.style.visibility = 'hidden';
+    loginModalForm.style.opacity = '0';
+    loginModalForm.style.visibility = 'hidden';
+      isLoginOpen = false;
+    }
+  }
+};
+
+
 var loginModal = document.getElementById('loginModal');
 var loginModalForm = document.getElementById('loginModalForm');
 var isLoginOpen = false;
@@ -115,20 +131,27 @@ function openLoginModalPage(){
   }
 }
 
+/*
+  functions to toggle the Login/Registration modal in Menu bar
+*/
+function closeLoginModalForm(){
+  loginModal.style.opacity = '0';
+  loginModal.style.visibility = 'hidden';
+  loginModalForm.style.opacity = '0';
+  loginModalForm.style.visibility = 'hidden';
+  isLoginOpen = false;
+}
+$('#CreateAnAccLink').click(function(){
+  $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+  document.getElementById('SignInLink').style.display = 'block';
+  document.getElementById('CreateAnAccLink').style.display = 'none';
+});
+$('#SignInLink').click(function(){
+  $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+  document.getElementById('CreateAnAccLink').style.display = 'block';
+  document.getElementById('SignInLink').style.display = 'none';
+});
 
-// if User presses 'Escape' then close the modal
-document.onkeydown = function(event) {
-  event = event || window.event;
-  if (event.keyCode === 27) {
-    if(loginModal.style.opacity === '1' || loginModalForm.style.opacity === '1'){
-      loginModal.style.opacity = '0';
-      loginModal.style.visibility = 'hidden';
-    loginModalForm.style.opacity = '0';
-    loginModalForm.style.visibility = 'hidden';
-      isLoginOpen = false;
-    }
-  }
-};
 
 var main = document.getElementById("main");
 var bg = document.getElementById("bg");
@@ -185,8 +208,10 @@ function randomizeImage(){
  */
 function openCloseQueue(queue) {
   if(queue.style.width === "250px"){
-    queue.style.width = "0px";    
+    queue.style.width = "0px";
+    document.getElementById('queue').style.display="block";    
   }else{
+    document.getElementById('queue').style.display="none";
     queue.style.width = "250px";
   }
 }
@@ -338,21 +363,6 @@ function openCloseMenu(){
 }
 
 
-/*
-  functions to toggle the Login/Registration modal in Menu bar
-*/
-$('#CreateAnAccLink').click(function(){
-  $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-  document.getElementById('SignInLink').style.display = 'block';
-  document.getElementById('CreateAnAccLink').style.display = 'none';
-});
-$('#SignInLink').click(function(){
-  $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-  document.getElementById('CreateAnAccLink').style.display = 'block';
-  document.getElementById('SignInLink').style.display = 'none';
-});
-
-
 function listAllUsers(){
 console.log("Grabbing request: localhost:3000/listAllUsers");
   var xmlHttp = new XMLHttpRequest();
@@ -391,23 +401,8 @@ console.log("Grabbing request: localhost:3000/listAllUsers");
 }
 
 function createUser(){
-console.log("Posting request: localhost:3000/createUser");
-  var data = {}
-  data.firstName = "John";
-  data.lastName = "Doe";
-  data.accountNumber = Math.ceil( Math.random() * 8000 );
-  data.userEmail = "SampleEmail"+data.accountNumber+"@email.com";
-  data.password = "SamplePassword123";  
-  data.dateOfBirth = "1999-01-01";
-  data.country = "USA";
-  data.zip = "30009";
-  data.timeZone = "Eastern";
-  data.userName = "Migos";
-  data.socialLink1 = "http://myspace.com/bump";
-  data.socialLink2 = "http://myspace.com/bump1";
-  data.socialLink3 = "http://myspace.com/bump2";
-  data.pointsBalance = parseInt("7");
-
+  console.log("Posting request: localhost:3000/createUser");
+  var data = saveFormData();
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "http://localhost:3000/createUser", true);
   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -441,4 +436,106 @@ console.log("Posting request: localhost:3000/updateUser");
     }
   }
   xhr.send(json); 
+}
+
+
+/* function to save gender data
+   -
+   if user already clicked on a radio button,
+   then delete the old value and add the new one
+   otherwise, just add the new value into the 'gender' array
+*/
+var gender = new Array();
+var genderValue;
+function saveGender(data){
+  if(Object.keys(gender).length > 0){
+    gender = gender.filter(e => e === data.id);
+    gender[data.id] = data.checked;
+  }else{
+    gender[data.id] = data.checked;
+  }
+  for(key in gender){
+    console.log(key + " " + gender[key]);
+    genderValue = key;
+  }
+  
+}
+
+
+function saveFormData(){
+  var data = {}
+  data.firstName = document.getElementById('first').value;
+  data.lastName = document.getElementById('last').value;
+  data.password = document.getElementById('password').value;
+  data.zip = document.getElementById('zip').value;
+  data.dateOfBirth = parseDOB(document.getElementById('dob').value)
+  data.timeZone = "Eastern";
+  data.userName = "Migos";
+  data.socialLink1 = "http://myspace.com/bump";
+  data.socialLink2 = "http://myspace.com/bump1";
+  data.socialLink3 = "http://myspace.com/bump2";
+  data.pointsBalance = parseInt("7");
+  data.country = "USA";
+  data.accountNumber = Math.ceil( Math.random() * 8000 );
+  data.userEmail = "SampleEmail"+data.accountNumber+"@email.com";
+  // data.gender = genderValue;
+  return data;
+}
+
+function validateZIP(zip){
+  console.log(zip.value.length);
+ if(isNaN(zip.value.replace(/-/g,''))){
+  zip.setAttribute("style", "background-color: red");
+ }else if((zip.value.match(/^\d{5}$|^\d{5}-\d{4}$/) !== null && zip.value.length === 5) || (zip.value.match(/^\d{5}$|^\d{5}-\d{4}$/) !== null && zip.value.length === 10)){
+   console.log(zip.value.length)
+  zip.setAttribute("style", "background-color: white");
+ }else if(zip.value.match(/^\d{5}$|^\d{5}-\d{4}$/) === null && zip.value.length === 6){
+   var z = zip.value;
+   var lastChar = z.substr(z.length-1, z.length);
+   z = z.substr(0, z.length - 1);
+  zip.value = z + '-'+lastChar;
+  zip.setAttribute("style", "background-color: red");
+ }else{
+   if(zip.value.length === 0){
+    zip.setAttribute("style", "background-color: white"); 
+   }else{
+    zip.setAttribute("style", "background-color: red"); 
+   }
+  
+ }
+}
+
+function validateDOB(data){
+  var valid = data.value;
+  if(isNaN(valid.replace(/-/g,''))){
+    data.setAttribute("style", "background-color: red");
+  }else{
+    data.setAttribute("style", "background-color: white");
+    var dob = data.value;
+    if (dob.match(/^\d{2}$/) !== null) {
+      data.value = dob + '-';
+    } else if (dob.match(/^\d{2}\-\d{2}$/) !== null ) {
+      data.value = dob + '-';
+    }
+}
+}
+
+function backspaceTriggered(input){
+  var flag = false;
+input.addEventListener('keydown', function(event) {
+    const key = event.key; // const {key} = event; ES6+
+    if (key === "Backspace" || key === "Delete") {
+      console.log("here");
+        flag = true;
+    }
+});
+return flag;
+}
+
+function parseDOB(dob) {
+  var mm = dob.substr(0,2);
+  var dd = dob.substr(3,2);
+  var yy = dob.substr(6,10);
+  var newDOB = yy+'-'+mm+'-'+dd;
+  return newDOB;
 }
