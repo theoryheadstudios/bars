@@ -15,6 +15,7 @@ function calculateTotalValue(length) {
   function to calculate the current time of Audio
 */
 function calculateCurrentValue(currentTime) {
+
   var current_hour = parseInt(currentTime / 3600) % 24,
     current_minute = parseInt(currentTime / 60) % 60,
     current_seconds_long = currentTime % 60,
@@ -99,6 +100,7 @@ HTMLElement.prototype.pseudoStyle = function(element,prop,value){
 
 // if User presses 'Escape' then close the modal
 document.onkeydown = function(event) {
+  console.info("Closing Modal upon ESCAPE key press");
   event = event || window.event;
   if (event.keyCode === 27) {
     if(loginModal.style.opacity === '1' || loginModalForm.style.opacity === '1'){
@@ -116,6 +118,7 @@ var loginModal = document.getElementById('loginModal');
 var loginModalForm = document.getElementById('loginModalForm');
 var isLoginOpen = false;
 function openLoginModalPage(){
+  console.info("Entering openLoginModalPage()");
   if(isLoginOpen){
     loginModal.style.opacity = '0';
     loginModal.style.visibility = 'hidden';
@@ -135,6 +138,7 @@ function openLoginModalPage(){
   functions to toggle the Login/Registration modal in Menu bar
 */
 function closeLoginModalForm(){
+  console.info("Entering closeLoginModalForm()");
   loginModal.style.opacity = '0';
   loginModal.style.visibility = 'hidden';
   loginModalForm.style.opacity = '0';
@@ -162,6 +166,7 @@ var overlayMuteUnmute = document.getElementById("overlayMuteUnmute");
 window.onclick = function(event) {
   if (isLoginOpen && ((event.target === main) || (event.target === bg)
   || (event.target === album) || (event.target === overlayMuteUnmute))) {
+    console.info("window.onclick event: Closing Login/Registration modal");
     loginModal.style.opacity = '0';
     loginModal.style.visibility = 'hidden';
     loginModalForm.style.opacity = '0';
@@ -190,6 +195,7 @@ window.onload = function(){
 
 // just for testing.. randomizes images..
 function randomizeImage(){
+  console.info("Entering randomizeImage()");
     var totalCount = 7;
     var num = Math.ceil( Math.random() * totalCount );
     var tmp = num;
@@ -207,6 +213,7 @@ function randomizeImage(){
   toggle queue bar whenever it is clicked
  */
 function openCloseQueue(queue) {
+  console.info("Entering openCloseQueue()");
   if(queue.style.width === "250px"){
     queue.style.width = "0px";
     document.getElementById('queue').style.display="block";    
@@ -233,25 +240,26 @@ function openCloseQueue(queue) {
 // });
 
 
-function addClass( element, classname ) {
-  if (element.classList){
-    element.classList.add(classname);
-  }
-  else{
-    element.className += ' ' + classname;
-  }
-  }
+// function addClass( element, classname ) {
+//   if (element.classList){
+//     element.classList.add(classname);
+//   }
+//   else{
+//     element.className += ' ' + classname;
+//   }
+//   }
   
-  function removeClass( classname, element ) {
-      var cn = element.className;
-      var rxp = new RegExp( "\\s?\\b"+classname+"\\b", "g" );
-      cn = cn.replace( rxp, '' );
-      element.className = cn;
-  }
+//   function removeClass( classname, element ) {
+//       var cn = element.className;
+//       var rxp = new RegExp( "\\s?\\b"+classname+"\\b", "g" );
+//       cn = cn.replace( rxp, '' );
+//       element.className = cn;
+//   }
   
   var Play_Pause = 0;
 
   function play() {
+    console.info("Entering play()");
     if(Play_Pause % 2 === 0){
       player.play();
       // setVolume(1);
@@ -286,6 +294,7 @@ function addClass( element, classname ) {
 */
 var count = 1;
 function addRowtoQueue(artist, track){
+  console.info("Entering addRowtoQueue()");
   if(count === 8){
     count = 1;
   }
@@ -306,6 +315,7 @@ function addRowtoQueue(artist, track){
   function to initialize the queue upon page load
 */
 function initializeQueue(artist, track) {
+  console.info("Entering initializeQueue()");
   var c = 1;
   for(var addRow = 0; addRow <= 20; addRow++){
     if(c === 8){
@@ -351,6 +361,7 @@ function setVolume(myVolume){
 var menu = document.getElementById('menu');
 var isMenuOpen = false;
 function openCloseMenu(){
+  console.info("Entering openCloseMenu()");
   if(isMenuOpen === true){
     menu.style.cursor = "pointer";
     menu.style.transform = 'translate3d(0px, 0, 0)';
@@ -364,6 +375,7 @@ function openCloseMenu(){
 
 
 function listAllUsers(){
+  console.info("Entering listAllUsers()");
 console.log("Grabbing request: localhost:3000/listAllUsers");
   var xmlHttp = new XMLHttpRequest();
   var fname = "", lname="";
@@ -401,6 +413,7 @@ console.log("Grabbing request: localhost:3000/listAllUsers");
 }
 
 function createUser(){
+  console.info("Entering createUser()");
   console.log("Posting request: localhost:3000/createUser");
   var data = saveFormData();
   var xhr = new XMLHttpRequest();
@@ -417,6 +430,7 @@ function createUser(){
 }
 
 function updateUser(){
+  console.info("Entering updateUser()");
 console.log("Posting request: localhost:3000/updateUser");
   var url = "http://localhost:3000/";
 
@@ -448,6 +462,7 @@ console.log("Posting request: localhost:3000/updateUser");
 var gender = new Array();
 var genderValue;
 function saveGender(data){
+  console.info("Entering saveGender()");
   if(Object.keys(gender).length > 0){
     gender = gender.filter(e => e === data.id);
     gender[data.id] = data.checked;
@@ -463,6 +478,7 @@ function saveGender(data){
 
 
 function saveFormData(){
+  console.info("Entering saveFormData()");
   var data = {}
   data.firstName = document.getElementById('first').value;
   data.lastName = document.getElementById('last').value;
@@ -482,12 +498,19 @@ function saveFormData(){
   return data;
 }
 
+
+var backspaceFlag = false;
 function validateZIP(zip){
-  console.log(zip.value.length);
+  console.info("Entering validateZIP()");
+  backspaceTriggered(zip);
+  if(zip.value.length === 6 && backspaceFlag == true){
+    var z = zip.value;
+    z = z.substr(0, z.length - 1);
+    zip.value = z;
+  }
  if(isNaN(zip.value.replace(/-/g,''))){
   zip.setAttribute("style", "background-color: red");
  }else if((zip.value.match(/^\d{5}$|^\d{5}-\d{4}$/) !== null && zip.value.length === 5) || (zip.value.match(/^\d{5}$|^\d{5}-\d{4}$/) !== null && zip.value.length === 10)){
-   console.log(zip.value.length)
   zip.setAttribute("style", "background-color: white");
  }else if(zip.value.match(/^\d{5}$|^\d{5}-\d{4}$/) === null && zip.value.length === 6){
    var z = zip.value;
@@ -506,30 +529,37 @@ function validateZIP(zip){
 }
 
 function validateDOB(data){
+  console.info("Entering ValidateDOB()");
+  backspaceTriggered(data);
   var valid = data.value;
   if(isNaN(valid.replace(/-/g,''))){
     data.setAttribute("style", "background-color: red");
   }else{
     data.setAttribute("style", "background-color: white");
     var dob = data.value;
-    if (dob.match(/^\d{2}$/) !== null) {
+    if((data.value.length === 2 || data.value.length === 5) && backspaceFlag === true){
+      var z = data.value;
+      z = z.substr(0, z.length - 1);
+      data.value = z;
+    }else if (dob.match(/^\d{2}$/) !== null) {
       data.value = dob + '-';
-    } else if (dob.match(/^\d{2}\-\d{2}$/) !== null ) {
+    } else if (dob.match(/^\d{2}\-\d{2}$/) !== null) {
       data.value = dob + '-';
     }
 }
 }
 
 function backspaceTriggered(input){
-  var flag = false;
 input.addEventListener('keydown', function(event) {
     const key = event.key; // const {key} = event; ES6+
     if (key === "Backspace" || key === "Delete") {
-      console.log("here");
-        flag = true;
-    }
+      backspaceFlag = true;
+      return true;
+    }else{
+      backspaceFlag = false;
+      return false;
+    }  
 });
-return flag;
 }
 
 function parseDOB(dob) {
