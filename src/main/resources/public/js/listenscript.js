@@ -15,7 +15,6 @@ function calculateTotalValue(length) {
   function to calculate the current time of Audio
 */
 function calculateCurrentValue(currentTime) {
-
   var current_hour = parseInt(currentTime / 3600) % 24,
     current_minute = parseInt(currentTime / 60) % 60,
     current_seconds_long = currentTime % 60,
@@ -31,7 +30,7 @@ function calculateCurrentValue(currentTime) {
 
 
 /*
-  function to update progress bar of audio every second
+  initProgressBar: function to update progress bar of audio every second
 */
 var startTime = document.getElementById('startTime');
 var progressbar = document.getElementById('progress-bar');
@@ -67,8 +66,6 @@ function initProgressBar() {
   var currentTime = calculateCurrentValue(current_time);
   startTime.innerHTML = currentTime;
 
-
-
   progressbar.value = (player.currentTime / player.duration);
   $('#progress-bar').stop(true,true).animate({'width':progressbar.value*100+'%'},200,'linear');
   // $('#progress-bar').stop(true,true).animate({'width':(currentTime +.25)/player.duration*100+'%'},200,'linear');
@@ -100,9 +97,9 @@ HTMLElement.prototype.pseudoStyle = function(element,prop,value){
 
 // if User presses 'Escape' then close the modal
 document.onkeydown = function(event) {
-  console.info("Closing Modal upon ESCAPE key press");
   event = event || window.event;
   if (event.keyCode === 27) {
+    console.info("Closing Modal upon ESCAPE key press");
     if(loginModal.style.opacity === '1' || loginModalForm.style.opacity === '1'){
       loginModal.style.opacity = '0';
       loginModal.style.visibility = 'hidden';
@@ -114,6 +111,9 @@ document.onkeydown = function(event) {
 };
 
 
+/*
+  openLoginModalPage: Open or Close Login/Registration Modal
+*/
 var loginModal = document.getElementById('loginModal');
 var loginModalForm = document.getElementById('loginModalForm');
 var isLoginOpen = false;
@@ -135,7 +135,7 @@ function openLoginModalPage(){
 }
 
 /*
-  functions to toggle the Login/Registration modal in Menu bar
+  closeLoginModalForm: functions to toggle the Login/Registration modal in Menu bar
 */
 function closeLoginModalForm(){
   console.info("Entering closeLoginModalForm()");
@@ -208,7 +208,7 @@ function randomizeImage(){
 }
 
 
-/* function to call to toggle the queue navigation bar
+/* openCloseQueue: function to call to toggle the queue navigation bar
   -
   toggle queue bar whenever it is clicked
  */
@@ -268,7 +268,7 @@ function openCloseQueue(queue) {
       setVolume(1);
 
       player.addEventListener("ended", function(){
-       console.log("ended");
+       console.info("Song has ended: Playing next song");
       //  player.pause();
        player.currentTime = 0;
        player.setAttribute("type", "audio/mpeg");
@@ -290,7 +290,7 @@ function openCloseQueue(queue) {
 
 
 /*
-  function to add rows to queue. Adds to bottom of html table
+  addRowtoQueue: function to add rows to queue. Adds to bottom of html table
 */
 var count = 1;
 function addRowtoQueue(artist, track){
@@ -312,7 +312,7 @@ function addRowtoQueue(artist, track){
 }
 
 /*
-  function to initialize the queue upon page load
+  initializeQueue: function to initialize the queue upon page load
 */
 function initializeQueue(artist, track) {
   console.info("Entering initializeQueue()");
@@ -356,7 +356,7 @@ function setVolume(myVolume){
 
 
 /*
-  function to Open or Close Menu upon hover
+  openCloseMenu: function to Open or Close Menu upon hover
 */
 var menu = document.getElementById('menu');
 var isMenuOpen = false;
@@ -374,6 +374,9 @@ function openCloseMenu(){
 }
 
 
+/*
+  listAllUsers: function to list users from Database
+*/
 function listAllUsers(){
   console.info("Entering listAllUsers()");
 console.log("Grabbing request: localhost:3000/listAllUsers");
@@ -393,11 +396,11 @@ console.log("Grabbing request: localhost:3000/listAllUsers");
                 fname = mainData[key];
               else if(key.match("last_name"))
                 lname = mainData[key];
-//               console.log(key + " : " + mainData[key]);
+                //console.log(key + " : " + mainData[key]);
               }
              addRowtoQueue(fname, lname);
             }
-//        console.log(usr.first_name + ' ' + usr.last_name);
+            //console.log(usr.first_name + ' ' + usr.last_name);
       }
       
     }else {
@@ -412,10 +415,16 @@ console.log("Grabbing request: localhost:3000/listAllUsers");
   
 }
 
+
+/*
+  createUser: function to create user and insert into Database
+*/
 function createUser(){
   console.info("Entering createUser()");
   console.log("Posting request: localhost:3000/createUser");
+  // grab the data from values inserted in registration fields
   var data = saveFormData();
+
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "http://localhost:3000/createUser", true);
   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -429,6 +438,10 @@ function createUser(){
   xhr.send(JSON.stringify(data));
 }
 
+
+/*
+  updateUser: function to update user in Database
+*/
 function updateUser(){
   console.info("Entering updateUser()");
 console.log("Posting request: localhost:3000/updateUser");
@@ -453,7 +466,7 @@ console.log("Posting request: localhost:3000/updateUser");
 }
 
 
-/* function to save gender data
+/* saveGender: function to save gender data
    -
    if user already clicked on a radio button,
    then delete the old value and add the new one
@@ -476,7 +489,11 @@ function saveGender(data){
   
 }
 
-
+/* 
+  saveGender: function to registration data.
+    - this is used in createUser() function to
+      send data to Database
+*/
 function saveFormData(){
   console.info("Entering saveFormData()");
   var data = {}
@@ -499,15 +516,20 @@ function saveFormData(){
 }
 
 
+/* 
+  validateZIP: function to validate the ZIP/Postal Code in Registration
+*/
 var backspaceFlag = false;
 function validateZIP(zip){
   console.info("Entering validateZIP()");
   backspaceTriggered(zip);
+  /* remove last two characters if user presses backspace*/
   if(zip.value.length === 6 && backspaceFlag == true){
     var z = zip.value;
     z = z.substr(0, z.length - 1);
     zip.value = z;
   }
+  /* determine if value in field is number & validate text value*/
  if(isNaN(zip.value.replace(/-/g,''))){
   zip.setAttribute("style", "background-color: red");
  }else if((zip.value.match(/^\d{5}$|^\d{5}-\d{4}$/) !== null && zip.value.length === 5) || (zip.value.match(/^\d{5}$|^\d{5}-\d{4}$/) !== null && zip.value.length === 10)){
@@ -528,10 +550,15 @@ function validateZIP(zip){
  }
 }
 
+
+/* 
+  validateDOB: function to validate Date of Birth in Registration
+*/
 function validateDOB(data){
   console.info("Entering ValidateDOB()");
   backspaceTriggered(data);
   var valid = data.value;
+  /* determine if value in field is number & remove last two characters if user presses backspace */
   if(isNaN(valid.replace(/-/g,''))){
     data.setAttribute("style", "background-color: red");
   }else{
@@ -549,6 +576,10 @@ function validateDOB(data){
 }
 }
 
+
+/* 
+  backspaceTriggered: function to determine if backspace/delete is pressed
+*/
 function backspaceTriggered(input){
 input.addEventListener('keydown', function(event) {
     const key = event.key; // const {key} = event; ES6+
@@ -562,10 +593,15 @@ input.addEventListener('keydown', function(event) {
 });
 }
 
+
+/* 
+  parseDOB: function to parse Date of Birth field from registration text field
+    - used in safeFormData()
+*/
 function parseDOB(dob) {
   var mm = dob.substr(0,2);
   var dd = dob.substr(3,2);
-  var yy = dob.substr(6,10);
-  var newDOB = yy+'-'+mm+'-'+dd;
+  var yyyy = dob.substr(6,10);
+  var newDOB = yyyy+'-'+mm+'-'+dd;
   return newDOB;
 }
