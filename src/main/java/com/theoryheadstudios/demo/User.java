@@ -41,6 +41,8 @@ public class User {
     private String social_link_3;
     @Column(name = "points_balance")
     private int points_balance;
+    @Column(name = "gender")
+    private String gender;
 
 
     public User(){
@@ -52,7 +54,7 @@ public class User {
                 String country, String zip,
                 String time_zone, String user_name,
                 String social_link_1, String social_link_2,
-                String social_link_3, int points_balance){
+                String social_link_3, int points_balance, String gender){
         this.user_email = user_email;
         this.account_number = account_number;
         this.first_name = first_name;
@@ -67,6 +69,7 @@ public class User {
         this.social_link_2 = social_link_2;
         this.social_link_3 = social_link_3;
         this.points_balance = points_balance;
+        this.gender = gender;
 
     }
 
@@ -185,4 +188,7 @@ public class User {
     public void setPoints_balance(int points_balance) {
         this.points_balance = points_balance;
     }
+    public String getGender() { return gender; }
+    // @JsonSetter("gender")
+    public void setGender(String gender) { this.gender = gender;}
 }

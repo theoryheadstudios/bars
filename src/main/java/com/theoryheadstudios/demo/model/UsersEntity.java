@@ -20,6 +20,7 @@ public class UsersEntity {
     private String socialLink2;
     private String socialLink3;
     private Integer pointsBalance;
+    private String gender;
     private int id;
     private String dateOfBirth;
 
@@ -154,6 +155,14 @@ public class UsersEntity {
     }
 
     @Basic
+    @Column(name = "gender", nullable = true, length = 11)
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) { this.gender = gender; }
+
+    @Basic
     @Column(name = "ID", nullable = false)
     public int getId() {
         return id;
@@ -192,12 +201,13 @@ public class UsersEntity {
                 Objects.equals(socialLink2, that.socialLink2) &&
                 Objects.equals(socialLink3, that.socialLink3) &&
                 Objects.equals(pointsBalance, that.pointsBalance) &&
-                Objects.equals(dateOfBirth, that.dateOfBirth);
+                Objects.equals(dateOfBirth, that.dateOfBirth) &&
+                Objects.equals(gender, that.gender);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(userEmail, accountNumber, firstName, lastName, password, country, zip, timeZone, userName, socialLink1, socialLink2, socialLink3, pointsBalance, id, dateOfBirth);
+        return Objects.hash(userEmail, accountNumber, firstName, lastName, password, country, zip, timeZone, userName, socialLink1, socialLink2, socialLink3, pointsBalance, id, dateOfBirth, gender);
     }
 }

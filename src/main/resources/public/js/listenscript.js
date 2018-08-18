@@ -511,7 +511,7 @@ function saveFormData(){
   data.country = "USA";
   data.accountNumber = Math.ceil( Math.random() * 8000 );
   data.userEmail = "SampleEmail"+data.accountNumber+"@email.com";
-  // data.gender = genderValue;
+  data.gender = genderValue;
   return data;
 }
 

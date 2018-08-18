@@ -58,6 +58,7 @@ public class MainController {
             user.setZip("30237");
             user.setUser_name("Goyito");
             user.setUser_email("freddyace@ayhoo.com");
+            user.setGender("Male");
             try {
                 em.persist(user);
                 em.flush();
@@ -71,7 +72,7 @@ public class MainController {
 
 
         }
-@Transactional
+    @Transactional
     @RequestMapping(value = "/listOfAllUsers", method = RequestMethod.GET)
     public String listOfAllUsers() throws JsonProcessingException {
 
@@ -100,13 +101,14 @@ public class MainController {
         System.out.println(user.getSocialLink2());
         System.out.println(user.getSocialLink3());
         System.out.println(user.getPointsBalance());
-        try {
-            AudioFileFormat format = AudioSystem.getAudioFileFormat(new File("/Users/freddyacevedo/IdeaProjects/Bars2018/src/main/Bounce.mp3"));
-        } catch (UnsupportedAudioFileException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        System.out.println(user.getGender());
+//        try {
+//            AudioFileFormat format = AudioSystem.getAudioFileFormat(new File("/Users/freddyacevedo/IdeaProjects/Bars2018/src/main/Bounce.mp3"));
+//        } catch (UnsupportedAudioFileException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
     }
 
@@ -119,18 +121,18 @@ public class MainController {
 //                user.setAccountNumber(user.getAccountNumber());
 //                System.out.println(user.getPassword());
 //                System.out.println("Input user password before encryption: "+ user.getPassword());
-//                user.setPassword(passwordEncoder.encode(user.getPassword()));
+                user.setPassword(passwordEncoder.encode(user.getPassword()));
                 em.persist(user);
                 em.flush();
 //               System.out.println("Input user password after encryption: "+ user.getPassword());
 
                //Compare User input with encrypted
-               if(passwordEncoder.matches("password", user.getPassword())){
-                   System.out.println("True");
-               }
-               else{
-                   System.out.println("False");
-               }
+//               if(passwordEncoder.matches("password", user.getPassword())){
+//                   System.out.println("True");
+//               }
+//               else{
+//                   System.out.println("False");
+//               }
                 return "Success";
             }
         catch(PersistenceException p){
