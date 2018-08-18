@@ -593,6 +593,35 @@ input.addEventListener('keydown', function(event) {
 });
 }
 
+/* 
+  validatePassword: function to validate confirmation password
+*/
+function validatePassword(pass){
+  var originalPass = document.getElementById('password');
+  if(originalPass.value === pass.value){
+    originalPass.setAttribute("style", "background-color: white");
+    pass.setAttribute("style", "background-color: white");
+  }else{
+    originalPass.setAttribute("style", "background-color: red");
+    pass.setAttribute("style", "background-color: red");
+    alert("Passwords Do Not Match!");
+  }
+}
+
+/* 
+  validateEmail: function to validate email address
+*/
+function validateEmail(email) {
+  var valid = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if(email.value.length === 0){
+    email.setAttribute("style", "background-color: white");   
+  }else if(valid.test(email.value)){
+    email.setAttribute("style", "background-color: white");  
+  }else{
+    email.setAttribute("style", "background-color: red");
+    alert("Enter valid E-mail Address")  
+  }
+}
 
 /* 
   parseDOB: function to parse Date of Birth field from registration text field
