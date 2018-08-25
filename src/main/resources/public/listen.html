@@ -103,6 +103,7 @@
             <!-- <div>
                     <iframe src="registrationModal.html" name="targetframe" allowTransparency="false" scrolling="no" frameborder="0" ></iframe>
                 </div></li> -->
+                <span id="menuSidenavTitle" onclick="openCloseMenu()">Menu&#8682;</span>
                 <div id="menuSidenav" class="menu" onclick="openCloseMenu()">
                     <div class="menuTitle" >M<br>E<br>N<br>U</div>
                     <li><a id="login" style="cursor: pointer;" onclick="openLoginModalPage()">Login/Register</a></li>
@@ -116,6 +117,7 @@
 
                 <span id="queue" onclick="openCloseQueue(mySidenav)">&#8682;Queue</span>
                 <div id="mySidenav" class="sidenav">
+                        <div id="queueTitle" class="queueTitle" onclick="openCloseQueue(mySidenav)"><p>Q<br>U<br>E<br>U<br>E</p></div>
                         <span id="queue2" onclick="openCloseQueue(mySidenav)">&times;</span>
                     <!-- <p id='xCloseSide' class="closebtn" onclick="openCloseQueue(mySidenav)">&times;</p> -->
                 <table id="queueTable"  onclick="addRowtoQueue('Sample','Another Sample Track')"></table>

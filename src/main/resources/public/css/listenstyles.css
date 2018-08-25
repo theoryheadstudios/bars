@@ -551,8 +551,21 @@ h1 {
     padding: 0 calc(50% - 10rem);
     /* text-align: center; */
   }
-
+  #menuSidenavTitle{
+    display: none;
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    right: 0;    
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;  
+    color: white;
+    font-size:20px;cursor:pointer
+  }
   #queue{
+    display: none;
     position: fixed;
     z-index: 9;
     top: 0;
@@ -564,7 +577,6 @@ h1 {
     color: white;
     font-size:20px;cursor:pointer
   }
-
   #queue2{
     position: absolute;
     top: -26px;
@@ -618,6 +630,9 @@ h1 {
   }
 
   .sidenav {
+    font-weight: 500;
+    font-size: 15px;
+    font-style: normal;
     line-height: 80px;
     height: 100%;
     width: 0;
@@ -628,13 +643,57 @@ h1 {
     top: 0;
     bottom: 0;
     left: 0;
-    background-color: transparent;
+    background-color: rgba(66, 76, 94, 0.527);;
     transition: 0.5s  ease;
-    /* padding-top: 50px; */
     -webkit-user-select: none;
+    -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    -webkit-box-shadow: -3px 0px 5px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: -3px 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+
+.sidenav .queueTitle {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+
+  /* font-weight: 500; */
+  height: 100%;
+  font-size: 15px;
+  font-style: normal;
+  padding-left: 15px;
+  line-height: 15px;
+  position: fixed;
+  z-index: -1;
+  background-color: rgba(66, 76, 94, 0.527);
+  transition: 0.5s ease;
+  color: aqua;
+  cursor: pointer;
+}
+.sidenav .queueTitle:hover, .sidenav .queueTitle:focus {
+  background: rgba(31, 36, 46, 0.527);
+    animation-timing-function: 1s ease-in;
+    /* transform: rotate(270deg); */
+}
+.sidenav .queueTitle p {
+  position: absolute;
+  top: 41%;
+  font-size: 15px;
+  right: -10px;
+  z-index: 1;
+  color: aqua;
+}
+.sidenav .queueTitle
+.sidenav .queueTitle:hover {
+  cursor: pointer;
+}
+
+.sidenav .queueTitle:hover p {
+  color: aqua;
 }
 
 ::-webkit-scrollbar {
@@ -642,19 +701,20 @@ h1 {
     -webkit-appearance: none;
     position: absolute;
     width: 9px;
+    z-index: 10;
 }
 /* Track */
 ::-webkit-scrollbar-track {
     border-radius: 4px;
-    background: rgba(255, 254, 254, 0.904);; 
-    box-shadow: 0 0 1px rgba(255, 254, 254, 0.904);
+    background: rgba(165, 223, 218, 0.863);
+    box-shadow: 0 0 1px black;
 }
 
 ::-webkit-scrollbar-thumb {
     border-radius: 4px;
     background-color: rgba(0,0,0,.5);
-    box-shadow: 0 0 1px rgba(255,255,255,.5);
-    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+    box-shadow: 0 0 1px rgba(165, 223, 218, 0.863);
+    -webkit-box-shadow: 0 0 1px rgba(165, 223, 218, 0.863);
 }
 
 /* Handle on hover */
@@ -701,6 +761,10 @@ h1 {
 }
 
 .sidenav div:hover p {
+  color: white;
+}
+
+.sidenav .navimage p:hover {
     color: white;
     cursor: pointer;
 }
@@ -1208,19 +1272,48 @@ span.coin-face {
     }
     .sidenav {
       z-index: 5;
-      width: 250px;
       height: 59%;
       border: white;
-      border-radius: 6px;
-      border-width: 1px;
+      border-radius: 4px;
+      border-top-width: 1px;
+      border-right-width: 0;
+      border-left-width: 0;
+      border-bottom-width: 0; 
       border-style: solid;
       float: left;
       margin-top: 41vh;
       overflow-y: overlay;
       background-color: rgba(66, 76, 94, 0.527);
     }
-    #queue {
+    #menuSidenavTitle{
+      display: block;
+      position: fixed;
+      z-index: 9;
+      top: 0;
+      right: 0;    
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;  
+      color: white;
+      font-size:20px;cursor:pointer
+    }
+    .menu{
+     padding-left: 0;
+     height: 59%;
+     margin-top: 41vh;
+    }
+    #login{
+      right: -9px;
+    }
+    #coinsEarned{
+      padding: 15px;
+    }
+    .sidenav .queueTitle{
       display: none;
+    }
+    #queue{
+      display: block;
     }
     
   }

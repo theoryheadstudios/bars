@@ -109,8 +109,9 @@ document.onkeydown = function(event) {
     }
     document.getElementById('mySidenav').style.width = "0";
     document.getElementById('mySidenav').style.borderWidth = '0';
-    document.getElementById('queue').style.display="block"; 
+    // document.getElementById('queue').style.display="block"; 
     document.getElementById('menuSidenav').style.transform = 'translate3d(0px, 0, 0)';
+    // document.getElementById('menuSidenavTitle').style.display = 'block';
     isMenuOpen = false; 
   }
 };
@@ -138,7 +139,8 @@ function openLoginModalPage(){
     isLoginOpen = true;
     document.getElementById('mySidenav').style.width = "0";
     document.getElementById('mySidenav').style.borderWidth = '0';
-    document.getElementById('queue').style.display="block";    
+    // document.getElementById('queue').style.display="block";   
+    // document.getElementById('menuSidenavTitle').style.display = 'block'; 
   }
 }
 
@@ -182,11 +184,17 @@ window.onclick = function(event) {
     loginModalForm.style.visibility = 'hidden';
     isLoginOpen = false;
   }
-  else if(isMenuOpen && ((event.target === main) || (event.target === bg)
-  || (event.target === album) || (event.target === overlayMuteUnmute))){
-    document.getElementById('menuSidenav').style.transform = 'translate3d(0px, 0, 0)';
-    isMenuOpen = false;
-  }
+  // else if(isMenuOpen && ((event.target === main) || (event.target === bg)
+  // || (event.target === album) || (event.target === overlayMuteUnmute))){
+  //   document.getElementById('menuSidenav').style.transform = 'translate3d(0px, 0, 0)';
+  //   document.getElementById('menuSidenavTitle').style.display = 'block';
+  //   isMenuOpen = false;
+  // }else if(isQueueOpen && ((event.target === main) || (event.target === bg)
+  // || (event.target === album) || (event.target === overlayMuteUnmute))){
+  //   openCloseQueue(document.getElementById('mySidenav'));
+  // }
+  
+  
 };
 
 
@@ -226,18 +234,27 @@ function randomizeImage(){
   -
   toggle queue bar whenever it is clicked
  */
+var isQueueOpen = false;
 function openCloseQueue(sidenav) {
   console.info("Entering openCloseQueue()");
   if(sidenav.style.width === "250px" || sidenav.clientWidth === 250){
     sidenav.style.width = "0";
     sidenav.style.borderWidth = '0';
-    document.getElementById('queue').style.display="block";    
+    // document.getElementById('queue').style.display="block";
+    document.getElementById('queueTitle').style.width="0";
+    document.getElementById('queueTitle').style.left="0";
+    isQueueOpen = false;  
   }else{
-    document.getElementById('queue').style.display="none";
+    document.getElementById('queueTitle').style.width="0";
+    document.getElementById('queueTitle').style.left="250px";
+    // document.getElementById('queue').style.display="none";
     sidenav.style.width = "250px";
     sidenav.style.borderWidth = '1px';
+    isQueueOpen = true;  
     document.getElementById('menuSidenav').style.transform = 'translate3d(0px, 0, 0)';
+    // document.getElementById('menuSidenavTitle').style.display = 'block';
     isMenuOpen = false; 
+    
   }
 }
 
@@ -383,16 +400,19 @@ function openCloseMenu(){
   if(isMenuOpen === true){
     document.getElementById('mySidenav').style.width = "0";
     document.getElementById('mySidenav').style.borderWidth = '0';
-    document.getElementById('queue').style.display="block";    
+    // document.getElementById('queue').style.display="block";    
     menu.style.cursor = "pointer";
     menu.style.transform = 'translate3d(0px, 0, 0)';
+    // document.getElementById('menuSidenavTitle').style.display = 'block';
     isMenuOpen = false;
   }else{
+    document.getElementById('queueTitle').style.width="0";
     document.getElementById('mySidenav').style.width = "0";
     document.getElementById('mySidenav').style.borderWidth = '0';
-    document.getElementById('queue').style.display="block";    
+    // document.getElementById('queue').style.display="block";    
     menu.style.cursor = "default";
     menu.style.transform = 'translate3d(-130px, 0, 0)';
+    // document.getElementById('menuSidenavTitle').style.display = 'none';
     isMenuOpen = true;
   }
 }
