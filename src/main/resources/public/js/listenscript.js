@@ -223,7 +223,7 @@ function randomizeImage(){
  */
 function openCloseQueue(queue) {
   console.info("Entering openCloseQueue()");
-  if(queue.style.width === "250px" || queue.clientWidth === 241){
+  if(queue.style.width === "250px" || queue.clientWidth === 250){
     queue.style.width = "0";
     queue.style.borderWidth = '0';
     document.getElementById('queue').style.display="block";    

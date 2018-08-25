@@ -1202,7 +1202,7 @@ span.coin-face {
     right: -380px;
   }
 
-  @media  screen and (max-width: 520px) {
+  @media  screen and (max-width: 530px) {
     .form {
       width: 200px !important;
     }
