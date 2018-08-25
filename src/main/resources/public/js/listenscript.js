@@ -241,11 +241,9 @@ function openCloseQueue(sidenav) {
     sidenav.style.width = "0";
     sidenav.style.borderWidth = '0';
     // document.getElementById('queue').style.display="block";
-    document.getElementById('queueTitle').style.width="0";
     document.getElementById('queueTitle').style.left="0";
     isQueueOpen = false;  
   }else{
-    document.getElementById('queueTitle').style.width="0";
     document.getElementById('queueTitle').style.left="250px";
     // document.getElementById('queue').style.display="none";
     sidenav.style.width = "250px";
@@ -412,6 +410,7 @@ function openCloseMenu(){
     // document.getElementById('queue').style.display="block";    
     menu.style.cursor = "default";
     menu.style.transform = 'translate3d(-130px, 0, 0)';
+    document.getElementById('queueTitle').style.left="0";
     // document.getElementById('menuSidenavTitle').style.display = 'none';
     isMenuOpen = true;
   }
