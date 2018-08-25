@@ -107,10 +107,11 @@ document.onkeydown = function(event) {
       loginModalForm.style.visibility = 'hidden';
       isLoginOpen = false;
     }
-    if(queue.style.width === "250px"){
-      queue.style.width = "0px";
-      document.getElementById('queue').style.display="block";    
-    }
+    document.getElementById('mySidenav').style.width = "0";
+    document.getElementById('mySidenav').style.borderWidth = '0';
+    document.getElementById('queue').style.display="block"; 
+    document.getElementById('menuSidenav').style.transform = 'translate3d(0px, 0, 0)';
+    isMenuOpen = false; 
   }
 };
 
@@ -135,6 +136,9 @@ function openLoginModalPage(){
     loginModalForm.style.opacity = '1';
     loginModalForm.style.visibility = 'visible';
     isLoginOpen = true;
+    document.getElementById('mySidenav').style.width = "0";
+    document.getElementById('mySidenav').style.borderWidth = '0';
+    document.getElementById('queue').style.display="block";    
   }
 }
 
@@ -165,10 +169,10 @@ var main = document.getElementById("main");
 var bg = document.getElementById("bg");
 var album = document.getElementById("albumCover");
 var overlayMuteUnmute = document.getElementById("overlayMuteUnmute");
+var menuSidenav = document.getElementById('menuSidenav');
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  console.info("User clicked on body");
   if (isLoginOpen && ((event.target === main) || (event.target === bg)
   || (event.target === album) || (event.target === overlayMuteUnmute))) {
     console.info("window.onclick event: Closing Login/Registration modal");
@@ -177,10 +181,11 @@ window.onclick = function(event) {
     loginModalForm.style.opacity = '0';
     loginModalForm.style.visibility = 'hidden';
     isLoginOpen = false;
-    if(document.getElementById('mySidenav').style.width === "250px"){
-      document.getElementById('mySidenav').style.width = "0px";
-      document.getElementById('queue').style.display="block";    
-    }
+  }
+  else if(isMenuOpen && ((event.target === main) || (event.target === bg)
+  || (event.target === album) || (event.target === overlayMuteUnmute))){
+    document.getElementById('menuSidenav').style.transform = 'translate3d(0px, 0, 0)';
+    isMenuOpen = false;
   }
 };
 
@@ -221,16 +226,18 @@ function randomizeImage(){
   -
   toggle queue bar whenever it is clicked
  */
-function openCloseQueue(queue) {
+function openCloseQueue(sidenav) {
   console.info("Entering openCloseQueue()");
-  if(queue.style.width === "250px" || queue.clientWidth === 250){
-    queue.style.width = "0";
-    queue.style.borderWidth = '0';
+  if(sidenav.style.width === "250px" || sidenav.clientWidth === 250){
+    sidenav.style.width = "0";
+    sidenav.style.borderWidth = '0';
     document.getElementById('queue').style.display="block";    
   }else{
     document.getElementById('queue').style.display="none";
-    queue.style.width = "250px";
-    queue.style.borderWidth = '1px';
+    sidenav.style.width = "250px";
+    sidenav.style.borderWidth = '1px';
+    document.getElementById('menuSidenav').style.transform = 'translate3d(0px, 0, 0)';
+    isMenuOpen = false; 
   }
 }
 
@@ -369,15 +376,21 @@ function setVolume(myVolume){
 /*
   openCloseMenu: function to Open or Close Menu upon hover
 */
-var menu = document.getElementById('menu');
+var menu = document.getElementById('menuSidenav');
 var isMenuOpen = false;
 function openCloseMenu(){
   console.info("Entering openCloseMenu()");
   if(isMenuOpen === true){
+    document.getElementById('mySidenav').style.width = "0";
+    document.getElementById('mySidenav').style.borderWidth = '0';
+    document.getElementById('queue').style.display="block";    
     menu.style.cursor = "pointer";
     menu.style.transform = 'translate3d(0px, 0, 0)';
     isMenuOpen = false;
   }else{
+    document.getElementById('mySidenav').style.width = "0";
+    document.getElementById('mySidenav').style.borderWidth = '0';
+    document.getElementById('queue').style.display="block";    
     menu.style.cursor = "default";
     menu.style.transform = 'translate3d(-130px, 0, 0)';
     isMenuOpen = true;
