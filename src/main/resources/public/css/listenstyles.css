@@ -1271,6 +1271,7 @@ span.coin-face {
       width: 200px !important;
     }
     .sidenav {
+      width: 0;
       z-index: 5;
       height: 59%;
       border: white;
