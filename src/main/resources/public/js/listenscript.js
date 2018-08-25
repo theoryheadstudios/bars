@@ -45,7 +45,7 @@ var flag = false;
 function initProgressBar() {
   var currentTime = player.currentTime;
   if(parseInt(currentTime.toFixed()) >= 3 && parseInt(currentTime.toFixed()) <= 9){
-    if(flag == false){
+    if(flag === false){
       document.getElementById('coinsEarned').value += 1;
       var coin = document.getElementById('coinsEarned').value;
       document.getElementById('coinsEarned').innerHTML = 'Coins: '+coin;
@@ -67,7 +67,7 @@ function initProgressBar() {
   startTime.innerHTML = currentTime;
 
   progressbar.value = (player.currentTime / player.duration);
-  $('#progress-bar').stop(true,true).animate({'width':progressbar.value*100+'%'},200,'linear');
+  $('#progress-bar').stop(true,true).animate({'width' : progressbar.value*100+'%'},200,'linear');
   // $('#progress-bar').stop(true,true).animate({'width':(currentTime +.25)/player.duration*100+'%'},200,'linear');
 };
 
@@ -103,9 +103,13 @@ document.onkeydown = function(event) {
     if(loginModal.style.opacity === '1' || loginModalForm.style.opacity === '1'){
       loginModal.style.opacity = '0';
       loginModal.style.visibility = 'hidden';
-    loginModalForm.style.opacity = '0';
-    loginModalForm.style.visibility = 'hidden';
+      loginModalForm.style.opacity = '0';
+      loginModalForm.style.visibility = 'hidden';
       isLoginOpen = false;
+    }
+    if(queue.style.width === "250px"){
+      queue.style.width = "0px";
+      document.getElementById('queue').style.display="block";    
     }
   }
 };
@@ -164,6 +168,7 @@ var overlayMuteUnmute = document.getElementById("overlayMuteUnmute");
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
+  console.info("User clicked on body");
   if (isLoginOpen && ((event.target === main) || (event.target === bg)
   || (event.target === album) || (event.target === overlayMuteUnmute))) {
     console.info("window.onclick event: Closing Login/Registration modal");
@@ -172,6 +177,10 @@ window.onclick = function(event) {
     loginModalForm.style.opacity = '0';
     loginModalForm.style.visibility = 'hidden';
     isLoginOpen = false;
+    if(document.getElementById('mySidenav').style.width === "250px"){
+      document.getElementById('mySidenav').style.width = "0px";
+      document.getElementById('queue').style.display="block";    
+    }
   }
 };
 
@@ -214,12 +223,14 @@ function randomizeImage(){
  */
 function openCloseQueue(queue) {
   console.info("Entering openCloseQueue()");
-  if(queue.style.width === "250px"){
-    queue.style.width = "0px";
+  if(queue.style.width === "250px" || queue.clientWidth === 241){
+    queue.style.width = "0";
+    queue.style.borderWidth = '0';
     document.getElementById('queue').style.display="block";    
   }else{
     document.getElementById('queue').style.display="none";
     queue.style.width = "250px";
+    queue.style.borderWidth = '1px';
   }
 }
 
@@ -598,7 +609,10 @@ input.addEventListener('keydown', function(event) {
 */
 function validatePassword(pass){
   var originalPass = document.getElementById('password');
-  if(originalPass.value === pass.value){
+  if(pass.value.length === 0){
+    document.getElementById('password').setAttribute("style", "background-color: white"); 
+    pass.setAttribute("style", "background-color: white");   
+  }else if(originalPass.value === pass.value){
     originalPass.setAttribute("style", "background-color: white");
     pass.setAttribute("style", "background-color: white");
   }else{

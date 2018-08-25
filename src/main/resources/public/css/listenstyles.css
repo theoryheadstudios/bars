@@ -572,7 +572,7 @@ h1 {
     font-size: 36px;
     margin-left: 50px;
     font-size:50px;
-    color: white;
+    color: grey;
     cursor:pointer;
   }
 
@@ -582,7 +582,7 @@ h1 {
 
   #loginModalClose {
     position: absolute;
-    font-size: 40px;
+    font-size: 60px;
     cursor:pointer;
     right:10px;
     top: 0;
@@ -663,7 +663,7 @@ h1 {
 }
 
 .sidenav:hover, .sidenav:active, .sidenav:focus {
-  overflow-y: auto;
+  overflow-y: overlay;
   background-color: rgba(66, 76, 94, 0.527);
 }
 
@@ -927,11 +927,10 @@ h1 {
 100% {-webkit-transform: rotateY(0deg);
     -moz-transform: rotateY(0deg);
   transform: rotateY(0deg);  }
-
 }
 
 span.coin-face {
-    z-index: 5;
+    z-index: 4;
     display: none;
     background: gold url(../images/dollar.png) no-repeat center center;
     color: gold;
@@ -1014,8 +1013,9 @@ span.coin-face {
     }
   }
 
+  
 #coinPlusOne {
-    z-index: 5;
+    z-index: 4;
     display: none;
     color: gold;
     width: 32px;
@@ -1046,7 +1046,7 @@ span.coin-face {
     text-decoration: none;
     color: gold;
     position: absolute;
-    top: 20px;   
+    top: 40px;   
 }
 
 .menu {
@@ -1206,6 +1206,35 @@ span.coin-face {
     .form {
       width: 200px !important;
     }
+    .sidenav {
+      width: 250px;
+      height: 59%;
+      border: white;
+      border-radius: 6px;
+      border-width: 1px;
+      border-style: solid;
+      float: left;
+      margin-top: 41vh;
+      overflow-y: overlay;
+    }
+    /* #mySidenav {
+      width: 250px;
+      height: 61%;
+      border: white;
+      border-radius: 6px;
+      border-width: 1px;
+      border-style: solid;
+      float: left;
+      margin-top: 39vh;
+      overflow-y: scroll;
+    } */
+    #queue {
+      display: none;
+    }
+    #queue2 {
+      right: 20px;
+    }
+    
   }
 
   @media screen and (max-width: 350px){
