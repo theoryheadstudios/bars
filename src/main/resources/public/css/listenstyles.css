@@ -1216,18 +1216,8 @@ span.coin-face {
       float: left;
       margin-top: 41vh;
       overflow-y: overlay;
+      background-color: rgba(66, 76, 94, 0.527);
     }
-    /* #mySidenav {
-      width: 250px;
-      height: 61%;
-      border: white;
-      border-radius: 6px;
-      border-width: 1px;
-      border-style: solid;
-      float: left;
-      margin-top: 39vh;
-      overflow-y: scroll;
-    } */
     #queue {
       display: none;
     }
