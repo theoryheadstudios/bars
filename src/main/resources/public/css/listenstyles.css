@@ -650,8 +650,6 @@ h1 {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    -webkit-box-shadow: -3px 0px 5px 0px rgba(0, 0, 0, 0.2);
-    box-shadow: -3px 0px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -660,19 +658,19 @@ h1 {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-
   /* font-weight: 500; */
   height: 100%;
   font-size: 15px;
   font-style: normal;
   padding-left: 15px;
-  line-height: 15px;
   position: fixed;
   z-index: -1;
-  background-color: rgba(66, 76, 94, 0.527);
+  background-color: rgba(35, 47, 70, 0.55);
   transition: 0.5s ease;
   color: aqua;
   cursor: pointer;
+  -webkit-box-shadow: 1px 0px 5px 3px rgba(0, 0, 0, 0.38);
+    box-shadow: 1px 0px 5px 3px rgba(0, 0, 0, 0.38);
 }
 .sidenav .queueTitle:hover, .sidenav .queueTitle:focus {
   background: rgba(31, 36, 46, 0.527);
@@ -680,6 +678,7 @@ h1 {
     /* transform: rotate(270deg); */
 }
 .sidenav .queueTitle p {
+  line-height: 18px;
   position: absolute;
   top: 41%;
   font-size: 15px;
@@ -701,7 +700,6 @@ h1 {
     -webkit-appearance: none;
     position: absolute;
     width: 9px;
-    z-index: 10;
 }
 /* Track */
 ::-webkit-scrollbar-track {
