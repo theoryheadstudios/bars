@@ -350,7 +350,7 @@ function addRowtoQueue(artist, track){
 function initializeQueue(artist, track) {
   console.info("Entering initializeQueue()");
   var c = 1;
-  for(var addRow = 0; addRow <= 20; addRow++){
+  for(var addRow = 0; addRow < 20; addRow++){
     if(c === 8){
       c = 1;
     }
