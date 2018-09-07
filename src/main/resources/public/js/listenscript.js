@@ -336,7 +336,7 @@ function addRowtoQueue(artist, track){
   var len = table.rows.length;
   var row = table.insertRow(len);
   var cell1 = row.insertCell(0);      
-  cell1.innerHTML = "<div><img id='sidenavimage' name='sideimg' class='navimage' src='images/listen"+count+".jpg'><p name='track'>"+artist+":<br>"+track+"</p></div>";
+  cell1.innerHTML = "<div><img id='sidenavimage' name='sideimg' class='navimage' src='images/listen"+count+".jpg'><p id='artist' name='artist'>"+artist+":</p><br><p id='track' name='track'>"+track+"</p></div>";
   table.deleteRow(0);
   var pathToImages = "url("+firstRow.cells.item(0).getElementsByTagName('img')[0].src+")";
   document.getElementById('bg-before').style.backgroundImage = pathToImages;
@@ -358,7 +358,7 @@ function initializeQueue(artist, track) {
     var len = table.rows.length;
     var row = table.insertRow(len);
     var cell1 = row.insertCell(0);      
-    cell1.innerHTML = "<div><img id='sidenavimage' name='sideimg' class='navimage' src='images/listen"+c+".jpg'><p name='track'>"+artist+":<br>"+track+"</p></div>";
+    cell1.innerHTML = "<div><img id='sidenavimage' name='sideimg' class='navimage' src='images/listen"+count+".jpg'><p id='artist' name='artist'>"+artist+":</p><br><p id='track' name='track'>"+track+"</p></div>";
     c++;
   }
 }
