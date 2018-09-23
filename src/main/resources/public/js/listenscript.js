@@ -336,7 +336,7 @@ function addRowtoQueue(artist, track){
   var len = table.rows.length;
   var row = table.insertRow(len);
   var cell1 = row.insertCell(0);      
-  cell1.innerHTML = "<div><img id='sidenavimage' name='sideimg' class='navimage' src='images/listen"+count+".jpg'><p id='artist' name='artist'>"+artist+":</p><br><p id='track' name='track'>"+track+"</p></div>";
+  cell1.innerHTML = "<div><img id='sidenavimage' name='sideimg' class='navimage' src='images/listen"+count+".jpg'><br><p id='artist' name='artist'>"+artist+":</p><br><p id='track' name='track'>"+track+"</p></div>";
   table.deleteRow(0);
   var pathToImages = "url("+firstRow.cells.item(0).getElementsByTagName('img')[0].src+")";
   document.getElementById('bg-before').style.backgroundImage = pathToImages;
@@ -357,8 +357,9 @@ function initializeQueue(artist, track) {
     var table = document.getElementById('queueTable');
     var len = table.rows.length;
     var row = table.insertRow(len);
-    var cell1 = row.insertCell(0);      
-    cell1.innerHTML = "<div><img id='sidenavimage' name='sideimg' class='navimage' src='images/listen"+count+".jpg'><p id='artist' name='artist'>"+artist+":</p><br><p id='track' name='track'>"+track+"</p></div>";
+    var cell1 = row.insertCell(0);   
+    // cell1.innerHTML = "<div><p id='artist' name='artist'>"+artist+":</p><br><p id='track' name='track'>"+track+"</p></div>";   
+    cell1.innerHTML = "<div><img id='sidenavimage' name='sideimg' class='navimage' src='images/listen"+c+".jpg'><br><p id='artist' name='artist'>"+artist+":</p><br><p id='track' name='track'>"+track+"</p></div>";
     c++;
   }
 }
@@ -424,7 +425,7 @@ function listAllUsers(){
   console.info("Entering listAllUsers()");
 console.log("Grabbing request: localhost:3000/listAllUsers");
   var xmlHttp = new XMLHttpRequest();
-  var fname = "", lname="";
+  var fname = "", lname="", artist_usrName="";
   xmlHttp.onload = function() {
     if(xmlHttp.readyState === 4 && xmlHttp.status === 200){
       // console.log((xmlHttp.responseText));
@@ -435,13 +436,18 @@ console.log("Grabbing request: localhost:3000/listAllUsers");
           for(var data in dataCpy){
             var mainData = dataCpy[data];
               for(var key in mainData){
-              if(key.match("first_name"))
+              if(key.match("first_name")){
                 fname = mainData[key];
-              else if(key.match("last_name"))
-                lname = mainData[key];
-                //console.log(key + " : " + mainData[key]);
               }
-             addRowtoQueue(fname, lname);
+              else if(key.match("last_name")){
+                lname = mainData[key];
+              }
+              else if(key.match("user_name")){
+                artist_usrName = mainData[key];
+              }
+              //console.log(key + " : " + mainData[key]);
+              }
+             addRowtoQueue(fname+' '+lname, artist_usrName);
             }
             //console.log(usr.first_name + ' ' + usr.last_name);
       }
@@ -546,7 +552,7 @@ function saveFormData(){
   data.zip = document.getElementById('zip').value;
   data.dateOfBirth = parseDOB(document.getElementById('dob').value)
   data.timeZone = "Eastern";
-  data.userName = "Migos";
+  data.userName = document.getElementById('username').value;
   data.socialLink1 = "http://myspace.com/bump";
   data.socialLink2 = "http://myspace.com/bump1";
   data.socialLink3 = "http://myspace.com/bump2";
@@ -556,6 +562,58 @@ function saveFormData(){
   data.userEmail = "SampleEmail"+data.accountNumber+"@email.com";
   data.gender = genderValue;
   return data;
+}
+
+function validateForm(){
+  var fName = document.forms["regForm"]["firstname"];
+  var lName = document.forms["regForm"]["lastname"];
+  var username = document.forms["regForm"]["username"];
+  var email = document.forms["regForm"]["e-mail"];
+  var pwdtxt = document.forms["regForm"]["pwdtxt"];
+  var cpwdtxt = document.forms["regForm"]["cpwdtxt"];
+  var zip = document.forms["regForm"]["zip"];
+  var dob = document.forms["regForm"]["dob"];
+
+  if(fName.value === ""){
+    window.alert("Please enter your first name.");
+    fName.focus();
+    return false;
+  }
+  if(lName.value === ""){
+    window.alert("Please enter your last name.");
+    lName.focus();
+    return false;
+  }
+  if(username.value === ""){
+    window.alert("Please enter your username.");
+    username.focus();
+    return false;
+  }
+  if(email.value === ""){
+    window.alert("Please enter your email.");
+    email.focus();
+    return false;
+  }
+  if(pwdtxt.value === ""){
+    window.alert("Please enter your password.");
+    fNpwdtxtame.focus();
+    return false;
+  }
+  if(cpwdtxt.value === ""){
+    window.alert("Please confirm password.");
+    cpwdtxt.focus();
+    return false;
+  }
+  if(zip.value === ""){
+    window.alert("Please enter your zip.");
+    zip.focus();
+    return false;
+  }
+  if(dob.value === ""){
+    window.alert("Please enter your date of birth.");
+    dob.focus();
+    return false;
+  }
 }
 
 
@@ -583,14 +641,17 @@ function validateZIP(zip){
    z = z.substr(0, z.length - 1);
   zip.value = z + '-'+lastChar;
   zip.setAttribute("style", "background-color: red");
+  zip.focus();
  }else{
    if(zip.value.length === 0){
     zip.setAttribute("style", "background-color: white"); 
    }else{
     zip.setAttribute("style", "background-color: red"); 
+    zip.focus();
    }
   
  }
+ console.log(zip.value);
 }
 
 
@@ -665,8 +726,43 @@ function validateEmail(email) {
     email.setAttribute("style", "background-color: white");  
   }else{
     email.setAttribute("style", "background-color: red");
-    alert("Enter valid E-mail Address")  
+    alert("Enter valid E-mail Address");  
   }
+}
+
+function checkIfUsernameExists(artist_usrName){
+  console.info("Entering checkIfUsernameExists()");
+  console.log("Grabbing request: localhost:3000/listAllUsers");
+  if(artist_usrName.value.length === 0){
+    artist_usrName.setAttribute("style", "background-color: white");  
+  }
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.onload = function() {
+    if(xmlHttp.readyState === 4 && xmlHttp.status === 200){
+      var data = JSON.parse(xmlHttp.responseText);
+      for( var event in data){
+          var dataCpy = data[event];
+          for(var data in dataCpy){
+            var mainData = dataCpy[data];
+            for(var key in mainData){
+              if(key.match("user_name")){
+                if(artist_usrName.value === mainData[key]){
+                  artist_usrName.setAttribute("style", "background-color: red");
+                  alert("UserName Already Exists"); 
+                }else{
+                  artist_usrName.setAttribute("style", "background-color: white");   
+                }
+              }
+            //console.log(key + " : " + mainData[key]);
+            }
+          } 
+      }
+    }else {
+      console.log("Error");
+    }
+  }
+  xmlHttp.open("GET", "http://localhost:3000/listOfAllUsers", true);
+  xmlHttp.send(null); 
 }
 
 /* 

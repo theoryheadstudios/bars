@@ -59,9 +59,10 @@
               <div class="form" id="loginModalForm">
                 <span id="loginModalClose" onclick="closeLoginModalForm()">×</span>
                 <div class="thumbnail"></div>
-                <form class="register-form" onchange="saveFormData()">
+                <form name="regForm" class="register-form" onsubmit="validateForm()" method="POST">
                     <input type="text" name="firstname" id="first" placeholder="First Name">
                     <input type="text" name="lastname" id="last" placeholder="Last Name">
+                    <input type="text" name="username" id="username" placeholder="User Name / Artist" onfocusout="checkIfUsernameExists(this)">
                     <input type="text" name="e-mail" id="email" placeholder="E-mail address" onfocusout="validateEmail(this)">
                     <input type="password" name="pwdtxt" id="password" placeholder="Password">
                     <input type="password" name="cpwdtxt" id="password2" placeholder="Confirm Password" onfocusout="validatePassword(this)">
@@ -85,6 +86,7 @@
                       </div>
                     <br><br>        
                     <button onclick="createUser()">Register</button>
+                    <!-- <button>Register</button> -->
 
                 </form>
                 <form class="login-form" >
