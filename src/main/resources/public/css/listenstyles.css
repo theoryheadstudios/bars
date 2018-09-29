@@ -1175,11 +1175,11 @@ span.coin-face {
     user-select: none;
     cursor: pointer;
   }
-  /* .menu:hover, .menu:focus {
+  .menu:hover, .menu:focus {
     background: rgba(31, 36, 46, 0.527);
-    transform: translate3d(-130px, 0, 0);
-     animation-timing-function: 1s ease-in;
-   } */
+    /* transform: translate3d(-130px, 0, 0);
+     animation-timing-function: 1s ease-in; */
+   } 
   .menu .menuTitle {
     position: absolute;
     top: 50%;
