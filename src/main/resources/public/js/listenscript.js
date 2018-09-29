@@ -358,8 +358,8 @@ function initializeQueue(artist, track) {
     var len = table.rows.length;
     var row = table.insertRow(len);
     var cell1 = row.insertCell(0);   
-    // cell1.innerHTML = "<div><p id='artist' name='artist'>"+artist+":</p><br><p id='track' name='track'>"+track+"</p></div>";   
-    cell1.innerHTML = "<div><img id='sidenavimage' name='sideimg' class='navimage' src='images/listen"+c+".jpg'><br><p id='artist' name='artist'>"+artist+":</p><br><p id='track' name='track'>"+track+"</p></div>";
+    // cell1.innerHTML = "<div><img id='sidenavimage' name='sideimg' class='navimage' src='images/listen"+c+".jpg'><br><p id='artist' name='artist'>"+artist+":</p><br><p id='track' name='track'>"+track+"</p></div>";
+     cell1.innerHTML = "<div><img id='sidenavimage' name='sideimg' class='navimage' src='images/listen"+c+".jpg'><br><a href='http://www.google.com'>"+artist+"</a><br><a href='http://www.google.com'>"+track+"</a><br></div>";
     c++;
   }
 }

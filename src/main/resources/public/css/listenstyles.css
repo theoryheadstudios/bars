@@ -639,6 +639,29 @@ h1 {
     text-decoration: underline;
   }
 
+  #queueTable a {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    white-space: normal;
+    font-size: 11px;
+    word-break: break-word;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    line-height: 2em;
+    top: -20px;
+    right: -40px;
+    width: 1px;
+    height: 1px;
+    color: white;
+    text-decoration: none;
+  }
+
+  #queueTable a:hover {
+    color: gray;
+    text-decoration: underline;
+  }
+ 
   .sidenav {
     font-weight: 500;
     font-size: 15px;
